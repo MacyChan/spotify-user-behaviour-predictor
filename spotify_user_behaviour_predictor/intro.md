@@ -9,7 +9,7 @@ bibliography: doc/spotify_user_behaviour_refs.bib
 
 Spotify user behaviour and prediction model analysis for Spotify Playlist Recommendation System
 
-Music and Mood (here)[<https://macy-chan.com/MusicAndMood.html>]
+Music and Mood (here)[https://macy-chan.com/MusicAndMood.html]
 
 ## About
 
