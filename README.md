@@ -1,31 +1,49 @@
+---
+output: github_document
+bibliography: doc/spotify_user_behaviour_refs.bib
+---
+
 # Spotify User Behaviour Predictor
 
-Spotify user behaviour and prediction model analysis for Spotify Playlist Recommendation System [Music and Mood]
+-   author: Macy Chan
+
+Spotify user behaviour and prediction model analysis for Spotify Playlist Recommendation System
+
+Music and Mood (here)[<https://macy-chan.com/MusicAndMood.html>]
+
+## About
+
+Here we attempt to analys spotify user behavior by EDA and ML.
+
+The data set that was used in this project is Kaggle's [Spotify Song Attributes](https://www.kaggle.com/geomack/spotifyclassification/home) dataset. It was sourced from Kaggle and can be found [here](https://www.kaggle.com/mrmorj/dataset-of-songs-in-spotify). Each row in the data set contains a number of features of songs from 2017 and a binary variable `target` that represents whether the user liked the song (encoded as 1) or not (encoded as 0). See the documentation of all the features [here](https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/).
+
+## Report
+
+The final report can be found [here](https://macychan.github.io/spotify-user-behaviour-predictor/).
 
 ## Usage
 
-### Building the book
+To replicate the analysis, clone this GitHub repository, install the [dependencies](#dependencies) listed below, and run the following commands at the command line/terminal from the root directory of this project:
 
-If you'd like to develop and/or build the Spotify User Behaviour Predictor book, you should:
+    # download data
+    # python src/download_data.py --out_type=feather --url=http://mlr.cs.umass.edu/ml/machine-learning-databases/breast-cancer-wisconsin/wdbc.data # --out_file=data/raw/wdbc.feather
+    # run eda report
+    #Rscript -e "rmarkdown::render('src/breast_cancer_eda.Rmd')"
 
-1. Clone this repository
-2. Run `pip install -r requirements.txt` (it is recommended you do this within a virtual environment)
-3. (Optional) Edit the books source files located in the `spotify_user_behaviour_predictor/` directory
-4. Run `jupyter-book clean spotify_user_behaviour_predictor/` to remove any existing builds
-5. Run `jupyter-book build spotify_user_behaviour_predictor/`
+## Dependencies
 
-A fully-rendered HTML version of the book will be built in `spotify_user_behaviour_predictor/_build/html/`.
+-   Python 3.7.3 and Python packages:
 
-### Hosting the book
+    -   docopt==0.6.2
+    -   requests==2.22.0
+    -   pandas==0.24.2
+    -   feather-format==0.4.0
 
-Please see the [Jupyter Book documentation](https://jupyterbook.org/publish/web.html) to discover options for deploying a book online using services such as GitHub, GitLab, or Netlify.
+-   R version 3.6.1 and R packages:
 
-For GitHub and GitLab deployment specifically, the [cookiecutter-jupyter-book](https://github.com/executablebooks/cookiecutter-jupyter-book) includes templates for, and information about, optional continuous integration (CI) workflow files to help easily and automatically deploy books online with GitHub or GitLab. For example, if you chose `github` for the `include_ci` cookiecutter option, your book template was created with a GitHub actions workflow file that, once pushed to GitHub, automatically renders and pushes your book to the `gh-pages` branch of your repo and hosts it on GitHub Pages when a push or pull request is made to the main branch.
+    -   knitr==1.26
+    -   tidyverse==1.2.1
+    -   ggridges==0.5.1
+    -   ggthemes==4.2.0
 
-## Contributors
-
-We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/macychan/spotify_user_behaviour_predictor/graphs/contributors).
-
-## Credits
-
-This project is created using the excellent open source [Jupyter Book project](https://jupyterbook.org/) and the [executablebooks/cookiecutter-jupyter-book template](https://github.com/executablebooks/cookiecutter-jupyter-book).
+# References
