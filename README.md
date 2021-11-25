@@ -1,8 +1,3 @@
----
-output: github_document
-bibliography: doc/spotify_user_behaviour_refs.bib
----
-
 # Spotify User Behaviour Predictor
 
 -   author: Macy Chan
