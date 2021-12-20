@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spotify User Behaviour Predictor &#8212; Spotify User Behaviour Predictor</title>
+    <title>Conclusion &#8212; Spotify User Behaviour Predictor</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,7 +51,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Exploratory data analysis" href="EDA.html" />
+    <link rel="prev" title="Machine Learning analysis" href="5_Machine_Learning.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -89,21 +89,36 @@
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
- <li class="toctree-l1 current">
-  <a class="reference internal" href="#">
-   Spotify User Behaviour Predictor
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_intro.html">
+   ReadMe
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="EDA.html">
-   Exploratory data analysis
+  <a class="reference internal" href="2_notebooks.html">
+   Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="MachineLearning.html">
+  <a class="reference internal" href="3_EDA.html">
+   Explanatory data analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4_Stat_Infer.html">
+   Statistic Inference
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5_Machine_Learning.html">
    Machine Learning analysis
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Conclusion
   </a>
  </li>
 </ul>
@@ -147,9 +162,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/intro.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/6_Conclusion.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -167,7 +182,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/macychan/Spotify-user-behaviour-predictor/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/macychan/Spotify-user-behaviour-predictor/issues/new?title=Issue%20on%20page%20%2F6_Conclusion.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -183,6 +198,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/macychan/Spotify-user-behaviour-predictor/main?urlpath=tree/docs/6_Conclusion.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -193,31 +225,9 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Spotify User Behaviour Predictor
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#about">
-     About
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#usage">
-     Usage
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dependencies">
-     Dependencies
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-of-the-whole-project-tbc">
+   Summary of the whole project (TBC)
   </a>
  </li>
 </ul>
@@ -231,53 +241,13 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="spotify-user-behaviour-predictor">
-<h1>Spotify User Behaviour Predictor<a class="headerlink" href="#spotify-user-behaviour-predictor" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="conclusion">
+<h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><p>author: Macy Chan</p></li>
+<li><p>This is a Python base notebook</p></li>
 </ul>
-<p>Spotify user behaviour and prediction model analysis for Spotify Playlist Recommendation System</p>
-<p>Music and Mood <a class="reference external" href="https://macy-chan.com/MusicAndMood.html">here</a></p>
-<div class="section" id="about">
-<h2>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h2>
-<p>Here we attempt to analys spotify user behavior by EDA and ML.</p>
-<p>The data set that was used in this project is Kaggle’s <a class="reference external" href="https://www.kaggle.com/geomack/spotifyclassification/home">Spotify Song Attributes</a> dataset. It was sourced from Kaggle and can be found <a class="reference external" href="https://www.kaggle.com/mrmorj/dataset-of-songs-in-spotify">here</a>. Each row in the data set contains a number of features of songs from 2017 and a binary variable <code class="docutils literal notranslate"><span class="pre">target</span></code> that represents whether the user liked the song (encoded as 1) or not (encoded as 0). See the documentation of all the features <a class="reference external" href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/">here</a>.</p>
-</div>
-<div class="section" id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<p>To replicate the analysis, clone this GitHub repository, install the <a class="reference external" href="#dependencies">dependencies</a> listed below, and run the following commands at the command line/terminal from the root directory of this project:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># download data
-# python src/download_data.py --out_type=feather --url=http://mlr.cs.umass.edu/ml/machine-learning-databases/breast-cancer-wisconsin/wdbc.data # --out_file=data/raw/wdbc.feather
-# run eda report
-#Rscript -e &quot;rmarkdown::render(&#39;src/breast_cancer_eda.Rmd&#39;)&quot;
-</pre></div>
-</div>
-</div>
-<div class="section" id="dependencies">
-<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Python 3.7.3 and Python packages:</p>
-<ul>
-<li><p>docopt==0.6.2</p></li>
-<li><p>requests==2.22.0</p></li>
-<li><p>pandas==0.24.2</p></li>
-<li><p>feather-format==0.4.0</p></li>
-</ul>
-</li>
-<li><p>R version 3.6.1 and R packages:</p>
-<ul>
-<li><p>knitr==1.26</p></li>
-<li><p>tidyverse==1.2.1</p></li>
-<li><p>ggridges==0.5.1</p></li>
-<li><p>ggthemes==4.2.0</p></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="references">
-<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
+<div class="section" id="summary-of-the-whole-project-tbc">
+<h2>Summary of the whole project (TBC)<a class="headerlink" href="#summary-of-the-whole-project-tbc" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -290,28 +260,28 @@
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-env-spotify_user_behaviour_predictor-py"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "conda-env-spotify_user_behaviour_predictor-py",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-env-spotify_user_behaviour_predictor-py'</script>
 
               </div>
               
         
             <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="EDA.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Exploratory data analysis</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="5_Machine_Learning.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Machine Learning analysis</p>
+        </div>
     </a>
 </div>
         

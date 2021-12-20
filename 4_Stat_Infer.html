@@ -1,0 +1,531 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Statistic Inference &#8212; Spotify User Behaviour Predictor</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Machine Learning analysis" href="5_Machine_Learning.html" />
+    <link rel="prev" title="Explanatory data analysis" href="3_EDA.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Spotify User Behaviour Predictor</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_intro.html">
+   ReadMe
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2_notebooks.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_EDA.html">
+   Explanatory data analysis
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Statistic Inference
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5_Machine_Learning.html">
+   Machine Learning analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6_Conclusion.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/4_Stat_Infer.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/macychan/Spotify-user-behaviour-predictor"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/macychan/Spotify-user-behaviour-predictor/issues/new?title=Issue%20on%20page%20%2F4_Stat_Infer.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/macychan/Spotify-user-behaviour-predictor/main?urlpath=tree/docs/4_Stat_Infer.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-libaries">
+   Import libaries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-the-data-csv">
+   Reading the data CSV
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regression">
+   Regression
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-wrangle">
+     Data Wrangle
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-up-regression-model">
+   Set up regression model
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ggpairs">
+     GGpairs
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="statistic-inference">
+<h1>Statistic Inference<a class="headerlink" href="#statistic-inference" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>This is a R base notebook</p></li>
+</ul>
+<p>We saw some pattern in EDA, naturally, we would like to see if the different between feature are significantly related to the target.</p>
+<div class="section" id="import-libaries">
+<h2>Import libaries<a class="headerlink" href="#import-libaries" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">broom</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">GGally</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">zn</span><span class="o">/</span><span class="mi">40</span><span class="n">lvk7q11ddb7fryhn5vq7x80000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_86924</span><span class="o">/</span><span class="mf">3796281200.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">library</span><span class="p">(</span><span class="n">broom</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">library</span><span class="p">(</span><span class="n">GGally</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;library&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="reading-the-data-csv">
+<h2>Reading the data CSV<a class="headerlink" href="#reading-the-data-csv" title="Permalink to this headline">¶</a></h2>
+<p>Read in the data CSV and store it as a pandas dataframe named <code class="docutils literal notranslate"><span class="pre">spotify_df</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spotify_df</span> <span class="o">&lt;-</span> <span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/spotify_data.csv&quot;</span><span class="p">)</span>
+<span class="n">head</span><span class="p">(</span><span class="n">spotify_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>New names:
+* `` -&gt; ...1
+
+<span class=" -Color -Color-Bold">Rows: </span><span class=" -Color -Color-Blue">2017</span> <span class=" -Color -Color-Bold">Columns: </span><span class=" -Color -Color-Blue">17</span>
+
+<span class=" -Color -Color-Cyan">──</span> <span class=" -Color -Color-Bold">Column specification</span> <span class=" -Color -Color-Cyan">────────────────────────────────────────────────────────</span>
+<span class=" -Color -Color-Bold">Delimiter:</span> &quot;,&quot;
+<span class=" -Color -Color-Red">chr</span>  (2): song_title, artist
+<span class=" -Color -Color-Green">dbl</span> (15): ...1, acousticness, danceability, duration_ms, energy, instrumenta...
+
+
+<span class=" -Color -Color-Cyan">ℹ</span> Use <span class=" -Color -Color-Black -Color-Black-BGWhite">`spec()`</span> to retrieve the full column specification for this data.
+<span class=" -Color -Color-Cyan">ℹ</span> Specify the column types or set <span class=" -Color -Color-Black -Color-Black-BGWhite">`show_col_types = FALSE`</span> to quiet this message.
+</pre></div>
+</div>
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 17</caption>
+<thead>
+	<tr><th scope=col>...1</th><th scope=col>acousticness</th><th scope=col>danceability</th><th scope=col>duration_ms</th><th scope=col>energy</th><th scope=col>instrumentalness</th><th scope=col>key</th><th scope=col>liveness</th><th scope=col>loudness</th><th scope=col>mode</th><th scope=col>speechiness</th><th scope=col>tempo</th><th scope=col>time_signature</th><th scope=col>valence</th><th scope=col>target</th><th scope=col>song_title</th><th scope=col>artist</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>0</td><td>0.01020</td><td>0.833</td><td>204600</td><td>0.434</td><td>0.021900</td><td>2</td><td>0.1650</td><td> -8.795</td><td>1</td><td>0.4310</td><td>150.062</td><td>4</td><td>0.286</td><td>1</td><td>Mask Off      </td><td>Future          </td></tr>
+	<tr><td>1</td><td>0.19900</td><td>0.743</td><td>326933</td><td>0.359</td><td>0.006110</td><td>1</td><td>0.1370</td><td>-10.401</td><td>1</td><td>0.0794</td><td>160.083</td><td>4</td><td>0.588</td><td>1</td><td>Redbone       </td><td>Childish Gambino</td></tr>
+	<tr><td>2</td><td>0.03440</td><td>0.838</td><td>185707</td><td>0.412</td><td>0.000234</td><td>2</td><td>0.1590</td><td> -7.148</td><td>1</td><td>0.2890</td><td> 75.044</td><td>4</td><td>0.173</td><td>1</td><td>Xanny Family  </td><td>Future          </td></tr>
+	<tr><td>3</td><td>0.60400</td><td>0.494</td><td>199413</td><td>0.338</td><td>0.510000</td><td>5</td><td>0.0922</td><td>-15.236</td><td>1</td><td>0.0261</td><td> 86.468</td><td>4</td><td>0.230</td><td>1</td><td>Master Of None</td><td>Beach House     </td></tr>
+	<tr><td>4</td><td>0.18000</td><td>0.678</td><td>392893</td><td>0.561</td><td>0.512000</td><td>5</td><td>0.4390</td><td>-11.648</td><td>0</td><td>0.0694</td><td>174.004</td><td>4</td><td>0.904</td><td>1</td><td>Parallel Lines</td><td>Junior Boys     </td></tr>
+	<tr><td>5</td><td>0.00479</td><td>0.804</td><td>251333</td><td>0.560</td><td>0.000000</td><td>8</td><td>0.1640</td><td> -6.682</td><td>1</td><td>0.1850</td><td> 85.023</td><td>4</td><td>0.264</td><td>1</td><td>Sneakin’      </td><td>Drake           </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="regression">
+<h2>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data-wrangle">
+<h3>Data Wrangle<a class="headerlink" href="#data-wrangle" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">song_title</span></code> and <code class="docutils literal notranslate"><span class="pre">artist</span></code> for relationship study by regression. As both of them are neither numerical nor categorical features.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spotify_df_num</span> <span class="o">&lt;-</span> <span class="n">spotify_df</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">15</span><span class="p">]</span>
+<span class="n">head</span><span class="p">(</span><span class="n">spotify_df_num</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 14</caption>
+<thead>
+	<tr><th scope=col>acousticness</th><th scope=col>danceability</th><th scope=col>duration_ms</th><th scope=col>energy</th><th scope=col>instrumentalness</th><th scope=col>key</th><th scope=col>liveness</th><th scope=col>loudness</th><th scope=col>mode</th><th scope=col>speechiness</th><th scope=col>tempo</th><th scope=col>time_signature</th><th scope=col>valence</th><th scope=col>target</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>0.01020</td><td>0.833</td><td>204600</td><td>0.434</td><td>0.021900</td><td>2</td><td>0.1650</td><td> -8.795</td><td>1</td><td>0.4310</td><td>150.062</td><td>4</td><td>0.286</td><td>1</td></tr>
+	<tr><td>0.19900</td><td>0.743</td><td>326933</td><td>0.359</td><td>0.006110</td><td>1</td><td>0.1370</td><td>-10.401</td><td>1</td><td>0.0794</td><td>160.083</td><td>4</td><td>0.588</td><td>1</td></tr>
+	<tr><td>0.03440</td><td>0.838</td><td>185707</td><td>0.412</td><td>0.000234</td><td>2</td><td>0.1590</td><td> -7.148</td><td>1</td><td>0.2890</td><td> 75.044</td><td>4</td><td>0.173</td><td>1</td></tr>
+	<tr><td>0.60400</td><td>0.494</td><td>199413</td><td>0.338</td><td>0.510000</td><td>5</td><td>0.0922</td><td>-15.236</td><td>1</td><td>0.0261</td><td> 86.468</td><td>4</td><td>0.230</td><td>1</td></tr>
+	<tr><td>0.18000</td><td>0.678</td><td>392893</td><td>0.561</td><td>0.512000</td><td>5</td><td>0.4390</td><td>-11.648</td><td>0</td><td>0.0694</td><td>174.004</td><td>4</td><td>0.904</td><td>1</td></tr>
+	<tr><td>0.00479</td><td>0.804</td><td>251333</td><td>0.560</td><td>0.000000</td><td>8</td><td>0.1640</td><td> -6.682</td><td>1</td><td>0.1850</td><td> 85.023</td><td>4</td><td>0.264</td><td>1</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+<div class="section" id="set-up-regression-model">
+<h2>Set up regression model<a class="headerlink" href="#set-up-regression-model" title="Permalink to this headline">¶</a></h2>
+<p>Here, I am interested in determining factors associated with <code class="docutils literal notranslate"><span class="pre">target</span></code>. In particular, I will use a Multiple Linear Regression (MLR) Model to study the relation between <code class="docutils literal notranslate"><span class="pre">target</span></code> and all other features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ML_reg</span> <span class="o">&lt;-</span> <span class="n">lm</span><span class="p">(</span> <span class="n">target</span> <span class="o">~</span> <span class="o">.</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">spotify_df_num</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="n">tidy</span><span class="p">(</span><span class="n">conf</span><span class="o">.</span><span class="n">int</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>
+
+<span class="n">ML_reg</span><span class="o">&lt;-</span> <span class="n">ML_reg</span> <span class="o">|&gt;</span>
+    <span class="n">mutate</span><span class="p">(</span><span class="n">Significant</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">)</span>
+
+<span class="n">ML_reg</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 14 × 8</caption>
+<thead>
+	<tr><th scope=col>term</th><th scope=col>estimate</th><th scope=col>std.error</th><th scope=col>statistic</th><th scope=col>p.value</th><th scope=col>conf.low</th><th scope=col>conf.high</th><th scope=col>Significant</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>(Intercept)     </td><td>-3.134812e-01</td><td>2.059689e-01</td><td>-1.5219831</td><td>1.281712e-01</td><td>-7.174168e-01</td><td> 9.045451e-02</td><td>FALSE</td></tr>
+	<tr><td>acousticness    </td><td>-3.253308e-01</td><td>5.499465e-02</td><td>-5.9156814</td><td>3.877171e-09</td><td>-4.331835e-01</td><td>-2.174781e-01</td><td> TRUE</td></tr>
+	<tr><td>danceability    </td><td> 4.152529e-01</td><td>7.790702e-02</td><td> 5.3301087</td><td>1.092109e-07</td><td> 2.624656e-01</td><td> 5.680401e-01</td><td> TRUE</td></tr>
+	<tr><td>duration_ms     </td><td> 5.623683e-07</td><td>1.378752e-07</td><td> 4.0788202</td><td>4.703718e-05</td><td> 2.919744e-07</td><td> 8.327621e-07</td><td> TRUE</td></tr>
+	<tr><td>energy          </td><td> 9.027844e-02</td><td>9.270219e-02</td><td> 0.9738544</td><td>3.302464e-01</td><td>-9.152438e-02</td><td> 2.720812e-01</td><td>FALSE</td></tr>
+	<tr><td>instrumentalness</td><td> 2.676363e-01</td><td>4.426298e-02</td><td> 6.0465044</td><td>1.761141e-09</td><td> 1.808300e-01</td><td> 3.544426e-01</td><td> TRUE</td></tr>
+	<tr><td>key             </td><td> 9.746404e-04</td><td>2.921294e-03</td><td> 0.3336331</td><td>7.386913e-01</td><td>-4.754452e-03</td><td> 6.703733e-03</td><td>FALSE</td></tr>
+	<tr><td>liveness        </td><td> 9.815487e-02</td><td>7.011975e-02</td><td> 1.3998178</td><td>1.617228e-01</td><td>-3.936041e-02</td><td> 2.356702e-01</td><td>FALSE</td></tr>
+	<tr><td>loudness        </td><td>-2.329719e-02</td><td>4.847288e-03</td><td>-4.8062310</td><td>1.652404e-06</td><td>-3.280344e-02</td><td>-1.379093e-02</td><td> TRUE</td></tr>
+	<tr><td>mode            </td><td>-3.480749e-02</td><td>2.197412e-02</td><td>-1.5840223</td><td>1.133465e-01</td><td>-7.790202e-02</td><td> 8.287029e-03</td><td>FALSE</td></tr>
+	<tr><td>speechiness     </td><td> 8.164797e-01</td><td>1.211094e-01</td><td> 6.7416693</td><td>2.041089e-11</td><td> 5.789661e-01</td><td> 1.053993e+00</td><td> TRUE</td></tr>
+	<tr><td>tempo           </td><td> 7.953468e-04</td><td>4.087155e-04</td><td> 1.9459667</td><td>5.179843e-02</td><td>-6.205250e-06</td><td> 1.596899e-03</td><td>FALSE</td></tr>
+	<tr><td>time_signature  </td><td>-8.632448e-03</td><td>4.221197e-02</td><td>-0.2045024</td><td>8.379817e-01</td><td>-9.141642e-02</td><td> 7.415152e-02</td><td>FALSE</td></tr>
+	<tr><td>valence         </td><td> 1.647899e-01</td><td>5.087437e-02</td><td> 3.2391535</td><td>1.218473e-03</td><td> 6.501768e-02</td><td> 2.645621e-01</td><td> TRUE</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<ul class="simple">
+<li><p>We can see that a lot of features are statiscally correlated with target. They are listed in the table below.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ML_reg</span> <span class="o">|&gt;</span>
+    <span class="nb">filter</span><span class="p">(</span><span class="n">Significant</span> <span class="o">==</span> <span class="n">TRUE</span><span class="p">)</span> <span class="o">|&gt;</span>
+    <span class="n">select</span><span class="p">(</span><span class="n">term</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 7 × 1</caption>
+<thead>
+	<tr><th scope=col>term</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>acousticness    </td></tr>
+	<tr><td>danceability    </td></tr>
+	<tr><td>duration_ms     </td></tr>
+	<tr><td>instrumentalness</td></tr>
+	<tr><td>loudness        </td></tr>
+	<tr><td>speechiness     </td></tr>
+	<tr><td>valence         </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="section" id="ggpairs">
+<h3>GGpairs<a class="headerlink" href="#ggpairs" title="Permalink to this headline">¶</a></h3>
+<p>Below is the ggpair plots to visual the correlation between different features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggpairs</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">spotify_df_num</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4_Stat_Infer_14_0.png" src="_images/4_Stat_Infer_14_0.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="3_EDA.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Explanatory data analysis</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="5_Machine_Learning.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Machine Learning analysis</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Macy Chan<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
