@@ -1,0 +1,46 @@
+Collecting package metadata (current_repodata.json): ...working... done
+Solving environment: ...working... done
+
+## Package Plan ##
+
+  environment location: /opt/miniconda3/envs/spotify_user_behaviour_predictor
+
+  added / updated specs:
+    - scikit-learn
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    numpy-1.21.4               |   py38h49b9922_0         5.8 MB  conda-forge
+    scikit-learn-1.0.1         |   py38h37f3bb3_3         7.0 MB  conda-forge
+    scipy-1.7.3                |   py38hd329d04_0        19.9 MB  conda-forge
+    ------------------------------------------------------------
+                                           Total:        32.7 MB
+
+The following NEW packages will be INSTALLED:
+
+  joblib             conda-forge/noarch::joblib-1.1.0-pyhd8ed1ab_0
+  libblas            conda-forge/osx-64::libblas-3.9.0-12_osx64_openblas
+  libcblas           conda-forge/osx-64::libcblas-3.9.0-12_osx64_openblas
+  libgfortran        conda-forge/osx-64::libgfortran-5.0.0-9_3_0_h6c81a4c_23
+  libgfortran5       conda-forge/osx-64::libgfortran5-9.3.0-h6c81a4c_23
+  liblapack          conda-forge/osx-64::liblapack-3.9.0-12_osx64_openblas
+  libopenblas        conda-forge/osx-64::libopenblas-0.3.18-openmp_h3351f45_0
+  llvm-openmp        conda-forge/osx-64::llvm-openmp-12.0.1-hda6cdc1_1
+  numpy              conda-forge/osx-64::numpy-1.21.4-py38h49b9922_0
+  scikit-learn       conda-forge/osx-64::scikit-learn-1.0.1-py38h37f3bb3_3
+  scipy              conda-forge/osx-64::scipy-1.7.3-py38hd329d04_0
+  threadpoolctl      conda-forge/noarch::threadpoolctl-3.0.0-pyh8a188c0_0
+
+
+Proceed ([y]/n)? 
+
+Downloading and Extracting Packages
+scikit-learn-1.0.1   | 7.0 MB    |            |   0% scikit-learn-1.0.1   | 7.0 MB    |            |   0% scikit-learn-1.0.1   | 7.0 MB    | #7         |  17% scikit-learn-1.0.1   | 7.0 MB    | ###4       |  35% scikit-learn-1.0.1   | 7.0 MB    | ####9      |  49% scikit-learn-1.0.1   | 7.0 MB    | ######3    |  63% scikit-learn-1.0.1   | 7.0 MB    | #######6   |  76% scikit-learn-1.0.1   | 7.0 MB    | #########3 |  93% scikit-learn-1.0.1   | 7.0 MB    | ########## | 100% 
+scipy-1.7.3          | 19.9 MB   |            |   0% scipy-1.7.3          | 19.9 MB   | 2          |   3% scipy-1.7.3          | 19.9 MB   | 8          |   9% scipy-1.7.3          | 19.9 MB   | #4         |  15% scipy-1.7.3          | 19.9 MB   | ##         |  21% scipy-1.7.3          | 19.9 MB   | ##6        |  27% scipy-1.7.3          | 19.9 MB   | ###2       |  32% scipy-1.7.3          | 19.9 MB   | ###8       |  39% scipy-1.7.3          | 19.9 MB   | ####4      |  45% scipy-1.7.3          | 19.9 MB   | #####      |  51% scipy-1.7.3          | 19.9 MB   | #####6     |  57% scipy-1.7.3          | 19.9 MB   | ######2    |  63% scipy-1.7.3          | 19.9 MB   | ######8    |  69% scipy-1.7.3          | 19.9 MB   | #######4   |  75% scipy-1.7.3          | 19.9 MB   | ########   |  81% scipy-1.7.3          | 19.9 MB   | ########6  |  87% scipy-1.7.3          | 19.9 MB   | #########2 |  93% scipy-1.7.3          | 19.9 MB   | #########8 |  99% scipy-1.7.3          | 19.9 MB   | ########## | 100% 
+numpy-1.21.4         | 5.8 MB    |            |   0% numpy-1.21.4         | 5.8 MB    |            |   1% numpy-1.21.4         | 5.8 MB    | #7         |  18% numpy-1.21.4         | 5.8 MB    | ##6        |  27% numpy-1.21.4         | 5.8 MB    | ####2      |  42% numpy-1.21.4         | 5.8 MB    | #####9     |  60% numpy-1.21.4         | 5.8 MB    | ######9    |  70% numpy-1.21.4         | 5.8 MB    | #######9   |  79% numpy-1.21.4         | 5.8 MB    | ########7  |  88% numpy-1.21.4         | 5.8 MB    | #########7 |  98% numpy-1.21.4         | 5.8 MB    | ########## | 100% 
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... 

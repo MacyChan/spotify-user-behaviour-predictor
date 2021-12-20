@@ -1,0 +1,2031 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Machine Learning analysis &#8212; Spotify User Behaviour Predictor</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Conclusion" href="6_Conclusion.html" />
+    <link rel="prev" title="Statistic Inference" href="4_Stat_Infer.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Spotify User Behaviour Predictor</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_intro.html">
+   ReadMe
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2_notebooks.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_EDA.html">
+   Explanatory data analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4_Stat_Infer.html">
+   Statistic Inference
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Machine Learning analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6_Conclusion.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/5_Machine_Learning.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/macychan/Spotify-user-behaviour-predictor"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/macychan/Spotify-user-behaviour-predictor/issues/new?title=Issue%20on%20page%20%2F5_Machine_Learning.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/macychan/Spotify-user-behaviour-predictor/main?urlpath=tree/docs/5_Machine_Learning.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imports">
+   Imports
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-libraries">
+     Import libraries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reading-the-data-csv">
+     Reading the data CSV
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-splitting">
+   Data splitting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scoring-metric">
+   Scoring metric
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-engineering-tbc">
+   Feature engineering (TBC)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preprocessing-and-transformations">
+   Preprocessing and transformations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#baseline-model">
+   Baseline model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-models">
+   Linear models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-training-logisticregression">
+     Model training - LogisticRegression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hyperparameter-optimization">
+     hyperparameter optimization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-interpretation-on-training-set">
+     Model interpretation on Training set
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#non-linear-models">
+   Non-linear models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-training-randomforestclassifier-xgbclassifier-lgbmclassifier-catboostclassifier">
+     Model training - RandomForestClassifier, XGBClassifier, LGBMClassifier, CatBoostClassifier
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hyperparameter-optimization-very-time-consuming-tbc">
+     Hyperparameter optimization (Very time consuming, TBC)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Model interpretation on Training set
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-averaging">
+   Model Averaging
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results-on-the-test-set">
+   Results on the test set
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretation-and-feature-importances-on-test-set">
+     Interpretation and feature importances on Test set
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-of-machine-learning-results">
+   Summary of machine learning results
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="machine-learning-analysis">
+<h1>Machine Learning analysis<a class="headerlink" href="#machine-learning-analysis" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>This is a Python base notebook</p></li>
+</ul>
+<p>Kaggle’s <a class="reference external" href="https://www.kaggle.com/geomack/spotifyclassification/home">Spotify Song Attributes</a> dataset contains a number of features of songs from 2017 and a binary variable <code class="docutils literal notranslate"><span class="pre">target</span></code> that represents whether the user liked the song (encoded as 1) or not (encoded as 0). See the documentation of all the features <a class="reference external" href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/">here</a>.</p>
+<p><br><br></p>
+<div class="section" id="imports">
+<h2>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="import-libraries">
+<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1">#from sklearn import datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span><span class="p">,</span> <span class="n">make_column_transformer</span>
+
+<span class="c1">#from sklearn.impute import SimpleImputer</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">RandomizedSearchCV</span><span class="p">,</span>
+<span class="c1">#    cross_val_score,</span>
+    <span class="n">cross_validate</span><span class="p">,</span>
+    <span class="n">train_test_split</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span> <span class="c1">#Pipeline, make_pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">OneHotEncoder</span>
+<span class="c1">#from sklearn.svm import SVC, SVR</span>
+<span class="c1">#from sklearn.preprocessing import PolynomialFeatures</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.dummy</span> <span class="kn">import</span> <span class="n">DummyClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span><span class="p">,</span> <span class="n">Ridge</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">lightgbm.sklearn</span> <span class="kn">import</span> <span class="n">LGBMClassifier</span>
+<span class="kn">from</span> <span class="nn">xgboost</span> <span class="kn">import</span> <span class="n">XGBClassifier</span>
+<span class="kn">from</span> <span class="nn">catboost</span> <span class="kn">import</span> <span class="n">CatBoostClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">VotingClassifier</span>
+<span class="c1">#from sklearn.feature_selection import RFECV</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">classification_report</span><span class="p">,</span>
+    <span class="n">roc_curve</span><span class="p">,</span>
+    <span class="n">RocCurveDisplay</span><span class="p">,</span>
+    <span class="n">roc_auc_score</span>
+<span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">shap</span>
+<span class="c1">#from sklearn.model_selection import cross_val_predict</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mean_std_cross_val_scores</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns mean and std of cross validation</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model :</span>
+<span class="sd">        scikit-learn model</span>
+<span class="sd">    X_train : numpy array or pandas DataFrame</span>
+<span class="sd">        X in the training data</span>
+<span class="sd">    y_train :</span>
+<span class="sd">        y in the training data</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">        pandas Series with mean scores from cross_validation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">mean_scores</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">std_scores</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="n">out_col</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mean_scores</span><span class="p">)):</span>
+        <span class="n">out_col</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="sa">f</span><span class="s2">&quot;%0.3f (+/- %0.3f)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mean_scores</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">std_scores</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">out_col</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">mean_scores</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><br><br></p>
+</div>
+<div class="section" id="reading-the-data-csv">
+<h3>Reading the data CSV<a class="headerlink" href="#reading-the-data-csv" title="Permalink to this headline">¶</a></h3>
+<p>Read in the data CSV and store it as a pandas dataframe named <code class="docutils literal notranslate"><span class="pre">spotify_df</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spotify_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/spotify_data.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">)</span>
+<span class="n">spotify_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>acousticness</th>
+      <th>danceability</th>
+      <th>duration_ms</th>
+      <th>energy</th>
+      <th>instrumentalness</th>
+      <th>key</th>
+      <th>liveness</th>
+      <th>loudness</th>
+      <th>mode</th>
+      <th>speechiness</th>
+      <th>tempo</th>
+      <th>time_signature</th>
+      <th>valence</th>
+      <th>target</th>
+      <th>song_title</th>
+      <th>artist</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.01020</td>
+      <td>0.833</td>
+      <td>204600</td>
+      <td>0.434</td>
+      <td>0.021900</td>
+      <td>2</td>
+      <td>0.1650</td>
+      <td>-8.795</td>
+      <td>1</td>
+      <td>0.4310</td>
+      <td>150.062</td>
+      <td>4.0</td>
+      <td>0.286</td>
+      <td>1</td>
+      <td>Mask Off</td>
+      <td>Future</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.19900</td>
+      <td>0.743</td>
+      <td>326933</td>
+      <td>0.359</td>
+      <td>0.006110</td>
+      <td>1</td>
+      <td>0.1370</td>
+      <td>-10.401</td>
+      <td>1</td>
+      <td>0.0794</td>
+      <td>160.083</td>
+      <td>4.0</td>
+      <td>0.588</td>
+      <td>1</td>
+      <td>Redbone</td>
+      <td>Childish Gambino</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.03440</td>
+      <td>0.838</td>
+      <td>185707</td>
+      <td>0.412</td>
+      <td>0.000234</td>
+      <td>2</td>
+      <td>0.1590</td>
+      <td>-7.148</td>
+      <td>1</td>
+      <td>0.2890</td>
+      <td>75.044</td>
+      <td>4.0</td>
+      <td>0.173</td>
+      <td>1</td>
+      <td>Xanny Family</td>
+      <td>Future</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.60400</td>
+      <td>0.494</td>
+      <td>199413</td>
+      <td>0.338</td>
+      <td>0.510000</td>
+      <td>5</td>
+      <td>0.0922</td>
+      <td>-15.236</td>
+      <td>1</td>
+      <td>0.0261</td>
+      <td>86.468</td>
+      <td>4.0</td>
+      <td>0.230</td>
+      <td>1</td>
+      <td>Master Of None</td>
+      <td>Beach House</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.18000</td>
+      <td>0.678</td>
+      <td>392893</td>
+      <td>0.561</td>
+      <td>0.512000</td>
+      <td>5</td>
+      <td>0.4390</td>
+      <td>-11.648</td>
+      <td>0</td>
+      <td>0.0694</td>
+      <td>174.004</td>
+      <td>4.0</td>
+      <td>0.904</td>
+      <td>1</td>
+      <td>Parallel Lines</td>
+      <td>Junior Boys</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.00479</td>
+      <td>0.804</td>
+      <td>251333</td>
+      <td>0.560</td>
+      <td>0.000000</td>
+      <td>8</td>
+      <td>0.1640</td>
+      <td>-6.682</td>
+      <td>1</td>
+      <td>0.1850</td>
+      <td>85.023</td>
+      <td>4.0</td>
+      <td>0.264</td>
+      <td>1</td>
+      <td>Sneakin’</td>
+      <td>Drake</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><br><br></p>
+</div>
+</div>
+<div class="section" id="data-splitting">
+<h2>Data splitting<a class="headerlink" href="#data-splitting" title="Permalink to this headline">¶</a></h2>
+<p>Split the data into train and test portions. Remove <code class="docutils literal notranslate"><span class="pre">song_title</span></code>, separate data to <code class="docutils literal notranslate"><span class="pre">X_train</span></code>, <code class="docutils literal notranslate"><span class="pre">y_train</span></code>, <code class="docutils literal notranslate"><span class="pre">X_test</span></code>, <code class="docutils literal notranslate"><span class="pre">y_test</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">spotify_df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]),</span> <span class="n">train_df</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+<span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]),</span> <span class="n">test_df</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># printing the number of observations for train and test sets</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The number of observations for train set: &#39;</span><span class="p">,</span> <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The number of observations for test set: &#39;</span><span class="p">,</span> <span class="n">test_df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The number of observations for train set:  1613
+The number of observations for test set:  404
+</pre></div>
+</div>
+</div>
+</div>
+<p>I split 20% of the observations in the test data and 80% in the train data set. Overall the data set has about 2,000 observations, as it is not a very large data set, I preserved more portion for training.</p>
+<p><br><br></p>
+</div>
+<div class="section" id="scoring-metric">
+<h2>Scoring metric<a class="headerlink" href="#scoring-metric" title="Permalink to this headline">¶</a></h2>
+<p>Since it is a balanced data set and both positive and negative class are equally balanced, accuracy and precision-recall curves are selected as scoring metric.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scoring_metric</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span> <span class="s2">&quot;roc_auc&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="feature-engineering-tbc">
+<h2>Feature engineering (TBC)<a class="headerlink" href="#feature-engineering-tbc" title="Permalink to this headline">¶</a></h2>
+<p>In feature enginnering, we carry out feature engineering, extract new features that are relevant for the problem. For Spotify data set, I added the feature genres which are extracted from Spotify API. To understand more about the data extraction, you can do to appendix.</p>
+<p><br><br></p>
+</div>
+<div class="section" id="preprocessing-and-transformations">
+<h2>Preprocessing and transformations<a class="headerlink" href="#preprocessing-and-transformations" title="Permalink to this headline">¶</a></h2>
+<p>Here is different feature types and the transformations I will apply on each feature type.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:right head"><p>Type</p></th>
+<th class="head"><p>Reason</p></th>
+<th class="head"><p>Features</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:right"><p>category</p></td>
+<td><p>All of these features have fixed number of categories. <code class="docutils literal notranslate"><span class="pre">key</span></code> is circulated features like months. <code class="docutils literal notranslate"><span class="pre">artist</span></code>, <code class="docutils literal notranslate"><span class="pre">genres</span></code>, <code class="docutils literal notranslate"><span class="pre">artist_style</span></code> have limited categories.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">key</span></code>, <code class="docutils literal notranslate"><span class="pre">artist</span></code>, <code class="docutils literal notranslate"><span class="pre">genres</span></code>, <code class="docutils literal notranslate"><span class="pre">artist_style</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p>numeric</p></td>
+<td><p>Numeric columns needs standardization</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">acousticness</span></code>, <code class="docutils literal notranslate"><span class="pre">danceability</span></code>, <code class="docutils literal notranslate"><span class="pre">duration_ms</span></code>, <code class="docutils literal notranslate"><span class="pre">energy</span></code>, <code class="docutils literal notranslate"><span class="pre">instrumentalness</span></code>, <code class="docutils literal notranslate"><span class="pre">liveness</span></code>, <code class="docutils literal notranslate"><span class="pre">loudness</span></code>, <code class="docutils literal notranslate"><span class="pre">mode</span></code>, <code class="docutils literal notranslate"><span class="pre">speechiness</span></code>, <code class="docutils literal notranslate"><span class="pre">tempo</span></code>, <code class="docutils literal notranslate"><span class="pre">time_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">valence</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:right"><p>drop</p></td>
+<td><p>Free text column which has low correlation with target.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">song_title</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">category_feats</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="s2">&quot;artist&quot;</span><span class="p">]</span>
+<span class="n">drop_feats</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;song_title&#39;</span><span class="p">]</span>
+
+<span class="n">numeric_feats</span>  <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+            <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">category_feats</span><span class="p">)</span>
+            <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">drop_feats</span><span class="p">)</span>
+        <span class="p">)</span>
+
+<span class="n">preprocessor</span> <span class="o">=</span> <span class="n">make_column_transformer</span><span class="p">(</span>
+    <span class="p">(</span><span class="s2">&quot;drop&quot;</span><span class="p">,</span> <span class="n">drop_feats</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">numeric_feats</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">sparse</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">category_feats</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">preprocessor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ColumnTransformer(transformers=[(&#39;drop&#39;, &#39;drop&#39;, [&#39;song_title&#39;]),
+                                (&#39;standardscaler&#39;, StandardScaler(),
+                                 [&#39;duration_ms&#39;, &#39;instrumentalness&#39;, &#39;liveness&#39;,
+                                  &#39;speechiness&#39;, &#39;valence&#39;, &#39;loudness&#39;,
+                                  &#39;acousticness&#39;, &#39;tempo&#39;, &#39;time_signature&#39;,
+                                  &#39;energy&#39;, &#39;mode&#39;, &#39;danceability&#39;]),
+                                (&#39;onehotencoder&#39;,
+                                 OneHotEncoder(handle_unknown=&#39;ignore&#39;,
+                                               sparse=False),
+                                 [&#39;key&#39;, &#39;artist&#39;])])
+</pre></div>
+</div>
+</div>
+</div>
+<p><br><br><br><br></p>
+</div>
+<div class="section" id="baseline-model">
+<h2>Baseline model<a class="headerlink" href="#baseline-model" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dummy</span> <span class="o">=</span> <span class="n">DummyClassifier</span><span class="p">()</span>
+<span class="n">baseline_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preprocessor</span><span class="p">,</span> <span class="n">dummy</span><span class="p">)</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;dummy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean_std_cross_val_scores</span><span class="p">(</span><span class="n">make_pipeline</span><span class="p">(</span><span class="n">preprocessor</span><span class="p">,</span> <span class="n">dummy</span><span class="p">),</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> 
+                                             <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">scoring_metric</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dummy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>fit_time</th>
+      <td>0.015 (+/- 0.002)</td>
+    </tr>
+    <tr>
+      <th>score_time</th>
+      <td>0.014 (+/- 0.002)</td>
+    </tr>
+    <tr>
+      <th>test_accuracy</th>
+      <td>0.508 (+/- 0.001)</td>
+    </tr>
+    <tr>
+      <th>train_accuracy</th>
+      <td>0.508 (+/- 0.000)</td>
+    </tr>
+    <tr>
+      <th>test_roc_auc</th>
+      <td>0.500 (+/- 0.000)</td>
+    </tr>
+    <tr>
+      <th>train_roc_auc</th>
+      <td>0.500 (+/- 0.000)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Accuracy of Dummy classifier depends on class ratio. As we have a balanced data set, the accuracy of Dummy classifier is around 50%.</p>
+<p><br><br></p>
+</div>
+<div class="section" id="linear-models">
+<h2>Linear models<a class="headerlink" href="#linear-models" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="model-training-logisticregression">
+<h3>Model training - LogisticRegression<a class="headerlink" href="#model-training-logisticregression" title="Permalink to this headline">¶</a></h3>
+<p>First, a linear model is used as a first real attempt. Hyperparameter tuning is also carried out for tuning to explore different values for the regularization hyperparameter. Cross-validation scores along with standard deviation and results summary is shown in below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#pipe logistic regression</span>
+<span class="n">pipe_logisticregression</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preprocessor</span><span class="p">,</span>
+                           <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> 
+                                             <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#save in the results logistic regression score</span>
+<span class="n">results</span><span class="p">[</span><span class="s2">&quot;LogisticReg&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean_std_cross_val_scores</span><span class="p">(</span><span class="n">pipe_logisticregression</span><span class="p">,</span> 
+                                                   <span class="n">X_train</span><span class="p">,</span> 
+                                                   <span class="n">y_train</span><span class="p">,</span> 
+                                                   <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                                   <span class="n">scoring</span> <span class="o">=</span> <span class="n">scoring_metric</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dummy</th>
+      <th>LogisticReg</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>fit_time</th>
+      <td>0.015 (+/- 0.002)</td>
+      <td>0.094 (+/- 0.011)</td>
+    </tr>
+    <tr>
+      <th>score_time</th>
+      <td>0.014 (+/- 0.002)</td>
+      <td>0.014 (+/- 0.000)</td>
+    </tr>
+    <tr>
+      <th>test_accuracy</th>
+      <td>0.508 (+/- 0.001)</td>
+      <td>0.734 (+/- 0.032)</td>
+    </tr>
+    <tr>
+      <th>train_accuracy</th>
+      <td>0.508 (+/- 0.000)</td>
+      <td>0.891 (+/- 0.005)</td>
+    </tr>
+    <tr>
+      <th>test_roc_auc</th>
+      <td>0.500 (+/- 0.000)</td>
+      <td>0.805 (+/- 0.034)</td>
+    </tr>
+    <tr>
+      <th>train_roc_auc</th>
+      <td>0.500 (+/- 0.000)</td>
+      <td>0.952 (+/- 0.002)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="hyperparameter-optimization">
+<h3>hyperparameter optimization<a class="headerlink" href="#hyperparameter-optimization" title="Permalink to this headline">¶</a></h3>
+<p>We will carry out hyperparameter optimization: C controls the regularization, and class_weight hyperparameter for tackling class imbalance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#parameters for logistic regression</span>
+<span class="n">param_dist_lg</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;logisticregression__C&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+                 <span class="s1">&#39;logisticregression__class_weight&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;balanced&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">]}</span>
+
+<span class="c1">#randomized search to find the best parameters</span>
+<span class="n">random_search_lg</span> <span class="o">=</span> <span class="n">RandomizedSearchCV</span><span class="p">(</span>
+    <span class="n">pipe_logisticregression</span><span class="p">,</span> 
+    <span class="n">param_dist_lg</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">scoring</span> <span class="o">=</span> <span class="n">scoring_metric</span><span class="p">,</span>
+    <span class="n">refit</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_search_lg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best parameter values are:&quot;</span><span class="p">,</span> <span class="n">random_search_lg</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best cv score is:&quot;</span><span class="p">,</span> <span class="n">random_search_lg</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best parameter values are: {&#39;logisticregression__class_weight&#39;: &#39;balanced&#39;, &#39;logisticregression__C&#39;: 2.8}
+Best cv score is: 0.7582293329231007
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;LogisticReg_opt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean_std_cross_val_scores</span><span class="p">(</span><span class="n">random_search_lg</span><span class="p">,</span> 
+                                                       <span class="n">X_train</span><span class="p">,</span> 
+                                                       <span class="n">y_train</span><span class="p">,</span> 
+                                                       <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                                       <span class="n">scoring</span> <span class="o">=</span> <span class="n">scoring_metric</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dummy</th>
+      <th>LogisticReg</th>
+      <th>LogisticReg_opt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>fit_time</th>
+      <td>0.015 (+/- 0.002)</td>
+      <td>0.094 (+/- 0.011)</td>
+      <td>5.734 (+/- 0.154)</td>
+    </tr>
+    <tr>
+      <th>score_time</th>
+      <td>0.014 (+/- 0.002)</td>
+      <td>0.014 (+/- 0.000)</td>
+      <td>0.021 (+/- 0.002)</td>
+    </tr>
+    <tr>
+      <th>test_accuracy</th>
+      <td>0.508 (+/- 0.001)</td>
+      <td>0.734 (+/- 0.032)</td>
+      <td>0.758 (+/- 0.035)</td>
+    </tr>
+    <tr>
+      <th>train_accuracy</th>
+      <td>0.508 (+/- 0.000)</td>
+      <td>0.891 (+/- 0.005)</td>
+      <td>0.971 (+/- 0.004)</td>
+    </tr>
+    <tr>
+      <th>test_roc_auc</th>
+      <td>0.500 (+/- 0.000)</td>
+      <td>0.805 (+/- 0.034)</td>
+      <td>0.840 (+/- 0.030)</td>
+    </tr>
+    <tr>
+      <th>train_roc_auc</th>
+      <td>0.500 (+/- 0.000)</td>
+      <td>0.952 (+/- 0.002)</td>
+      <td>0.993 (+/- 0.002)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can see that with optimized hyperparameters, Logistic Regression is doing a bit better. However, it is obvious that we are dealing with overfitting (big gap between test and training scores and the training accuracy is almost 100%). The std is very small ranging in +- 0.01.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
+    <span class="n">classification_report</span><span class="p">(</span>
+        <span class="n">y_train</span><span class="p">,</span>
+        <span class="n">random_search_lg</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_train</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">target_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       0.96      0.97      0.97       794
+           1       0.98      0.96      0.97       819
+
+    accuracy                           0.97      1613
+   macro avg       0.97      0.97      0.97      1613
+weighted avg       0.97      0.97      0.97      1613
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span>
+    <span class="n">y_train</span><span class="p">,</span>
+    <span class="n">random_search_lg</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_train</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">pos_label</span><span class="o">=</span><span class="n">random_search_lg</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">&quot;Area under the curve (AUC): </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">random_search_lg</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_train</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">roc_display</span> <span class="o">=</span> <span class="n">RocCurveDisplay</span><span class="p">(</span><span class="n">fpr</span><span class="o">=</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="o">=</span><span class="n">tpr</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Area under the curve (AUC): 0.993
+</pre></div>
+</div>
+<img alt="_images/5_Machine_Learning_42_1.png" src="_images/5_Machine_Learning_42_1.png" />
+</div>
+</div>
+<p>We have high score in AUC and classification report, which means our prediction model performance is good.</p>
+</div>
+<div class="section" id="model-interpretation-on-training-set">
+<h3>Model interpretation on Training set<a class="headerlink" href="#model-interpretation-on-training-set" title="Permalink to this headline">¶</a></h3>
+<p>Most important features are listed in below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col_name_pp_all</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">*</span><span class="n">numeric_feats</span><span class="p">,</span>
+    <span class="o">*</span><span class="n">random_search_lg</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">&quot;columntransformer&quot;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">named_transformers_</span><span class="p">[</span><span class="s2">&quot;onehotencoder&quot;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(),</span>
+<span class="p">]</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Importance&quot;</span><span class="p">:</span> <span class="n">random_search_lg</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span>
+        <span class="s2">&quot;logisticregression&quot;</span>
+    <span class="p">]</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">feat_importance</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">col_name_pp_all</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+    <span class="n">by</span><span class="o">=</span><span class="s2">&quot;Importance&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="n">feat_importance_200</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">feat_importance</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">99</span><span class="p">],</span> <span class="n">feat_importance</span><span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">:]])</span>
+<span class="n">feat_importance_200</span><span class="p">[</span><span class="s2">&quot;rank&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">feat_importance_200</span><span class="p">[</span><span class="s2">&quot;Importance&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">feat_importance_200</span><span class="p">[</span><span class="s2">&quot;side&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+    <span class="n">feat_importance_200</span><span class="p">[</span><span class="s2">&quot;Importance&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;pos&quot;</span><span class="p">,</span> <span class="s2">&quot;neg&quot;</span>
+<span class="p">)</span>
+<span class="n">feat_importance_200</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Importance</th>
+      <th>rank</th>
+      <th>side</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>artist_FIDLAR</th>
+      <td>2.807178</td>
+      <td>1.0</td>
+      <td>pos</td>
+    </tr>
+    <tr>
+      <th>artist_Beach House</th>
+      <td>2.541958</td>
+      <td>2.0</td>
+      <td>pos</td>
+    </tr>
+    <tr>
+      <th>artist_Perfume Genius</th>
+      <td>2.499669</td>
+      <td>3.0</td>
+      <td>pos</td>
+    </tr>
+    <tr>
+      <th>artist_Kanye West</th>
+      <td>2.472236</td>
+      <td>4.0</td>
+      <td>pos</td>
+    </tr>
+    <tr>
+      <th>artist_Crystal Castles</th>
+      <td>2.439250</td>
+      <td>5.0</td>
+      <td>pos</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>artist_Backstreet Boys</th>
+      <td>-2.023539</td>
+      <td>195.0</td>
+      <td>neg</td>
+    </tr>
+    <tr>
+      <th>artist_*NSYNC</th>
+      <td>-2.058218</td>
+      <td>196.0</td>
+      <td>neg</td>
+    </tr>
+    <tr>
+      <th>artist_Fall Out Boy</th>
+      <td>-2.102525</td>
+      <td>197.0</td>
+      <td>neg</td>
+    </tr>
+    <tr>
+      <th>artist_WALK THE MOON</th>
+      <td>-2.150690</td>
+      <td>198.0</td>
+      <td>neg</td>
+    </tr>
+    <tr>
+      <th>artist_J. Cole</th>
+      <td>-2.383675</td>
+      <td>199.0</td>
+      <td>neg</td>
+    </tr>
+  </tbody>
+</table>
+<p>199 rows × 3 columns</p>
+</div></div></div>
+</div>
+<p>Most of the important features are determined by <code class="docutils literal notranslate"><span class="pre">artists</span></code>. Excluding all the features from artist, the other important features are <code class="docutils literal notranslate"><span class="pre">key</span></code>, <code class="docutils literal notranslate"><span class="pre">danceability</span></code> and <code class="docutils literal notranslate"><span class="pre">duration</span></code>. However, the ranking of importance are pretty low, starting from #423.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feat_importance_reset</span> <span class="o">=</span> <span class="n">feat_importance</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">feat_importance_reset</span><span class="p">[</span><span class="n">feat_importance_reset</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;^(?![artist])&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>Importance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>423</th>
+      <td>key_2</td>
+      <td>0.513670</td>
+    </tr>
+    <tr>
+      <th>489</th>
+      <td>danceability</td>
+      <td>0.356359</td>
+    </tr>
+    <tr>
+      <th>508</th>
+      <td>duration_ms</td>
+      <td>0.309779</td>
+    </tr>
+    <tr>
+      <th>525</th>
+      <td>valence</td>
+      <td>0.265940</td>
+    </tr>
+    <tr>
+      <th>529</th>
+      <td>key_9</td>
+      <td>0.247390</td>
+    </tr>
+    <tr>
+      <th>536</th>
+      <td>key_10</td>
+      <td>0.209334</td>
+    </tr>
+    <tr>
+      <th>549</th>
+      <td>key_0</td>
+      <td>0.085386</td>
+    </tr>
+    <tr>
+      <th>550</th>
+      <td>liveness</td>
+      <td>0.083536</td>
+    </tr>
+    <tr>
+      <th>552</th>
+      <td>energy</td>
+      <td>0.018710</td>
+    </tr>
+    <tr>
+      <th>553</th>
+      <td>key_4</td>
+      <td>0.016762</td>
+    </tr>
+    <tr>
+      <th>554</th>
+      <td>key_7</td>
+      <td>0.012707</td>
+    </tr>
+    <tr>
+      <th>555</th>
+      <td>key_11</td>
+      <td>-0.000015</td>
+    </tr>
+    <tr>
+      <th>557</th>
+      <td>key_8</td>
+      <td>-0.022329</td>
+    </tr>
+    <tr>
+      <th>561</th>
+      <td>key_5</td>
+      <td>-0.100535</td>
+    </tr>
+    <tr>
+      <th>562</th>
+      <td>mode</td>
+      <td>-0.111405</td>
+    </tr>
+    <tr>
+      <th>564</th>
+      <td>key_6</td>
+      <td>-0.130681</td>
+    </tr>
+    <tr>
+      <th>573</th>
+      <td>key_1</td>
+      <td>-0.252451</td>
+    </tr>
+    <tr>
+      <th>574</th>
+      <td>loudness</td>
+      <td>-0.261364</td>
+    </tr>
+    <tr>
+      <th>723</th>
+      <td>key_3</td>
+      <td>-0.579345</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+
+<span class="n">base</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">feat_importance_200</span><span class="o">.</span><span class="n">reset_index</span><span class="p">())</span>
+    <span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span>
+            <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Importance:Q&quot;</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;side&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Top 200 important features&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">brush</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_interval</span><span class="p">(</span><span class="n">encodings</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">])</span>
+<span class="n">lower</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span>
+            <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+            <span class="n">axis</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Features&quot;</span><span class="p">),</span>
+            <span class="n">sort</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">SortField</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="s2">&quot;rank&quot;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s2">&quot;ascending&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Drag the plot in below to zoom&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add_selection</span><span class="p">(</span><span class="n">brush</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">upper</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span>
+        <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+        <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">brush</span><span class="p">),</span>
+        <span class="n">axis</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
+        <span class="n">sort</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">SortField</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="s2">&quot;rank&quot;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s2">&quot;ascending&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">upper</span> <span class="o">&amp;</span> <span class="n">lower</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="altair-viz-c107a3f99f254caab1df672858f8f700"></div>
+<script type="text/javascript">
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-c107a3f99f254caab1df672858f8f700") {
+      outputDiv = document.getElementById("altair-viz-c107a3f99f254caab1df672858f8f700");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm//vega-lite@4.8.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm//vega-embed@6?noext",
+    };
+
+    function loadScript(lib) {
+      return new Promise(function(resolve, reject) {
+        var s = document.createElement('script');
+        s.src = paths[lib];
+        s.async = true;
+        s.onload = () => resolve(paths[lib]);
+        s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+        document.getElementsByTagName("head")[0].appendChild(s);
+      });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else if (typeof vegaEmbed === "function") {
+      displayChart(vegaEmbed);
+    } else {
+      loadScript("vega")
+        .then(() => loadScript("vega-lite"))
+        .then(() => loadScript("vega-embed"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "vconcat": [{"mark": "bar", "encoding": {"color": {"type": "nominal", "field": "side"}, "x": {"type": "nominal", "axis": {"title": ""}, "field": "index", "scale": {"domain": {"selection": "selector001"}}, "sort": {"field": "rank", "order": "ascending"}}, "y": {"type": "quantitative", "field": "Importance"}}, "height": 200, "title": "Top 200 important features", "width": 800}, {"mark": "bar", "encoding": {"color": {"type": "nominal", "field": "side"}, "x": {"type": "nominal", "axis": {"labels": false, "title": "Features"}, "field": "index", "sort": {"field": "rank", "order": "ascending"}}, "y": {"type": "quantitative", "field": "Importance"}}, "height": 60, "selection": {"selector001": {"type": "interval", "encodings": ["x"]}}, "title": "Drag the plot in below to zoom", "width": 800}], "data": {"name": "data-a5ca73e0555370feaa8eb88d1c5eda95"}, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-a5ca73e0555370feaa8eb88d1c5eda95": [{"index": "artist_FIDLAR", "Importance": 2.807177631315873, "rank": 1.0, "side": "pos"}, {"index": "artist_Beach House", "Importance": 2.5419584046526538, "rank": 2.0, "side": "pos"}, {"index": "artist_Perfume Genius", "Importance": 2.499668884977438, "rank": 3.0, "side": "pos"}, {"index": "artist_Kanye West", "Importance": 2.472235880538795, "rank": 4.0, "side": "pos"}, {"index": "artist_Crystal Castles", "Importance": 2.4392500913518083, "rank": 5.0, "side": "pos"}, {"index": "artist_Radiohead", "Importance": 2.38092089275549, "rank": 6.0, "side": "pos"}, {"index": "artist_Leon Bridges", "Importance": 2.37853067315157, "rank": 7.0, "side": "pos"}, {"index": "artist_Ty Segall", "Importance": 2.3264715528689233, "rank": 8.0, "side": "pos"}, {"index": "artist_The Ronettes", "Importance": 2.2234904698937146, "rank": 9.0, "side": "pos"}, {"index": "artist_ASTR", "Importance": 2.214758871020671, "rank": 10.0, "side": "pos"}, {"index": "artist_Mac Demarco", "Importance": 2.122974007992217, "rank": 11.0, "side": "pos"}, {"index": "artist_Purity Ring", "Importance": 2.051378492971372, "rank": 12.0, "side": "pos"}, {"index": "artist_M83", "Importance": 2.0209818196319884, "rank": 13.0, "side": "pos"}, {"index": "artist_Disclosure", "Importance": 2.0032791781115096, "rank": 14.0, "side": "pos"}, {"index": "artist_The Sonics", "Importance": 1.8983068655536703, "rank": 15.0, "side": "pos"}, {"index": "artist_ScHoolboy Q", "Importance": 1.8760689517217568, "rank": 16.0, "side": "pos"}, {"index": "artist_Autre Ne Veut", "Importance": 1.8583899150491778, "rank": 17.0, "side": "pos"}, {"index": "artist_Vampire Weekend", "Importance": 1.8410721765618914, "rank": 18.0, "side": "pos"}, {"index": "artist_Dusty Springfield", "Importance": 1.8261351279389386, "rank": 19.0, "side": "pos"}, {"index": "artist_Ariel Pink's Haunted Graffiti", "Importance": 1.818937595991925, "rank": 20.0, "side": "pos"}, {"index": "artist_Jerry Townes", "Importance": 1.7953498302603905, "rank": 21.0, "side": "pos"}, {"index": "artist_Young Thug", "Importance": 1.7937288494062236, "rank": 22.0, "side": "pos"}, {"index": "artist_Tame Impala", "Importance": 1.7688072814146696, "rank": 23.0, "side": "pos"}, {"index": "artist_Washed Out", "Importance": 1.727623845174253, "rank": 24.0, "side": "pos"}, {"index": "artist_Lykke Li", "Importance": 1.7168056255307096, "rank": 25.0, "side": "pos"}, {"index": "artist_Travis Scott", "Importance": 1.7136878903005102, "rank": 26.0, "side": "pos"}, {"index": "artist_AlunaGeorge", "Importance": 1.7071226460933284, "rank": 27.0, "side": "pos"}, {"index": "artist_Hot Chip", "Importance": 1.690611196170185, "rank": 28.0, "side": "pos"}, {"index": "artist_James Brown", "Importance": 1.6855015583998902, "rank": 29.0, "side": "pos"}, {"index": "artist_Angel Olsen", "Importance": 1.6625991238229065, "rank": 30.0, "side": "pos"}, {"index": "artist_Justice", "Importance": 1.6590638937266382, "rank": 31.0, "side": "pos"}, {"index": "artist_2 Chainz", "Importance": 1.6557410449572072, "rank": 32.0, "side": "pos"}, {"index": "artist_Action Bronson", "Importance": 1.6556285790367935, "rank": 33.0, "side": "pos"}, {"index": "artist_Jefferson Airplane", "Importance": 1.6507919019373676, "rank": 34.0, "side": "pos"}, {"index": "artist_The xx", "Importance": 1.6270058467449853, "rank": 35.0, "side": "pos"}, {"index": "artist_How To Dress Well", "Importance": 1.613111250350145, "rank": 36.0, "side": "pos"}, {"index": "artist_CHVRCHES", "Importance": 1.6004370881804952, "rank": 37.0, "side": "pos"}, {"index": "artist_Epsilons", "Importance": 1.5979712650422717, "rank": 38.0, "side": "pos"}, {"index": "artist_A$AP Ferg", "Importance": 1.5953919904345866, "rank": 39.0, "side": "pos"}, {"index": "artist_The Partysquad", "Importance": 1.5895555934195709, "rank": 40.0, "side": "pos"}, {"index": "artist_Best Coast", "Importance": 1.578053950711133, "rank": 41.0, "side": "pos"}, {"index": "artist_Elephant", "Importance": 1.5707398523675506, "rank": 42.0, "side": "pos"}, {"index": "artist_Cathedrals", "Importance": 1.5667569021477445, "rank": 43.0, "side": "pos"}, {"index": "artist_The Yardbirds", "Importance": 1.5506188632913538, "rank": 44.0, "side": "pos"}, {"index": "artist_Twin Shadow", "Importance": 1.5487771557446472, "rank": 45.0, "side": "pos"}, {"index": "artist_Three 6 Mafia", "Importance": 1.544579482619697, "rank": 46.0, "side": "pos"}, {"index": "artist_Father", "Importance": 1.5387385143638024, "rank": 47.0, "side": "pos"}, {"index": "artist_The Black On White Affair", "Importance": 1.5229660968459295, "rank": 48.0, "side": "pos"}, {"index": "artist_The Shirelles", "Importance": 1.520958166471734, "rank": 49.0, "side": "pos"}, {"index": "artist_Solange", "Importance": 1.5188643341684682, "rank": 50.0, "side": "pos"}, {"index": "artist_Stormzy", "Importance": 1.5184507063561912, "rank": 51.0, "side": "pos"}, {"index": "artist_The Chiffons", "Importance": 1.5138738049768883, "rank": 52.0, "side": "pos"}, {"index": "artist_Cults", "Importance": 1.5015731655620086, "rank": 53.0, "side": "pos"}, {"index": "artist_The Silvertones", "Importance": 1.4970202112477926, "rank": 54.0, "side": "pos"}, {"index": "artist_Flume", "Importance": 1.495695155887586, "rank": 55.0, "side": "pos"}, {"index": "artist_Juicy J", "Importance": 1.4892200245065492, "rank": 56.0, "side": "pos"}, {"index": "artist_Joe Cuba", "Importance": 1.4863920742732768, "rank": 57.0, "side": "pos"}, {"index": "artist_Duke Dumont", "Importance": 1.481483096948374, "rank": 58.0, "side": "pos"}, {"index": "artist_alt-J", "Importance": 1.4782166731848851, "rank": 59.0, "side": "pos"}, {"index": "artist_Glass Animals", "Importance": 1.4749879588704293, "rank": 60.0, "side": "pos"}, {"index": "artist_Vince Staples", "Importance": 1.464998692792951, "rank": 61.0, "side": "pos"}, {"index": "artist_Wet", "Importance": 1.4648985578007694, "rank": 62.0, "side": "pos"}, {"index": "artist_Sleigh Bells", "Importance": 1.4578404307416188, "rank": 63.0, "side": "pos"}, {"index": "artist_Bon Iver", "Importance": 1.4553060394304855, "rank": 64.0, "side": "pos"}, {"index": "artist_M.I.A.", "Importance": 1.4502989879248485, "rank": 65.0, "side": "pos"}, {"index": "artist_Mikal Cronin", "Importance": 1.4486547622383088, "rank": 66.0, "side": "pos"}, {"index": "artist_Iamsu!", "Importance": 1.4223586165474877, "rank": 67.0, "side": "pos"}, {"index": "artist_SZA", "Importance": 1.415054293779803, "rank": 68.0, "side": "pos"}, {"index": "artist_Scott McKenzie", "Importance": 1.4123700580850753, "rank": 69.0, "side": "pos"}, {"index": "artist_Ezale", "Importance": 1.4118411971207645, "rank": 70.0, "side": "pos"}, {"index": "artist_Matthew Dear", "Importance": 1.4110351791340487, "rank": 71.0, "side": "pos"}, {"index": "artist_Phantogram", "Importance": 1.4045621570397613, "rank": 72.0, "side": "pos"}, {"index": "artist_The Vogues", "Importance": 1.401397104360372, "rank": 73.0, "side": "pos"}, {"index": "artist_GENER8ION", "Importance": 1.3981373649277693, "rank": 74.0, "side": "pos"}, {"index": "artist_Booba", "Importance": 1.3837519673057808, "rank": 75.0, "side": "pos"}, {"index": "artist_Donnie & Joe Emerson", "Importance": 1.3745844321587235, "rank": 76.0, "side": "pos"}, {"index": "artist_New Order", "Importance": 1.3728542697082757, "rank": 77.0, "side": "pos"}, {"index": "artist_Kaleo", "Importance": 1.3710714425127974, "rank": 78.0, "side": "pos"}, {"index": "artist_ILoveMakonnen", "Importance": 1.3607558336861765, "rank": 79.0, "side": "pos"}, {"index": "artist_Wiley", "Importance": 1.3598802963722416, "rank": 80.0, "side": "pos"}, {"index": "artist_Grimes", "Importance": 1.357985085992464, "rank": 81.0, "side": "pos"}, {"index": "artist_The Stooges", "Importance": 1.3579453158362698, "rank": 82.0, "side": "pos"}, {"index": "artist_Zapp", "Importance": 1.3490732858906294, "rank": 83.0, "side": "pos"}, {"index": "artist_Danny Brown", "Importance": 1.341277531899079, "rank": 84.0, "side": "pos"}, {"index": "artist_Memoryhouse", "Importance": 1.3374389920673404, "rank": 85.0, "side": "pos"}, {"index": "artist_Banks", "Importance": 1.3297903669489504, "rank": 86.0, "side": "pos"}, {"index": "artist_Chief Keef", "Importance": 1.3190288224394864, "rank": 87.0, "side": "pos"}, {"index": "artist_The Districts", "Importance": 1.3189119691630715, "rank": 88.0, "side": "pos"}, {"index": "artist_Status Quo", "Importance": 1.3168691038100109, "rank": 89.0, "side": "pos"}, {"index": "artist_Gerry & The Pacemakers", "Importance": 1.3143522113681418, "rank": 90.0, "side": "pos"}, {"index": "artist_Thundercat", "Importance": 1.313520189643227, "rank": 91.0, "side": "pos"}, {"index": "artist_The Seshen", "Importance": 1.3128417039087747, "rank": 92.0, "side": "pos"}, {"index": "artist_Martin Solveig", "Importance": 1.3055969353703432, "rank": 93.0, "side": "pos"}, {"index": "artist_Myron & E", "Importance": 1.3037255418826577, "rank": 94.0, "side": "pos"}, {"index": "artist_No Parents", "Importance": 1.300373137517048, "rank": 95.0, "side": "pos"}, {"index": "artist_Grizzly Bear", "Importance": 1.2906784800649882, "rank": 96.0, "side": "pos"}, {"index": "artist_Jagwar Ma", "Importance": 1.2865834162607748, "rank": 97.0, "side": "pos"}, {"index": "artist_The Kinks", "Importance": 1.2839054594324644, "rank": 98.0, "side": "pos"}, {"index": "artist_Parquet Courts", "Importance": 1.2803586643280342, "rank": 99.0, "side": "pos"}, {"index": "artist_Enterprise Earth", "Importance": -1.0828273439034035, "rank": 100.0, "side": "neg"}, {"index": "artist_Ben Remember", "Importance": -1.0858346510669976, "rank": 101.0, "side": "neg"}, {"index": "artist_CNCO", "Importance": -1.1006695739170678, "rank": 102.0, "side": "neg"}, {"index": "artist_Flo Rida", "Importance": -1.1031171109541804, "rank": 103.0, "side": "neg"}, {"index": "artist_George Acosta", "Importance": -1.1143184139597255, "rank": 104.0, "side": "neg"}, {"index": "artist_Michael Bolton", "Importance": -1.1158637109620482, "rank": 105.0, "side": "neg"}, {"index": "artist_Thomas Rhett", "Importance": -1.1163319315108615, "rank": 106.0, "side": "neg"}, {"index": "artist_Stalking Gia", "Importance": -1.1220492702909595, "rank": 107.0, "side": "neg"}, {"index": "artist_Monica", "Importance": -1.1298878774286378, "rank": 108.0, "side": "neg"}, {"index": "artist_Los Del Rio", "Importance": -1.1346966817691808, "rank": 109.0, "side": "neg"}, {"index": "artist_Alok", "Importance": -1.1348169890042956, "rank": 110.0, "side": "neg"}, {"index": "artist_Imagination Movers", "Importance": -1.1406975877972847, "rank": 111.0, "side": "neg"}, {"index": "artist_Diplo", "Importance": -1.145685518702605, "rank": 112.0, "side": "neg"}, {"index": "artist_JoJo", "Importance": -1.1458209028246928, "rank": 113.0, "side": "neg"}, {"index": "artist_Sebastian Yatra", "Importance": -1.154219895705572, "rank": 114.0, "side": "neg"}, {"index": "artist_Kesha", "Importance": -1.154487437406085, "rank": 115.0, "side": "neg"}, {"index": "artist_3LW", "Importance": -1.1617122743136983, "rank": 116.0, "side": "neg"}, {"index": "artist_Burak Yeter", "Importance": -1.16236510155714, "rank": 117.0, "side": "neg"}, {"index": "artist_Little Mix", "Importance": -1.1664992182502958, "rank": 118.0, "side": "neg"}, {"index": "artist_Martin Garrix", "Importance": -1.172346768520399, "rank": 119.0, "side": "neg"}, {"index": "artist_5 Seconds of Summer", "Importance": -1.179781221272684, "rank": 120.0, "side": "neg"}, {"index": "artist_Pitbull", "Importance": -1.184720863822157, "rank": 121.0, "side": "neg"}, {"index": "artist_Tevin Campbell", "Importance": -1.1897496545105857, "rank": 122.0, "side": "neg"}, {"index": "artist_EDX", "Importance": -1.1930680202897974, "rank": 123.0, "side": "neg"}, {"index": "artist_Bill Mobley", "Importance": -1.1955661252969607, "rank": 124.0, "side": "neg"}, {"index": "artist_Scott Hamilton", "Importance": -1.2092008191835923, "rank": 125.0, "side": "neg"}, {"index": "artist_Savage Garden", "Importance": -1.2149519749171571, "rank": 126.0, "side": "neg"}, {"index": "artist_R3hab", "Importance": -1.22171084219374, "rank": 127.0, "side": "neg"}, {"index": "artist_The Kids Band", "Importance": -1.2221012697059446, "rank": 128.0, "side": "neg"}, {"index": "artist_Vader Abraham", "Importance": -1.227035164044351, "rank": 129.0, "side": "neg"}, {"index": "artist_Robert Schumann", "Importance": -1.229257339083424, "rank": 130.0, "side": "neg"}, {"index": "artist_Kris Kross", "Importance": -1.2297995716218688, "rank": 131.0, "side": "neg"}, {"index": "artist_Enrico Pieranunzi", "Importance": -1.231274570949344, "rank": 132.0, "side": "neg"}, {"index": "artist_G-Eazy", "Importance": -1.232465227599569, "rank": 133.0, "side": "neg"}, {"index": "artist_Reik", "Importance": -1.2365877732848207, "rank": 134.0, "side": "neg"}, {"index": "artist_M\u00fda", "Importance": -1.2416501569092897, "rank": 135.0, "side": "neg"}, {"index": "artist_Chris Lake", "Importance": -1.2520641058088633, "rank": 136.0, "side": "neg"}, {"index": "artist_Mark Knight", "Importance": -1.259719752907923, "rank": 137.0, "side": "neg"}, {"index": "artist_Franz Schubert", "Importance": -1.2697449369344986, "rank": 138.0, "side": "neg"}, {"index": "artist_Zac Brown Band", "Importance": -1.2745005470463822, "rank": 139.0, "side": "neg"}, {"index": "artist_Lil Dicky", "Importance": -1.2768284006217363, "rank": 140.0, "side": "neg"}, {"index": "artist_Enrique Iglesias", "Importance": -1.2796050046624803, "rank": 141.0, "side": "neg"}, {"index": "artist_Marshmello", "Importance": -1.2821447643945627, "rank": 142.0, "side": "neg"}, {"index": "artist_Maroon 5", "Importance": -1.2827342987402126, "rank": 143.0, "side": "neg"}, {"index": "artist_Justin Timberlake", "Importance": -1.284205602071455, "rank": 144.0, "side": "neg"}, {"index": "artist_Wisin", "Importance": -1.2900250424548825, "rank": 145.0, "side": "neg"}, {"index": "artist_Bassjackers", "Importance": -1.3012415883078683, "rank": 146.0, "side": "neg"}, {"index": "artist_Lil Wayne", "Importance": -1.303278915824588, "rank": 147.0, "side": "neg"}, {"index": "artist_David Guetta", "Importance": -1.3066532306721739, "rank": 148.0, "side": "neg"}, {"index": "artist_Lost Kings", "Importance": -1.3082075129682316, "rank": 149.0, "side": "neg"}, {"index": "artist_Mr. C", "Importance": -1.3191168048150723, "rank": 150.0, "side": "neg"}, {"index": "artist_Peter Andre", "Importance": -1.3245506668636238, "rank": 151.0, "side": "neg"}, {"index": "artist_Ne-Yo", "Importance": -1.3272112954247441, "rank": 152.0, "side": "neg"}, {"index": "artist_Machine Gun Kelly", "Importance": -1.3452117820109428, "rank": 153.0, "side": "neg"}, {"index": "artist_India.Arie", "Importance": -1.3872276799856236, "rank": 154.0, "side": "neg"}, {"index": "artist_Vanilla Ice", "Importance": -1.3906521127133844, "rank": 155.0, "side": "neg"}, {"index": "artist_\uce74\uc6b0\uce69\uc2a4 The CowChips", "Importance": -1.3915148435872209, "rank": 156.0, "side": "neg"}, {"index": "artist_2 LIVE CREW", "Importance": -1.3950418121160364, "rank": 157.0, "side": "neg"}, {"index": "artist_Gwen Stefani", "Importance": -1.4127075596592922, "rank": 158.0, "side": "neg"}, {"index": "artist_Adrian Lux", "Importance": -1.4188118253916762, "rank": 159.0, "side": "neg"}, {"index": "artist_Owl City", "Importance": -1.4247855912403147, "rank": 160.0, "side": "neg"}, {"index": "artist_The Black Eyed Peas", "Importance": -1.4617914248094408, "rank": 161.0, "side": "neg"}, {"index": "artist_Robin Thicke", "Importance": -1.4702476996652711, "rank": 162.0, "side": "neg"}, {"index": "artist_Nicky Jam", "Importance": -1.4804137327154445, "rank": 163.0, "side": "neg"}, {"index": "artist_Kim Walker-Smith", "Importance": -1.4857762558812726, "rank": 164.0, "side": "neg"}, {"index": "artist_Porter Robinson", "Importance": -1.4881680479282704, "rank": 165.0, "side": "neg"}, {"index": "artist_J Balvin", "Importance": -1.5071800870511054, "rank": 166.0, "side": "neg"}, {"index": "artist_Shawn Mendes", "Importance": -1.5158964951913736, "rank": 167.0, "side": "neg"}, {"index": "artist_Nickelback", "Importance": -1.5167302874939228, "rank": 168.0, "side": "neg"}, {"index": "artist_Wahlstedt", "Importance": -1.528648416514191, "rank": 169.0, "side": "neg"}, {"index": "artist_Wyclef Jean", "Importance": -1.5371946151768403, "rank": 170.0, "side": "neg"}, {"index": "artist_Felix Mendelssohn", "Importance": -1.5486346667403532, "rank": 171.0, "side": "neg"}, {"index": "artist_Luis Fonsi", "Importance": -1.5765477341687817, "rank": 172.0, "side": "neg"}, {"index": "artist_Boyz II Men", "Importance": -1.5917832145490505, "rank": 173.0, "side": "neg"}, {"index": "artist_Britney Spears", "Importance": -1.5973772723805997, "rank": 174.0, "side": "neg"}, {"index": "artist_Diddy", "Importance": -1.608427053949202, "rank": 175.0, "side": "neg"}, {"index": "artist_StaRR Lyfe", "Importance": -1.615334029520084, "rank": 176.0, "side": "neg"}, {"index": "artist_Xscape", "Importance": -1.6174013279304886, "rank": 177.0, "side": "neg"}, {"index": "artist_Lex Luca", "Importance": -1.6247144214801101, "rank": 178.0, "side": "neg"}, {"index": "artist_Next", "Importance": -1.628622148722792, "rank": 179.0, "side": "neg"}, {"index": "artist_MOTi", "Importance": -1.6334266136317537, "rank": 180.0, "side": "neg"}, {"index": "artist_Shakira", "Importance": -1.6964350487138709, "rank": 181.0, "side": "neg"}, {"index": "artist_Demi Lovato", "Importance": -1.7230658486040047, "rank": 182.0, "side": "neg"}, {"index": "artist_Chris Lake Feat. Laura V", "Importance": -1.742772369608511, "rank": 183.0, "side": "neg"}, {"index": "artist_Skrillex", "Importance": -1.7826693516162657, "rank": 184.0, "side": "neg"}, {"index": "artist_Usher", "Importance": -1.7909003701557547, "rank": 185.0, "side": "neg"}, {"index": "artist_The Chainsmokers", "Importance": -1.8042219392596728, "rank": 186.0, "side": "neg"}, {"index": "artist_Katy Perry", "Importance": -1.8468312184407967, "rank": 187.0, "side": "neg"}, {"index": "artist_Kina Grannis", "Importance": -1.8733695174262779, "rank": 188.0, "side": "neg"}, {"index": "artist_Toni Braxton", "Importance": -1.884240000997869, "rank": 189.0, "side": "neg"}, {"index": "artist_Big Time Rush", "Importance": -1.88438665556461, "rank": 190.0, "side": "neg"}, {"index": "artist_Daddy Yankee", "Importance": -1.9064499920713878, "rank": 191.0, "side": "neg"}, {"index": "artist_Michael Jackson", "Importance": -1.9191580804607955, "rank": 192.0, "side": "neg"}, {"index": "artist_Destiny's Child", "Importance": -1.954271108864061, "rank": 193.0, "side": "neg"}, {"index": "artist_Afrojack", "Importance": -1.9913213924845177, "rank": 194.0, "side": "neg"}, {"index": "artist_Backstreet Boys", "Importance": -2.0235392216418466, "rank": 195.0, "side": "neg"}, {"index": "artist_*NSYNC", "Importance": -2.058218394390045, "rank": 196.0, "side": "neg"}, {"index": "artist_Fall Out Boy", "Importance": -2.1025250857486344, "rank": 197.0, "side": "neg"}, {"index": "artist_WALK THE MOON", "Importance": -2.1506901729375576, "rank": 198.0, "side": "neg"}, {"index": "artist_J. Cole", "Importance": -2.3836754409869734, "rank": 199.0, "side": "neg"}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>Top 200 most important features are based on artists.</p>
+<p><br><br></p>
+</div>
+</div>
+<div class="section" id="non-linear-models">
+<h2>Non-linear models<a class="headerlink" href="#non-linear-models" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="model-training-randomforestclassifier-xgbclassifier-lgbmclassifier-catboostclassifier">
+<h3>Model training - RandomForestClassifier, XGBClassifier, LGBMClassifier, CatBoostClassifier<a class="headerlink" href="#model-training-randomforestclassifier-xgbclassifier-lgbmclassifier-catboostclassifier" title="Permalink to this headline">¶</a></h3>
+<p>Second, four non-linear model are trained aside from the linear model above.<br />
+After that, feature selection and hyperparameter tuning will carried out in later stage. Cross-validation scores along with standard deviation and results summary is shown in below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Random Forest pipe</span>
+<span class="n">pipe_rf</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preprocessor</span><span class="p">,</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">))</span>
+
+<span class="c1"># XGBoost pipe</span>
+<span class="n">pipe_xgb</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+    <span class="n">preprocessor</span><span class="p">,</span>
+    <span class="n">XGBClassifier</span><span class="p">(</span>
+        <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> <span class="n">eval_metric</span><span class="o">=</span><span class="s2">&quot;logloss&quot;</span><span class="p">,</span> <span class="n">verbosity</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">use_label_encoder</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+
+<span class="c1"># LGBM Classifier pipe</span>
+<span class="n">pipe_lgbm</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preprocessor</span><span class="p">,</span> <span class="n">LGBMClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">))</span>
+
+<span class="c1"># Catboost pipe</span>
+<span class="n">pipe_catb</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preprocessor</span><span class="p">,</span> <span class="n">CatBoostClassifier</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">))</span>
+
+<span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;RandomForest&quot;</span><span class="p">:</span> <span class="n">pipe_rf</span><span class="p">,</span>
+    <span class="s2">&quot;XGBoost&quot;</span><span class="p">:</span> <span class="n">pipe_xgb</span><span class="p">,</span>
+    <span class="s2">&quot;LGBM&quot;</span><span class="p">:</span> <span class="n">pipe_lgbm</span><span class="p">,</span>
+    <span class="s2">&quot;Cat_Boost&quot;</span><span class="p">:</span> <span class="n">pipe_catb</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># summarize mean cv scores in result_non_linear</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span> <span class="ow">in</span> <span class="n">models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">results</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean_std_cross_val_scores</span><span class="p">(</span>
+        <span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">scoring_metric</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dummy</th>
+      <th>LogisticReg</th>
+      <th>LogisticReg_opt</th>
+      <th>RandomForest</th>
+      <th>XGBoost</th>
+      <th>LGBM</th>
+      <th>Cat_Boost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>fit_time</th>
+      <td>0.015 (+/- 0.002)</td>
+      <td>0.094 (+/- 0.011)</td>
+      <td>5.734 (+/- 0.154)</td>
+      <td>0.453 (+/- 0.021)</td>
+      <td>1.008 (+/- 0.047)</td>
+      <td>0.068 (+/- 0.002)</td>
+      <td>2.772 (+/- 0.060)</td>
+    </tr>
+    <tr>
+      <th>score_time</th>
+      <td>0.014 (+/- 0.002)</td>
+      <td>0.014 (+/- 0.000)</td>
+      <td>0.021 (+/- 0.002)</td>
+      <td>0.039 (+/- 0.006)</td>
+      <td>0.020 (+/- 0.001)</td>
+      <td>0.014 (+/- 0.000)</td>
+      <td>0.136 (+/- 0.006)</td>
+    </tr>
+    <tr>
+      <th>test_accuracy</th>
+      <td>0.508 (+/- 0.001)</td>
+      <td>0.734 (+/- 0.032)</td>
+      <td>0.758 (+/- 0.035)</td>
+      <td>0.779 (+/- 0.035)</td>
+      <td>0.774 (+/- 0.035)</td>
+      <td>0.773 (+/- 0.014)</td>
+      <td>0.794 (+/- 0.029)</td>
+    </tr>
+    <tr>
+      <th>train_accuracy</th>
+      <td>0.508 (+/- 0.000)</td>
+      <td>0.891 (+/- 0.005)</td>
+      <td>0.971 (+/- 0.004)</td>
+      <td>1.000 (+/- 0.000)</td>
+      <td>1.000 (+/- 0.000)</td>
+      <td>1.000 (+/- 0.000)</td>
+      <td>0.931 (+/- 0.002)</td>
+    </tr>
+    <tr>
+      <th>test_roc_auc</th>
+      <td>0.500 (+/- 0.000)</td>
+      <td>0.805 (+/- 0.034)</td>
+      <td>0.840 (+/- 0.030)</td>
+      <td>0.856 (+/- 0.028)</td>
+      <td>0.846 (+/- 0.028)</td>
+      <td>0.850 (+/- 0.028)</td>
+      <td>0.864 (+/- 0.032)</td>
+    </tr>
+    <tr>
+      <th>train_roc_auc</th>
+      <td>0.500 (+/- 0.000)</td>
+      <td>0.952 (+/- 0.002)</td>
+      <td>0.993 (+/- 0.002)</td>
+      <td>1.000 (+/- 0.000)</td>
+      <td>1.000 (+/- 0.000)</td>
+      <td>1.000 (+/- 0.000)</td>
+      <td>0.990 (+/- 0.001)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>All the non-linear models are overfitting as all the training scores are close to 1. Compared to most of the models, <code class="docutils literal notranslate"><span class="pre">CatBoost</span></code> is the most balanced model in performance, it has the highest accuracy and comparatively less overfitting (the gap between train and validation scores is smaller).</p>
+<p>However, the fit time for<code class="docutils literal notranslate"><span class="pre">cat_boost</span></code> is slow. It may be a concern as the algorithm is likely to refit every user by the latest song listening history whenever the user wants to update their playlist. Moreover, the score time of <code class="docutils literal notranslate"><span class="pre">cat_boost</span></code> is the slowest among all models but acceptable.</p>
+<p>Stability of scores is more or less stable, with standard deviation ranging in around 0.01.</p>
+<p><br><br></p>
+<p><br><br></p>
+</div>
+<div class="section" id="hyperparameter-optimization-very-time-consuming-tbc">
+<h3>Hyperparameter optimization (Very time consuming, TBC)<a class="headerlink" href="#hyperparameter-optimization-very-time-consuming-tbc" title="Permalink to this headline">¶</a></h3>
+<p>Hyperparamaters optimization is performed for <code class="docutils literal notranslate"><span class="pre">CatBoostClassifier</span></code>:<br />
+<strong>max_depth</strong> which determines the the depth of the tree<br />
+<strong>learning_rate</strong> which controls the gradient step size (smaller size, more iterations) and can help to minimize the error associated with the Loss function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">param_grid_cat</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="s2">&quot;catboostclassifier__max_depth&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+     <span class="s2">&quot;catboostclassifier__learning_rate&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><br><br></p>
+</div>
+<div class="section" id="id1">
+<h3>Model interpretation on Training set<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Since <code class="docutils literal notranslate"><span class="pre">feature_importance_</span></code> is not supported on the models, <code class="docutils literal notranslate"><span class="pre">shap</span></code> is used to examine the most important features of our best non-linear models.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe_catb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_enc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">),</span>
+    <span class="n">columns</span><span class="o">=</span><span class="n">col_name_pp_all</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">catboost_explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">TreeExplainer</span><span class="p">(</span><span class="n">pipe_catb</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">&quot;catboostclassifier&quot;</span><span class="p">])</span>
+<span class="n">train_catboost_shap_values</span> <span class="o">=</span> <span class="n">catboost_explainer</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">X_train_enc</span><span class="p">)</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">summary_plot</span><span class="p">(</span><span class="n">train_catboost_shap_values</span><span class="p">,</span> <span class="n">X_train_enc</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5_Machine_Learning_68_0.png" src="_images/5_Machine_Learning_68_0.png" />
+</div>
+</div>
+<p>We examined the most important features of <code class="docutils literal notranslate"><span class="pre">CatBoostClassifier</span></code> with SHAP methods. The results suggests that the most important feature are <code class="docutils literal notranslate"><span class="pre">instrumentalness</span></code>, <code class="docutils literal notranslate"><span class="pre">loudness</span></code> and <code class="docutils literal notranslate"><span class="pre">speechiness</span></code>. It introduced a very different results comparing to the linear model, which suggested <code class="docutils literal notranslate"><span class="pre">artist</span></code> is the most important features.</p>
+<p>One interesting observation from the result here is that, the importance of <code class="docutils literal notranslate"><span class="pre">artist</span></code> suggested by two models are different too. Top 3 <code class="docutils literal notranslate"><span class="pre">artist</span></code> from linear model are <strong>FIDLAR</strong>, <strong>Beach House</strong>, <strong>Perfume Genius</strong>, while top 3 <code class="docutils literal notranslate"><span class="pre">artist</span></code> from linear model are <strong>Disclosure</strong>, <strong>Kanye West</strong> and <strong>Purity Ring</strong>. Nevertheless, all of the artists above are noticeable from EDA <strong>Artist like world cloud</strong>.</p>
+<p><br><br></p>
+</div>
+</div>
+<div class="section" id="model-averaging">
+<h2>Model Averaging<a class="headerlink" href="#model-averaging" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">CatBoostClassifier</span></code> has long processing time but the other models are overfitted. To ease the fundamental trade off, <code class="docutils literal notranslate"><span class="pre">Averaging</span></code> is attempted to see if a higher validation score and shorter fit time can be achieved.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">avg_classifiers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;random forest&quot;</span><span class="p">:</span> <span class="n">pipe_rf</span><span class="p">,</span>
+    <span class="s2">&quot;XGBoost&quot;</span><span class="p">:</span> <span class="n">pipe_xgb</span><span class="p">,</span>
+    <span class="s2">&quot;LightGBM&quot;</span><span class="p">:</span> <span class="n">pipe_lgbm</span>
+<span class="p">}</span>
+
+<span class="n">averaging_model</span> <span class="o">=</span> <span class="n">VotingClassifier</span><span class="p">(</span>
+    <span class="nb">list</span><span class="p">(</span><span class="n">avg_classifiers</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span> <span class="n">voting</span><span class="o">=</span><span class="s2">&quot;soft&quot;</span>
+<span class="p">)</span> 
+
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;averaging&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean_std_cross_val_scores</span><span class="p">(</span>
+        <span class="n">averaging_model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">scoring_metric</span><span class="c1">#, cv=2</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dummy</th>
+      <th>LogisticReg</th>
+      <th>LogisticReg_opt</th>
+      <th>RandomForest</th>
+      <th>XGBoost</th>
+      <th>LGBM</th>
+      <th>Cat_Boost</th>
+      <th>averaging</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>fit_time</th>
+      <td>0.015 (+/- 0.002)</td>
+      <td>0.094 (+/- 0.011)</td>
+      <td>5.734 (+/- 0.154)</td>
+      <td>0.453 (+/- 0.021)</td>
+      <td>1.008 (+/- 0.047)</td>
+      <td>0.068 (+/- 0.002)</td>
+      <td>2.772 (+/- 0.060)</td>
+      <td>1.804 (+/- 0.200)</td>
+    </tr>
+    <tr>
+      <th>score_time</th>
+      <td>0.014 (+/- 0.002)</td>
+      <td>0.014 (+/- 0.000)</td>
+      <td>0.021 (+/- 0.002)</td>
+      <td>0.039 (+/- 0.006)</td>
+      <td>0.020 (+/- 0.001)</td>
+      <td>0.014 (+/- 0.000)</td>
+      <td>0.136 (+/- 0.006)</td>
+      <td>0.075 (+/- 0.004)</td>
+    </tr>
+    <tr>
+      <th>test_accuracy</th>
+      <td>0.508 (+/- 0.001)</td>
+      <td>0.734 (+/- 0.032)</td>
+      <td>0.758 (+/- 0.035)</td>
+      <td>0.779 (+/- 0.035)</td>
+      <td>0.774 (+/- 0.035)</td>
+      <td>0.773 (+/- 0.014)</td>
+      <td>0.794 (+/- 0.029)</td>
+      <td>0.777 (+/- 0.023)</td>
+    </tr>
+    <tr>
+      <th>train_accuracy</th>
+      <td>0.508 (+/- 0.000)</td>
+      <td>0.891 (+/- 0.005)</td>
+      <td>0.971 (+/- 0.004)</td>
+      <td>1.000 (+/- 0.000)</td>
+      <td>1.000 (+/- 0.000)</td>
+      <td>1.000 (+/- 0.000)</td>
+      <td>0.931 (+/- 0.002)</td>
+      <td>1.000 (+/- 0.000)</td>
+    </tr>
+    <tr>
+      <th>test_roc_auc</th>
+      <td>0.500 (+/- 0.000)</td>
+      <td>0.805 (+/- 0.034)</td>
+      <td>0.840 (+/- 0.030)</td>
+      <td>0.856 (+/- 0.028)</td>
+      <td>0.846 (+/- 0.028)</td>
+      <td>0.850 (+/- 0.028)</td>
+      <td>0.864 (+/- 0.032)</td>
+      <td>0.857 (+/- 0.026)</td>
+    </tr>
+    <tr>
+      <th>train_roc_auc</th>
+      <td>0.500 (+/- 0.000)</td>
+      <td>0.952 (+/- 0.002)</td>
+      <td>0.993 (+/- 0.002)</td>
+      <td>1.000 (+/- 0.000)</td>
+      <td>1.000 (+/- 0.000)</td>
+      <td>1.000 (+/- 0.000)</td>
+      <td>0.990 (+/- 0.001)</td>
+      <td>1.000 (+/- 0.000)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>According to the result, averaging the models neither help the overfitting issue nor scoring. However, the fit score is indeed faster than <code class="docutils literal notranslate"><span class="pre">Cat_Boost</span></code>. <code class="docutils literal notranslate"><span class="pre">CatBoostClassifier</span></code> is still the best model.</p>
+<p><br><br></p>
+</div>
+<div class="section" id="results-on-the-test-set">
+<h2>Results on the test set<a class="headerlink" href="#results-on-the-test-set" title="Permalink to this headline">¶</a></h2>
+<p>The best performing model <code class="docutils literal notranslate"><span class="pre">CatBoostClassifier</span></code> is used on the test data and report test scores. Summary is shown as below. Furthermore, some test predictions and corresponding explanation with SHAP force plots are drawn for further study.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#predictions = pipe_catb.predict(X_test)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test Set accuracy: &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">pipe_catb</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test Set accuracy:  0.775
+</pre></div>
+</div>
+</div>
+</div>
+<p>The test set’s score were slightly lower than the validation score. Therefore, the prediction is promising.</p>
+<div class="section" id="interpretation-and-feature-importances-on-test-set">
+<h3>Interpretation and feature importances on Test set<a class="headerlink" href="#interpretation-and-feature-importances-on-test-set" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Encoding X_test for SHAP force plot</span>
+<span class="n">X_test_enc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">),</span>
+    <span class="n">columns</span><span class="o">=</span><span class="n">col_name_pp_all</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="n">X_test</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">X_test_enc</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(404, 1155)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an explainer for X_test_enc</span>
+<span class="n">test_catboost_shap_values</span> <span class="o">=</span> <span class="n">catboost_explainer</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">X_test_enc</span><span class="p">)</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">summary_plot</span><span class="p">(</span><span class="n">test_catboost_shap_values</span><span class="p">,</span> <span class="n">X_test_enc</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5_Machine_Learning_81_0.png" src="_images/5_Machine_Learning_81_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Force Plot for prediction of 4th row (no_default)</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">force_plot</span><span class="p">(</span>
+    <span class="n">catboost_explainer</span><span class="o">.</span><span class="n">expected_value</span><span class="p">,</span>
+    <span class="n">test_catboost_shap_values</span><span class="p">[</span><span class="mi">3</span><span class="p">,:],</span>
+    <span class="n">X_test_enc</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">,:],</span>
+    <span class="n">matplotlib</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5_Machine_Learning_83_0.png" src="_images/5_Machine_Learning_83_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>As seen from the plot, the raw score is much smaller than the base value, which predict accurately as <strong>Unlike</strong> (class of ‘0’).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">speechiness</span></code> is pushing the prediction towards a higher score, and <code class="docutils literal notranslate"><span class="pre">instrumentalness</span></code> and <code class="docutils literal notranslate"><span class="pre">duration_ms</span></code> are pushing the prediction towards a lower score.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Force Plot for prediction of 2nd row (no_default)</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">force_plot</span><span class="p">(</span>
+    <span class="n">catboost_explainer</span><span class="o">.</span><span class="n">expected_value</span><span class="p">,</span>
+    <span class="n">test_catboost_shap_values</span><span class="p">[</span><span class="mi">1</span><span class="p">,:],</span>
+    <span class="n">X_test_enc</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,:],</span>
+    <span class="n">matplotlib</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5_Machine_Learning_86_0.png" src="_images/5_Machine_Learning_86_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>As seen from the plot, the raw score is much smaller than the base value, which predict accurately as <strong>Unlike</strong> (class of ‘0’).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">instrumentalness</span></code> and <code class="docutils literal notranslate"><span class="pre">duration_ms</span></code> are pushing the prediction towards a higher score, and <code class="docutils literal notranslate"><span class="pre">loudness</span></code> is pushing the prediction towards a lower score.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="summary-of-machine-learning-results">
+<h2>Summary of machine learning results<a class="headerlink" href="#summary-of-machine-learning-results" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dummy</th>
+      <th>LogisticReg</th>
+      <th>LogisticReg_opt</th>
+      <th>RandomForest</th>
+      <th>XGBoost</th>
+      <th>LGBM</th>
+      <th>Cat_Boost</th>
+      <th>averaging</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>fit_time</th>
+      <td>0.015 (+/- 0.002)</td>
+      <td>0.094 (+/- 0.011)</td>
+      <td>5.734 (+/- 0.154)</td>
+      <td>0.453 (+/- 0.021)</td>
+      <td>1.008 (+/- 0.047)</td>
+      <td>0.068 (+/- 0.002)</td>
+      <td>2.772 (+/- 0.060)</td>
+      <td>1.804 (+/- 0.200)</td>
+    </tr>
+    <tr>
+      <th>score_time</th>
+      <td>0.014 (+/- 0.002)</td>
+      <td>0.014 (+/- 0.000)</td>
+      <td>0.021 (+/- 0.002)</td>
+      <td>0.039 (+/- 0.006)</td>
+      <td>0.020 (+/- 0.001)</td>
+      <td>0.014 (+/- 0.000)</td>
+      <td>0.136 (+/- 0.006)</td>
+      <td>0.075 (+/- 0.004)</td>
+    </tr>
+    <tr>
+      <th>test_accuracy</th>
+      <td>0.508 (+/- 0.001)</td>
+      <td>0.734 (+/- 0.032)</td>
+      <td>0.758 (+/- 0.035)</td>
+      <td>0.779 (+/- 0.035)</td>
+      <td>0.774 (+/- 0.035)</td>
+      <td>0.773 (+/- 0.014)</td>
+      <td>0.794 (+/- 0.029)</td>
+      <td>0.777 (+/- 0.023)</td>
+    </tr>
+    <tr>
+      <th>train_accuracy</th>
+      <td>0.508 (+/- 0.000)</td>
+      <td>0.891 (+/- 0.005)</td>
+      <td>0.971 (+/- 0.004)</td>
+      <td>1.000 (+/- 0.000)</td>
+      <td>1.000 (+/- 0.000)</td>
+      <td>1.000 (+/- 0.000)</td>
+      <td>0.931 (+/- 0.002)</td>
+      <td>1.000 (+/- 0.000)</td>
+    </tr>
+    <tr>
+      <th>test_roc_auc</th>
+      <td>0.500 (+/- 0.000)</td>
+      <td>0.805 (+/- 0.034)</td>
+      <td>0.840 (+/- 0.030)</td>
+      <td>0.856 (+/- 0.028)</td>
+      <td>0.846 (+/- 0.028)</td>
+      <td>0.850 (+/- 0.028)</td>
+      <td>0.864 (+/- 0.032)</td>
+      <td>0.857 (+/- 0.026)</td>
+    </tr>
+    <tr>
+      <th>train_roc_auc</th>
+      <td>0.500 (+/- 0.000)</td>
+      <td>0.952 (+/- 0.002)</td>
+      <td>0.993 (+/- 0.002)</td>
+      <td>1.000 (+/- 0.000)</td>
+      <td>1.000 (+/- 0.000)</td>
+      <td>1.000 (+/- 0.000)</td>
+      <td>0.990 (+/- 0.001)</td>
+      <td>1.000 (+/- 0.000)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Amongst the models, it is clear that <code class="docutils literal notranslate"><span class="pre">CatBoostClassifier</span></code> has the best accuracy and ROC AUC score. Moreover, the difference in scores between the test set and validation set are comparatively small, suggesting that there is minimal optimisation bias. Based on our test scores, our model is able to identify about <strong>77.2%</strong> of the cases.</p>
+<p>One thing that needs to be kept in mind is that, the fit time for<code class="docutils literal notranslate"><span class="pre">cat_boost</span></code> is slow. It can be a concern as the algorithm is likely to refit every user by the latest song listening history whenever the user wants to update their playlist. Moreover, the score time of <code class="docutils literal notranslate"><span class="pre">Cat_Boost</span></code> is the slowest among all models but acceptable. The processing time (fit + score time) is critical for the application.</p>
+<p>Hence, the other options after <code class="docutils literal notranslate"><span class="pre">Cat_Boost</span></code> may be <code class="docutils literal notranslate"><span class="pre">RandomForest</span></code> / <code class="docutils literal notranslate"><span class="pre">LGBM</span></code>, which require less processing time but similar scoring result. Further model training and new training set is needed for continuous model studying.</p>
+<p><br><br></p>
+<p><br><br></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-env-spotify_user_behaviour_predictor-py"
+        },
+        kernelOptions: {
+            kernelName: "conda-env-spotify_user_behaviour_predictor-py",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-env-spotify_user_behaviour_predictor-py'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="4_Stat_Infer.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Statistic Inference</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="6_Conclusion.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Conclusion</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Macy Chan<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

@@ -2,7 +2,10 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro
+root: 1_intro
 chapters:
-- file: EDA
-- file: MachineLearning
+- file: 2_notebooks
+- file: 3_EDA
+- file: 4_Stat_Infer
+- file: 5_Machine_Learning
+- file: 6_Conclusion
