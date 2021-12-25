@@ -7,8 +7,6 @@
 # 
 # Kaggle's [Spotify Song Attributes](https://www.kaggle.com/geomack/spotifyclassification/home) dataset contains a number of features of songs from 2017 and a binary variable `target` that represents whether the user liked the song (encoded as 1) or not (encoded as 0). See the documentation of all the features [here](https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/). 
 
-# <br><br>
-
 # ## Imports
 
 # ### Import libraries
@@ -100,8 +98,6 @@ spotify_df = pd.read_csv('data/spotify_data.csv', index_col = 0 )
 spotify_df.head(6)
 
 
-# <br><br>
-
 # ## Data splitting
 # Split the data into train and test portions. Remove `song_title`, separate data to `X_train`, `y_train`, `X_test`, `y_test`.
 
@@ -122,8 +118,6 @@ print('The number of observations for test set: ', test_df['target'].shape[0])
 
 
 # I split 20% of the observations in the test data and 80% in the train data set. Overall the data set has about 2,000 observations, as it is not a very large data set, I preserved more portion for training.
-
-# <br><br>
 
 # ## Scoring metric
 
@@ -168,8 +162,6 @@ X_test = X_test.astype(
         "PAY_6": "str",
     }
 )
-# <br><br>
-
 # ## Preprocessing and transformations 
 # Here is different feature types and the transformations I will apply on each feature type. 
 
@@ -198,8 +190,6 @@ preprocessor = make_column_transformer(
 preprocessor.fit(X_train, y_train)
 
 
-# <br><br><br><br>
-
 # ## Baseline model
 
 # In[8]:
@@ -224,8 +214,6 @@ pd.DataFrame(results)
 
 
 # Accuracy of Dummy classifier depends on class ratio. As we have a balanced data set, the accuracy of Dummy classifier is around 50%.
-
-# <br><br>
 
 # ## Linear models
 # ### Model training - LogisticRegression
@@ -469,10 +457,6 @@ pd.DataFrame(results)
 # 
 # Stability of scores is more or less stable, with standard deviation ranging in around 0.01. 
 
-# <br><br>
-
-# <br><br>
-
 # ### Hyperparameter optimization (Very time consuming, TBC)
 
 # Hyperparamaters optimization is performed for `CatBoostClassifier`:  
@@ -538,8 +522,6 @@ shap.summary_plot(train_catboost_shap_values, X_train_enc, plot_type="bar")
 # 
 # One interesting observation from the result here is that, the importance of `artist` suggested by two models are different too. Top 3 `artist` from linear model are **FIDLAR**, **Beach House**, **Perfume Genius**, while top 3 `artist` from linear model are **Disclosure**, **Kanye West** and **Purity Ring**. Nevertheless, all of the artists above are noticeable from EDA **Artist like world cloud**.
 
-# <br><br>
-
 # ## Model Averaging
 # `CatBoostClassifier` has long processing time but the other models are overfitted. To ease the fundamental trade off, `Averaging` is attempted to see if a higher validation score and shorter fit time can be achieved.
 
@@ -568,8 +550,6 @@ pd.DataFrame(results)
 
 
 # According to the result, averaging the models neither help the overfitting issue nor scoring. However, the fit score is indeed faster than `Cat_Boost`. `CatBoostClassifier` is still the best model.
-
-# <br><br>
 
 # ## Results on the test set 
 # 

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction &#8212; Spotify User Behaviour Predictor</title>
+    <title>About this project &#8212; Spotify User Behaviour Predictor</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -99,7 +99,7 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Introduction
+   About this project
   </a>
  </li>
  <li class="toctree-l1">
@@ -227,23 +227,13 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#methodology">
-   Methodology
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-do-you-start-this-project">
-   Why do you start this project?
+  <a class="reference internal nav-link" href="#why-did-i-start-this-project">
+   Why did I start this project?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#difference-with-spotify">
    Difference with Spotify
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-can-the-algorithm-do-more">
-   What can the algorithm do more?
   </a>
  </li>
 </ul>
@@ -257,26 +247,16 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="methodology">
-<h2>Methodology<a class="headerlink" href="#methodology" title="Permalink to this headline">¶</a></h2>
-<p>This notebook is dedicated for analyzing Spotify user behavior and building a prediction model for Spotify playlist recommendation application, <a class="reference external" href="https://macy-chan.com/MusicAndMood.html">Music and Mood</a>, which is also developed by me. The aim for this project is to analyze if particular user has song selection preference base on different song features such as <code class="docutils literal notranslate"><span class="pre">danceability</span></code>, <code class="docutils literal notranslate"><span class="pre">length</span> <span class="pre">of</span> <span class="pre">song</span></code>, <code class="docutils literal notranslate"><span class="pre">key</span></code>, <code class="docutils literal notranslate"><span class="pre">loudness</span></code> and so on, where these features are also provided by Spotify API in song feature query <a class="reference external" href="https://developer.spotify.com/documentation/web-api/reference/#/operations/get-several-audio-features">here</a>.</p>
-<p>If there is any actual preference base on song characteristics for a user, we can further build up a machine learning model, by reading users’ favorite playlist or last listen in 30 days, the model can recommend new songs base on their song preference.</p>
-</div>
-<div class="section" id="why-do-you-start-this-project">
-<h2>Why do you start this project?<a class="headerlink" href="#why-do-you-start-this-project" title="Permalink to this headline">¶</a></h2>
-<p>I believe everyone has slightly OCD in their lives. Have you ever seen a email inbox of your friends and it drove you crazy simply because there are 20k unread email? Have you ever seen a computer desktop full of unorganized files and you just feel dizzy? Have you every borrow your friends internet browsers for research and you just couldn’t help to close the millions tabs that he/she has opened in the past couple of days? weeks? months?</p>
-<p>If you have similar experiences, you are my friend. One of the tasks I need myself to do from time to time is to organize my Spotify playlist. I have a personal playlist that I maintain it frequently. Every now and then, I would go through it, remove the songs that no longer fit my taste, and pull out the Today’s Top Hit (yes, this playlist only), go through that as well, and add the new songs that I like into my personal playlist at one sit. My mind told me not to be bother so much but my heart want to listen to new songs and those songs have to be in my personal playlist. Unfortunately not every song fits my type.</p>
-<p>One day, when I was repeating this time consuming playlist process, this idea popped. Why don’t I design an algorithm to help me finish this task, so that I have more time to organize my laptop folder?</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="about-this-project">
+<h1>About this project<a class="headerlink" href="#about-this-project" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="why-did-i-start-this-project">
+<h2>Why did I start this project?<a class="headerlink" href="#why-did-i-start-this-project" title="Permalink to this headline">¶</a></h2>
+<p>I believe everyone has some OCD in their daily lives. In my case, I have some Techno-OCD. Every now and then, it drives me crazy when I see my friends have countless unread emails in their inboxes or multiple tabs remain opened on their browsers. Apart from this, I also have a tiny pet peeve on Spotify playlist. As a loyal Spotify customer, I have been maintaining a personal playlist for over 6 years. Form time to time, I would dedicate my time to clean it up by removing old entries and adding new favorites exclusively fromr different playlists (mainly from the one called Today’s Top Hit). Sometimes, I told myself that I should not spend so much time on organizing this personal playlist. Yet I have an unique taste and I hate to hit “Next” every time I am offered with some automatically-generated songs that I do not enjoy.</p>
+<p>One day, when I was repeating this time consuming playlist process, this idea popped. Why don’t I design an algorithm to help me finish this task, so that I have more time to organize my laptop folders?</p>
 </div>
 <div class="section" id="difference-with-spotify">
 <h2>Difference with Spotify<a class="headerlink" href="#difference-with-spotify" title="Permalink to this headline">¶</a></h2>
 <p>You may have asked, Spotify also has song recommendation, is it not good enough for you? Short answer is Yes, it is not good enough. I enjoy Spotify recommended song and the algorithm is doing a good to recommend songs for me. Most of the recommended songs fits my mood and I give a credit for that. However, I have no control on what songs I would like to pick. Given my raw and desperate story about, I want to be recommend only from some designated playlist, which are the go-to playlist that I like and grab songs that I like from that playlist.</p>
-</div>
-<div class="section" id="what-can-the-algorithm-do-more">
-<h2>What can the algorithm do more?<a class="headerlink" href="#what-can-the-algorithm-do-more" title="Permalink to this headline">¶</a></h2>
-<p>If it works, it works. Other users can provide some playlist that they like, or their past 30 days listen history as an input of the algorithm. Additionally, give it some of your go-to playlists. The algorithm will help you grab the songs that you like from your go-to playlist. Bamp! You have a bunch of new songs ready for you on the road.</p>
 </div>
 </div>
 
