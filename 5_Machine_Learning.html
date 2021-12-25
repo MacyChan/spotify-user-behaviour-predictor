@@ -99,7 +99,7 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="2_notebooks.html">
-   Introduction
+   About this project
   </a>
  </li>
  <li class="toctree-l1">
@@ -351,7 +351,6 @@
 <li><p>This is a Python base notebook</p></li>
 </ul>
 <p>Kaggle’s <a class="reference external" href="https://www.kaggle.com/geomack/spotifyclassification/home">Spotify Song Attributes</a> dataset contains a number of features of songs from 2017 and a binary variable <code class="docutils literal notranslate"><span class="pre">target</span></code> that represents whether the user liked the song (encoded as 1) or not (encoded as 0). See the documentation of all the features <a class="reference external" href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/">here</a>.</p>
-<p><br><br></p>
 <div class="section" id="imports">
 <h2>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="import-libraries">
@@ -601,7 +600,6 @@
 </table>
 </div></div></div>
 </div>
-<p><br><br></p>
 </div>
 </div>
 <div class="section" id="data-splitting">
@@ -632,7 +630,6 @@ The number of observations for test set:  404
 </div>
 </div>
 <p>I split 20% of the observations in the test data and 80% in the train data set. Overall the data set has about 2,000 observations, as it is not a very large data set, I preserved more portion for training.</p>
-<p><br><br></p>
 </div>
 <div class="section" id="scoring-metric">
 <h2>Scoring metric<a class="headerlink" href="#scoring-metric" title="Permalink to this headline">¶</a></h2>
@@ -648,7 +645,6 @@ The number of observations for test set:  404
 <div class="section" id="feature-engineering-tbc">
 <h2>Feature engineering (TBC)<a class="headerlink" href="#feature-engineering-tbc" title="Permalink to this headline">¶</a></h2>
 <p>In feature enginnering, we carry out feature engineering, extract new features that are relevant for the problem. For Spotify data set, I added the feature genres which are extracted from Spotify API. To understand more about the data extraction, you can do to appendix.</p>
-<p><br><br></p>
 </div>
 <div class="section" id="preprocessing-and-transformations">
 <h2>Preprocessing and transformations<a class="headerlink" href="#preprocessing-and-transformations" title="Permalink to this headline">¶</a></h2>
@@ -697,10 +693,11 @@ The number of observations for test set:  404
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ColumnTransformer(transformers=[(&#39;drop&#39;, &#39;drop&#39;, [&#39;song_title&#39;]),
                                 (&#39;standardscaler&#39;, StandardScaler(),
-                                 [&#39;duration_ms&#39;, &#39;instrumentalness&#39;, &#39;liveness&#39;,
-                                  &#39;speechiness&#39;, &#39;valence&#39;, &#39;loudness&#39;,
-                                  &#39;acousticness&#39;, &#39;tempo&#39;, &#39;time_signature&#39;,
-                                  &#39;energy&#39;, &#39;mode&#39;, &#39;danceability&#39;]),
+                                 [&#39;liveness&#39;, &#39;duration_ms&#39;, &#39;tempo&#39;,
+                                  &#39;loudness&#39;, &#39;valence&#39;, &#39;mode&#39;, &#39;energy&#39;,
+                                  &#39;instrumentalness&#39;, &#39;danceability&#39;,
+                                  &#39;speechiness&#39;, &#39;acousticness&#39;,
+                                  &#39;time_signature&#39;]),
                                 (&#39;onehotencoder&#39;,
                                  OneHotEncoder(handle_unknown=&#39;ignore&#39;,
                                                sparse=False),
@@ -709,7 +706,6 @@ The number of observations for test set:  404
 </div>
 </div>
 </div>
-<p><br><br><br><br></p>
 </div>
 <div class="section" id="baseline-model">
 <h2>Baseline model<a class="headerlink" href="#baseline-model" title="Permalink to this headline">¶</a></h2>
@@ -761,11 +757,11 @@ The number of observations for test set:  404
   <tbody>
     <tr>
       <th>fit_time</th>
-      <td>0.015 (+/- 0.002)</td>
+      <td>0.014 (+/- 0.003)</td>
     </tr>
     <tr>
       <th>score_time</th>
-      <td>0.014 (+/- 0.002)</td>
+      <td>0.012 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>test_accuracy</th>
@@ -788,7 +784,6 @@ The number of observations for test set:  404
 </div></div></div>
 </div>
 <p>Accuracy of Dummy classifier depends on class ratio. As we have a balanced data set, the accuracy of Dummy classifier is around 50%.</p>
-<p><br><br></p>
 </div>
 <div class="section" id="linear-models">
 <h2>Linear models<a class="headerlink" href="#linear-models" title="Permalink to this headline">¶</a></h2>
@@ -843,13 +838,13 @@ The number of observations for test set:  404
   <tbody>
     <tr>
       <th>fit_time</th>
-      <td>0.015 (+/- 0.002)</td>
-      <td>0.094 (+/- 0.011)</td>
+      <td>0.014 (+/- 0.003)</td>
+      <td>0.105 (+/- 0.013)</td>
     </tr>
     <tr>
       <th>score_time</th>
-      <td>0.014 (+/- 0.002)</td>
-      <td>0.014 (+/- 0.000)</td>
+      <td>0.012 (+/- 0.001)</td>
+      <td>0.018 (+/- 0.002)</td>
     </tr>
     <tr>
       <th>test_accuracy</th>
@@ -958,15 +953,15 @@ Best cv score is: 0.7582293329231007
   <tbody>
     <tr>
       <th>fit_time</th>
-      <td>0.015 (+/- 0.002)</td>
-      <td>0.094 (+/- 0.011)</td>
-      <td>5.734 (+/- 0.154)</td>
+      <td>0.014 (+/- 0.003)</td>
+      <td>0.105 (+/- 0.013)</td>
+      <td>5.130 (+/- 0.050)</td>
     </tr>
     <tr>
       <th>score_time</th>
-      <td>0.014 (+/- 0.002)</td>
-      <td>0.014 (+/- 0.000)</td>
-      <td>0.021 (+/- 0.002)</td>
+      <td>0.012 (+/- 0.001)</td>
+      <td>0.018 (+/- 0.002)</td>
+      <td>0.015 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>test_accuracy</th>
@@ -1042,7 +1037,7 @@ weighted avg       0.97      0.97      0.97      1613
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Area under the curve (AUC): 0.993
 </pre></div>
 </div>
-<img alt="_images/5_Machine_Learning_42_1.png" src="_images/5_Machine_Learning_42_1.png" />
+<img alt="_images/5_Machine_Learning_36_1.png" src="_images/5_Machine_Learning_36_1.png" />
 </div>
 </div>
 <p>We have high score in AUC and classification report, which means our prediction model performance is good.</p>
@@ -1104,31 +1099,31 @@ weighted avg       0.97      0.97      0.97      1613
   <tbody>
     <tr>
       <th>artist_FIDLAR</th>
-      <td>2.807178</td>
+      <td>2.807177</td>
       <td>1.0</td>
       <td>pos</td>
     </tr>
     <tr>
       <th>artist_Beach House</th>
-      <td>2.541958</td>
+      <td>2.541977</td>
       <td>2.0</td>
       <td>pos</td>
     </tr>
     <tr>
       <th>artist_Perfume Genius</th>
-      <td>2.499669</td>
+      <td>2.499713</td>
       <td>3.0</td>
       <td>pos</td>
     </tr>
     <tr>
       <th>artist_Kanye West</th>
-      <td>2.472236</td>
+      <td>2.472239</td>
       <td>4.0</td>
       <td>pos</td>
     </tr>
     <tr>
       <th>artist_Crystal Castles</th>
-      <td>2.439250</td>
+      <td>2.439248</td>
       <td>5.0</td>
       <td>pos</td>
     </tr>
@@ -1140,31 +1135,31 @@ weighted avg       0.97      0.97      0.97      1613
     </tr>
     <tr>
       <th>artist_Backstreet Boys</th>
-      <td>-2.023539</td>
+      <td>-2.023537</td>
       <td>195.0</td>
       <td>neg</td>
     </tr>
     <tr>
       <th>artist_*NSYNC</th>
-      <td>-2.058218</td>
+      <td>-2.058221</td>
       <td>196.0</td>
       <td>neg</td>
     </tr>
     <tr>
       <th>artist_Fall Out Boy</th>
-      <td>-2.102525</td>
+      <td>-2.102522</td>
       <td>197.0</td>
       <td>neg</td>
     </tr>
     <tr>
       <th>artist_WALK THE MOON</th>
-      <td>-2.150690</td>
+      <td>-2.150687</td>
       <td>198.0</td>
       <td>neg</td>
     </tr>
     <tr>
       <th>artist_J. Cole</th>
-      <td>-2.383675</td>
+      <td>-2.383690</td>
       <td>199.0</td>
       <td>neg</td>
     </tr>
@@ -1208,97 +1203,97 @@ weighted avg       0.97      0.97      0.97      1613
     <tr>
       <th>423</th>
       <td>key_2</td>
-      <td>0.513670</td>
+      <td>0.513689</td>
     </tr>
     <tr>
       <th>489</th>
       <td>danceability</td>
-      <td>0.356359</td>
+      <td>0.356378</td>
     </tr>
     <tr>
       <th>508</th>
       <td>duration_ms</td>
-      <td>0.309779</td>
+      <td>0.309772</td>
     </tr>
     <tr>
       <th>525</th>
       <td>valence</td>
-      <td>0.265940</td>
+      <td>0.265956</td>
     </tr>
     <tr>
       <th>529</th>
       <td>key_9</td>
-      <td>0.247390</td>
+      <td>0.247376</td>
     </tr>
     <tr>
       <th>536</th>
       <td>key_10</td>
-      <td>0.209334</td>
+      <td>0.209370</td>
     </tr>
     <tr>
       <th>549</th>
       <td>key_0</td>
-      <td>0.085386</td>
+      <td>0.085394</td>
     </tr>
     <tr>
       <th>550</th>
       <td>liveness</td>
-      <td>0.083536</td>
+      <td>0.083546</td>
     </tr>
     <tr>
       <th>552</th>
       <td>energy</td>
-      <td>0.018710</td>
+      <td>0.018731</td>
     </tr>
     <tr>
       <th>553</th>
       <td>key_4</td>
-      <td>0.016762</td>
+      <td>0.016729</td>
     </tr>
     <tr>
       <th>554</th>
       <td>key_7</td>
-      <td>0.012707</td>
+      <td>0.012704</td>
     </tr>
     <tr>
       <th>555</th>
       <td>key_11</td>
-      <td>-0.000015</td>
+      <td>-0.000024</td>
     </tr>
     <tr>
       <th>557</th>
       <td>key_8</td>
-      <td>-0.022329</td>
+      <td>-0.022378</td>
     </tr>
     <tr>
       <th>561</th>
       <td>key_5</td>
-      <td>-0.100535</td>
+      <td>-0.100539</td>
     </tr>
     <tr>
       <th>562</th>
       <td>mode</td>
-      <td>-0.111405</td>
+      <td>-0.111402</td>
     </tr>
     <tr>
       <th>564</th>
       <td>key_6</td>
-      <td>-0.130681</td>
+      <td>-0.130716</td>
     </tr>
     <tr>
       <th>573</th>
       <td>key_1</td>
-      <td>-0.252451</td>
+      <td>-0.252462</td>
     </tr>
     <tr>
       <th>574</th>
       <td>loudness</td>
-      <td>-0.261364</td>
+      <td>-0.261397</td>
     </tr>
     <tr>
       <th>723</th>
       <td>key_3</td>
-      <td>-0.579345</td>
+      <td>-0.579256</td>
     </tr>
   </tbody>
 </table>
@@ -1349,12 +1344,12 @@ weighted avg       0.97      0.97      0.97      1613
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-c107a3f99f254caab1df672858f8f700"></div>
+<div id="altair-viz-2b3d04a0c0e14babb0547304eb1589d6"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-c107a3f99f254caab1df672858f8f700") {
-      outputDiv = document.getElementById("altair-viz-c107a3f99f254caab1df672858f8f700");
+    if (outputDiv.id !== "altair-viz-2b3d04a0c0e14babb0547304eb1589d6") {
+      outputDiv = document.getElementById("altair-viz-2b3d04a0c0e14babb0547304eb1589d6");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -1396,7 +1391,7 @@ weighted avg       0.97      0.97      0.97      1613
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "vconcat": [{"mark": "bar", "encoding": {"color": {"type": "nominal", "field": "side"}, "x": {"type": "nominal", "axis": {"title": ""}, "field": "index", "scale": {"domain": {"selection": "selector001"}}, "sort": {"field": "rank", "order": "ascending"}}, "y": {"type": "quantitative", "field": "Importance"}}, "height": 200, "title": "Top 200 important features", "width": 800}, {"mark": "bar", "encoding": {"color": {"type": "nominal", "field": "side"}, "x": {"type": "nominal", "axis": {"labels": false, "title": "Features"}, "field": "index", "sort": {"field": "rank", "order": "ascending"}}, "y": {"type": "quantitative", "field": "Importance"}}, "height": 60, "selection": {"selector001": {"type": "interval", "encodings": ["x"]}}, "title": "Drag the plot in below to zoom", "width": 800}], "data": {"name": "data-a5ca73e0555370feaa8eb88d1c5eda95"}, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-a5ca73e0555370feaa8eb88d1c5eda95": [{"index": "artist_FIDLAR", "Importance": 2.807177631315873, "rank": 1.0, "side": "pos"}, {"index": "artist_Beach House", "Importance": 2.5419584046526538, "rank": 2.0, "side": "pos"}, {"index": "artist_Perfume Genius", "Importance": 2.499668884977438, "rank": 3.0, "side": "pos"}, {"index": "artist_Kanye West", "Importance": 2.472235880538795, "rank": 4.0, "side": "pos"}, {"index": "artist_Crystal Castles", "Importance": 2.4392500913518083, "rank": 5.0, "side": "pos"}, {"index": "artist_Radiohead", "Importance": 2.38092089275549, "rank": 6.0, "side": "pos"}, {"index": "artist_Leon Bridges", "Importance": 2.37853067315157, "rank": 7.0, "side": "pos"}, {"index": "artist_Ty Segall", "Importance": 2.3264715528689233, "rank": 8.0, "side": "pos"}, {"index": "artist_The Ronettes", "Importance": 2.2234904698937146, "rank": 9.0, "side": "pos"}, {"index": "artist_ASTR", "Importance": 2.214758871020671, "rank": 10.0, "side": "pos"}, {"index": "artist_Mac Demarco", "Importance": 2.122974007992217, "rank": 11.0, "side": "pos"}, {"index": "artist_Purity Ring", "Importance": 2.051378492971372, "rank": 12.0, "side": "pos"}, {"index": "artist_M83", "Importance": 2.0209818196319884, "rank": 13.0, "side": "pos"}, {"index": "artist_Disclosure", "Importance": 2.0032791781115096, "rank": 14.0, "side": "pos"}, {"index": "artist_The Sonics", "Importance": 1.8983068655536703, "rank": 15.0, "side": "pos"}, {"index": "artist_ScHoolboy Q", "Importance": 1.8760689517217568, "rank": 16.0, "side": "pos"}, {"index": "artist_Autre Ne Veut", "Importance": 1.8583899150491778, "rank": 17.0, "side": "pos"}, {"index": "artist_Vampire Weekend", "Importance": 1.8410721765618914, "rank": 18.0, "side": "pos"}, {"index": "artist_Dusty Springfield", "Importance": 1.8261351279389386, "rank": 19.0, "side": "pos"}, {"index": "artist_Ariel Pink's Haunted Graffiti", "Importance": 1.818937595991925, "rank": 20.0, "side": "pos"}, {"index": "artist_Jerry Townes", "Importance": 1.7953498302603905, "rank": 21.0, "side": "pos"}, {"index": "artist_Young Thug", "Importance": 1.7937288494062236, "rank": 22.0, "side": "pos"}, {"index": "artist_Tame Impala", "Importance": 1.7688072814146696, "rank": 23.0, "side": "pos"}, {"index": "artist_Washed Out", "Importance": 1.727623845174253, "rank": 24.0, "side": "pos"}, {"index": "artist_Lykke Li", "Importance": 1.7168056255307096, "rank": 25.0, "side": "pos"}, {"index": "artist_Travis Scott", "Importance": 1.7136878903005102, "rank": 26.0, "side": "pos"}, {"index": "artist_AlunaGeorge", "Importance": 1.7071226460933284, "rank": 27.0, "side": "pos"}, {"index": "artist_Hot Chip", "Importance": 1.690611196170185, "rank": 28.0, "side": "pos"}, {"index": "artist_James Brown", "Importance": 1.6855015583998902, "rank": 29.0, "side": "pos"}, {"index": "artist_Angel Olsen", "Importance": 1.6625991238229065, "rank": 30.0, "side": "pos"}, {"index": "artist_Justice", "Importance": 1.6590638937266382, "rank": 31.0, "side": "pos"}, {"index": "artist_2 Chainz", "Importance": 1.6557410449572072, "rank": 32.0, "side": "pos"}, {"index": "artist_Action Bronson", "Importance": 1.6556285790367935, "rank": 33.0, "side": "pos"}, {"index": "artist_Jefferson Airplane", "Importance": 1.6507919019373676, "rank": 34.0, "side": "pos"}, {"index": "artist_The xx", "Importance": 1.6270058467449853, "rank": 35.0, "side": "pos"}, {"index": "artist_How To Dress Well", "Importance": 1.613111250350145, "rank": 36.0, "side": "pos"}, {"index": "artist_CHVRCHES", "Importance": 1.6004370881804952, "rank": 37.0, "side": "pos"}, {"index": "artist_Epsilons", "Importance": 1.5979712650422717, "rank": 38.0, "side": "pos"}, {"index": "artist_A$AP Ferg", "Importance": 1.5953919904345866, "rank": 39.0, "side": "pos"}, {"index": "artist_The Partysquad", "Importance": 1.5895555934195709, "rank": 40.0, "side": "pos"}, {"index": "artist_Best Coast", "Importance": 1.578053950711133, "rank": 41.0, "side": "pos"}, {"index": "artist_Elephant", "Importance": 1.5707398523675506, "rank": 42.0, "side": "pos"}, {"index": "artist_Cathedrals", "Importance": 1.5667569021477445, "rank": 43.0, "side": "pos"}, {"index": "artist_The Yardbirds", "Importance": 1.5506188632913538, "rank": 44.0, "side": "pos"}, {"index": "artist_Twin Shadow", "Importance": 1.5487771557446472, "rank": 45.0, "side": "pos"}, {"index": "artist_Three 6 Mafia", "Importance": 1.544579482619697, "rank": 46.0, "side": "pos"}, {"index": "artist_Father", "Importance": 1.5387385143638024, "rank": 47.0, "side": "pos"}, {"index": "artist_The Black On White Affair", "Importance": 1.5229660968459295, "rank": 48.0, "side": "pos"}, {"index": "artist_The Shirelles", "Importance": 1.520958166471734, "rank": 49.0, "side": "pos"}, {"index": "artist_Solange", "Importance": 1.5188643341684682, "rank": 50.0, "side": "pos"}, {"index": "artist_Stormzy", "Importance": 1.5184507063561912, "rank": 51.0, "side": "pos"}, {"index": "artist_The Chiffons", "Importance": 1.5138738049768883, "rank": 52.0, "side": "pos"}, {"index": "artist_Cults", "Importance": 1.5015731655620086, "rank": 53.0, "side": "pos"}, {"index": "artist_The Silvertones", "Importance": 1.4970202112477926, "rank": 54.0, "side": "pos"}, {"index": "artist_Flume", "Importance": 1.495695155887586, "rank": 55.0, "side": "pos"}, {"index": "artist_Juicy J", "Importance": 1.4892200245065492, "rank": 56.0, "side": "pos"}, {"index": "artist_Joe Cuba", "Importance": 1.4863920742732768, "rank": 57.0, "side": "pos"}, {"index": "artist_Duke Dumont", "Importance": 1.481483096948374, "rank": 58.0, "side": "pos"}, {"index": "artist_alt-J", "Importance": 1.4782166731848851, "rank": 59.0, "side": "pos"}, {"index": "artist_Glass Animals", "Importance": 1.4749879588704293, "rank": 60.0, "side": "pos"}, {"index": "artist_Vince Staples", "Importance": 1.464998692792951, "rank": 61.0, "side": "pos"}, {"index": "artist_Wet", "Importance": 1.4648985578007694, "rank": 62.0, "side": "pos"}, {"index": "artist_Sleigh Bells", "Importance": 1.4578404307416188, "rank": 63.0, "side": "pos"}, {"index": "artist_Bon Iver", "Importance": 1.4553060394304855, "rank": 64.0, "side": "pos"}, {"index": "artist_M.I.A.", "Importance": 1.4502989879248485, "rank": 65.0, "side": "pos"}, {"index": "artist_Mikal Cronin", "Importance": 1.4486547622383088, "rank": 66.0, "side": "pos"}, {"index": "artist_Iamsu!", "Importance": 1.4223586165474877, "rank": 67.0, "side": "pos"}, {"index": "artist_SZA", "Importance": 1.415054293779803, "rank": 68.0, "side": "pos"}, {"index": "artist_Scott McKenzie", "Importance": 1.4123700580850753, "rank": 69.0, "side": "pos"}, {"index": "artist_Ezale", "Importance": 1.4118411971207645, "rank": 70.0, "side": "pos"}, {"index": "artist_Matthew Dear", "Importance": 1.4110351791340487, "rank": 71.0, "side": "pos"}, {"index": "artist_Phantogram", "Importance": 1.4045621570397613, "rank": 72.0, "side": "pos"}, {"index": "artist_The Vogues", "Importance": 1.401397104360372, "rank": 73.0, "side": "pos"}, {"index": "artist_GENER8ION", "Importance": 1.3981373649277693, "rank": 74.0, "side": "pos"}, {"index": "artist_Booba", "Importance": 1.3837519673057808, "rank": 75.0, "side": "pos"}, {"index": "artist_Donnie & Joe Emerson", "Importance": 1.3745844321587235, "rank": 76.0, "side": "pos"}, {"index": "artist_New Order", "Importance": 1.3728542697082757, "rank": 77.0, "side": "pos"}, {"index": "artist_Kaleo", "Importance": 1.3710714425127974, "rank": 78.0, "side": "pos"}, {"index": "artist_ILoveMakonnen", "Importance": 1.3607558336861765, "rank": 79.0, "side": "pos"}, {"index": "artist_Wiley", "Importance": 1.3598802963722416, "rank": 80.0, "side": "pos"}, {"index": "artist_Grimes", "Importance": 1.357985085992464, "rank": 81.0, "side": "pos"}, {"index": "artist_The Stooges", "Importance": 1.3579453158362698, "rank": 82.0, "side": "pos"}, {"index": "artist_Zapp", "Importance": 1.3490732858906294, "rank": 83.0, "side": "pos"}, {"index": "artist_Danny Brown", "Importance": 1.341277531899079, "rank": 84.0, "side": "pos"}, {"index": "artist_Memoryhouse", "Importance": 1.3374389920673404, "rank": 85.0, "side": "pos"}, {"index": "artist_Banks", "Importance": 1.3297903669489504, "rank": 86.0, "side": "pos"}, {"index": "artist_Chief Keef", "Importance": 1.3190288224394864, "rank": 87.0, "side": "pos"}, {"index": "artist_The Districts", "Importance": 1.3189119691630715, "rank": 88.0, "side": "pos"}, {"index": "artist_Status Quo", "Importance": 1.3168691038100109, "rank": 89.0, "side": "pos"}, {"index": "artist_Gerry & The Pacemakers", "Importance": 1.3143522113681418, "rank": 90.0, "side": "pos"}, {"index": "artist_Thundercat", "Importance": 1.313520189643227, "rank": 91.0, "side": "pos"}, {"index": "artist_The Seshen", "Importance": 1.3128417039087747, "rank": 92.0, "side": "pos"}, {"index": "artist_Martin Solveig", "Importance": 1.3055969353703432, "rank": 93.0, "side": "pos"}, {"index": "artist_Myron & E", "Importance": 1.3037255418826577, "rank": 94.0, "side": "pos"}, {"index": "artist_No Parents", "Importance": 1.300373137517048, "rank": 95.0, "side": "pos"}, {"index": "artist_Grizzly Bear", "Importance": 1.2906784800649882, "rank": 96.0, "side": "pos"}, {"index": "artist_Jagwar Ma", "Importance": 1.2865834162607748, "rank": 97.0, "side": "pos"}, {"index": "artist_The Kinks", "Importance": 1.2839054594324644, "rank": 98.0, "side": "pos"}, {"index": "artist_Parquet Courts", "Importance": 1.2803586643280342, "rank": 99.0, "side": "pos"}, {"index": "artist_Enterprise Earth", "Importance": -1.0828273439034035, "rank": 100.0, "side": "neg"}, {"index": "artist_Ben Remember", "Importance": -1.0858346510669976, "rank": 101.0, "side": "neg"}, {"index": "artist_CNCO", "Importance": -1.1006695739170678, "rank": 102.0, "side": "neg"}, {"index": "artist_Flo Rida", "Importance": -1.1031171109541804, "rank": 103.0, "side": "neg"}, {"index": "artist_George Acosta", "Importance": -1.1143184139597255, "rank": 104.0, "side": "neg"}, {"index": "artist_Michael Bolton", "Importance": -1.1158637109620482, "rank": 105.0, "side": "neg"}, {"index": "artist_Thomas Rhett", "Importance": -1.1163319315108615, "rank": 106.0, "side": "neg"}, {"index": "artist_Stalking Gia", "Importance": -1.1220492702909595, "rank": 107.0, "side": "neg"}, {"index": "artist_Monica", "Importance": -1.1298878774286378, "rank": 108.0, "side": "neg"}, {"index": "artist_Los Del Rio", "Importance": -1.1346966817691808, "rank": 109.0, "side": "neg"}, {"index": "artist_Alok", "Importance": -1.1348169890042956, "rank": 110.0, "side": "neg"}, {"index": "artist_Imagination Movers", "Importance": -1.1406975877972847, "rank": 111.0, "side": "neg"}, {"index": "artist_Diplo", "Importance": -1.145685518702605, "rank": 112.0, "side": "neg"}, {"index": "artist_JoJo", "Importance": -1.1458209028246928, "rank": 113.0, "side": "neg"}, {"index": "artist_Sebastian Yatra", "Importance": -1.154219895705572, "rank": 114.0, "side": "neg"}, {"index": "artist_Kesha", "Importance": -1.154487437406085, "rank": 115.0, "side": "neg"}, {"index": "artist_3LW", "Importance": -1.1617122743136983, "rank": 116.0, "side": "neg"}, {"index": "artist_Burak Yeter", "Importance": -1.16236510155714, "rank": 117.0, "side": "neg"}, {"index": "artist_Little Mix", "Importance": -1.1664992182502958, "rank": 118.0, "side": "neg"}, {"index": "artist_Martin Garrix", "Importance": -1.172346768520399, "rank": 119.0, "side": "neg"}, {"index": "artist_5 Seconds of Summer", "Importance": -1.179781221272684, "rank": 120.0, "side": "neg"}, {"index": "artist_Pitbull", "Importance": -1.184720863822157, "rank": 121.0, "side": "neg"}, {"index": "artist_Tevin Campbell", "Importance": -1.1897496545105857, "rank": 122.0, "side": "neg"}, {"index": "artist_EDX", "Importance": -1.1930680202897974, "rank": 123.0, "side": "neg"}, {"index": "artist_Bill Mobley", "Importance": -1.1955661252969607, "rank": 124.0, "side": "neg"}, {"index": "artist_Scott Hamilton", "Importance": -1.2092008191835923, "rank": 125.0, "side": "neg"}, {"index": "artist_Savage Garden", "Importance": -1.2149519749171571, "rank": 126.0, "side": "neg"}, {"index": "artist_R3hab", "Importance": -1.22171084219374, "rank": 127.0, "side": "neg"}, {"index": "artist_The Kids Band", "Importance": -1.2221012697059446, "rank": 128.0, "side": "neg"}, {"index": "artist_Vader Abraham", "Importance": -1.227035164044351, "rank": 129.0, "side": "neg"}, {"index": "artist_Robert Schumann", "Importance": -1.229257339083424, "rank": 130.0, "side": "neg"}, {"index": "artist_Kris Kross", "Importance": -1.2297995716218688, "rank": 131.0, "side": "neg"}, {"index": "artist_Enrico Pieranunzi", "Importance": -1.231274570949344, "rank": 132.0, "side": "neg"}, {"index": "artist_G-Eazy", "Importance": -1.232465227599569, "rank": 133.0, "side": "neg"}, {"index": "artist_Reik", "Importance": -1.2365877732848207, "rank": 134.0, "side": "neg"}, {"index": "artist_M\u00fda", "Importance": -1.2416501569092897, "rank": 135.0, "side": "neg"}, {"index": "artist_Chris Lake", "Importance": -1.2520641058088633, "rank": 136.0, "side": "neg"}, {"index": "artist_Mark Knight", "Importance": -1.259719752907923, "rank": 137.0, "side": "neg"}, {"index": "artist_Franz Schubert", "Importance": -1.2697449369344986, "rank": 138.0, "side": "neg"}, {"index": "artist_Zac Brown Band", "Importance": -1.2745005470463822, "rank": 139.0, "side": "neg"}, {"index": "artist_Lil Dicky", "Importance": -1.2768284006217363, "rank": 140.0, "side": "neg"}, {"index": "artist_Enrique Iglesias", "Importance": -1.2796050046624803, "rank": 141.0, "side": "neg"}, {"index": "artist_Marshmello", "Importance": -1.2821447643945627, "rank": 142.0, "side": "neg"}, {"index": "artist_Maroon 5", "Importance": -1.2827342987402126, "rank": 143.0, "side": "neg"}, {"index": "artist_Justin Timberlake", "Importance": -1.284205602071455, "rank": 144.0, "side": "neg"}, {"index": "artist_Wisin", "Importance": -1.2900250424548825, "rank": 145.0, "side": "neg"}, {"index": "artist_Bassjackers", "Importance": -1.3012415883078683, "rank": 146.0, "side": "neg"}, {"index": "artist_Lil Wayne", "Importance": -1.303278915824588, "rank": 147.0, "side": "neg"}, {"index": "artist_David Guetta", "Importance": -1.3066532306721739, "rank": 148.0, "side": "neg"}, {"index": "artist_Lost Kings", "Importance": -1.3082075129682316, "rank": 149.0, "side": "neg"}, {"index": "artist_Mr. C", "Importance": -1.3191168048150723, "rank": 150.0, "side": "neg"}, {"index": "artist_Peter Andre", "Importance": -1.3245506668636238, "rank": 151.0, "side": "neg"}, {"index": "artist_Ne-Yo", "Importance": -1.3272112954247441, "rank": 152.0, "side": "neg"}, {"index": "artist_Machine Gun Kelly", "Importance": -1.3452117820109428, "rank": 153.0, "side": "neg"}, {"index": "artist_India.Arie", "Importance": -1.3872276799856236, "rank": 154.0, "side": "neg"}, {"index": "artist_Vanilla Ice", "Importance": -1.3906521127133844, "rank": 155.0, "side": "neg"}, {"index": "artist_\uce74\uc6b0\uce69\uc2a4 The CowChips", "Importance": -1.3915148435872209, "rank": 156.0, "side": "neg"}, {"index": "artist_2 LIVE CREW", "Importance": -1.3950418121160364, "rank": 157.0, "side": "neg"}, {"index": "artist_Gwen Stefani", "Importance": -1.4127075596592922, "rank": 158.0, "side": "neg"}, {"index": "artist_Adrian Lux", "Importance": -1.4188118253916762, "rank": 159.0, "side": "neg"}, {"index": "artist_Owl City", "Importance": -1.4247855912403147, "rank": 160.0, "side": "neg"}, {"index": "artist_The Black Eyed Peas", "Importance": -1.4617914248094408, "rank": 161.0, "side": "neg"}, {"index": "artist_Robin Thicke", "Importance": -1.4702476996652711, "rank": 162.0, "side": "neg"}, {"index": "artist_Nicky Jam", "Importance": -1.4804137327154445, "rank": 163.0, "side": "neg"}, {"index": "artist_Kim Walker-Smith", "Importance": -1.4857762558812726, "rank": 164.0, "side": "neg"}, {"index": "artist_Porter Robinson", "Importance": -1.4881680479282704, "rank": 165.0, "side": "neg"}, {"index": "artist_J Balvin", "Importance": -1.5071800870511054, "rank": 166.0, "side": "neg"}, {"index": "artist_Shawn Mendes", "Importance": -1.5158964951913736, "rank": 167.0, "side": "neg"}, {"index": "artist_Nickelback", "Importance": -1.5167302874939228, "rank": 168.0, "side": "neg"}, {"index": "artist_Wahlstedt", "Importance": -1.528648416514191, "rank": 169.0, "side": "neg"}, {"index": "artist_Wyclef Jean", "Importance": -1.5371946151768403, "rank": 170.0, "side": "neg"}, {"index": "artist_Felix Mendelssohn", "Importance": -1.5486346667403532, "rank": 171.0, "side": "neg"}, {"index": "artist_Luis Fonsi", "Importance": -1.5765477341687817, "rank": 172.0, "side": "neg"}, {"index": "artist_Boyz II Men", "Importance": -1.5917832145490505, "rank": 173.0, "side": "neg"}, {"index": "artist_Britney Spears", "Importance": -1.5973772723805997, "rank": 174.0, "side": "neg"}, {"index": "artist_Diddy", "Importance": -1.608427053949202, "rank": 175.0, "side": "neg"}, {"index": "artist_StaRR Lyfe", "Importance": -1.615334029520084, "rank": 176.0, "side": "neg"}, {"index": "artist_Xscape", "Importance": -1.6174013279304886, "rank": 177.0, "side": "neg"}, {"index": "artist_Lex Luca", "Importance": -1.6247144214801101, "rank": 178.0, "side": "neg"}, {"index": "artist_Next", "Importance": -1.628622148722792, "rank": 179.0, "side": "neg"}, {"index": "artist_MOTi", "Importance": -1.6334266136317537, "rank": 180.0, "side": "neg"}, {"index": "artist_Shakira", "Importance": -1.6964350487138709, "rank": 181.0, "side": "neg"}, {"index": "artist_Demi Lovato", "Importance": -1.7230658486040047, "rank": 182.0, "side": "neg"}, {"index": "artist_Chris Lake Feat. Laura V", "Importance": -1.742772369608511, "rank": 183.0, "side": "neg"}, {"index": "artist_Skrillex", "Importance": -1.7826693516162657, "rank": 184.0, "side": "neg"}, {"index": "artist_Usher", "Importance": -1.7909003701557547, "rank": 185.0, "side": "neg"}, {"index": "artist_The Chainsmokers", "Importance": -1.8042219392596728, "rank": 186.0, "side": "neg"}, {"index": "artist_Katy Perry", "Importance": -1.8468312184407967, "rank": 187.0, "side": "neg"}, {"index": "artist_Kina Grannis", "Importance": -1.8733695174262779, "rank": 188.0, "side": "neg"}, {"index": "artist_Toni Braxton", "Importance": -1.884240000997869, "rank": 189.0, "side": "neg"}, {"index": "artist_Big Time Rush", "Importance": -1.88438665556461, "rank": 190.0, "side": "neg"}, {"index": "artist_Daddy Yankee", "Importance": -1.9064499920713878, "rank": 191.0, "side": "neg"}, {"index": "artist_Michael Jackson", "Importance": -1.9191580804607955, "rank": 192.0, "side": "neg"}, {"index": "artist_Destiny's Child", "Importance": -1.954271108864061, "rank": 193.0, "side": "neg"}, {"index": "artist_Afrojack", "Importance": -1.9913213924845177, "rank": 194.0, "side": "neg"}, {"index": "artist_Backstreet Boys", "Importance": -2.0235392216418466, "rank": 195.0, "side": "neg"}, {"index": "artist_*NSYNC", "Importance": -2.058218394390045, "rank": 196.0, "side": "neg"}, {"index": "artist_Fall Out Boy", "Importance": -2.1025250857486344, "rank": 197.0, "side": "neg"}, {"index": "artist_WALK THE MOON", "Importance": -2.1506901729375576, "rank": 198.0, "side": "neg"}, {"index": "artist_J. Cole", "Importance": -2.3836754409869734, "rank": 199.0, "side": "neg"}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "vconcat": [{"mark": "bar", "encoding": {"color": {"type": "nominal", "field": "side"}, "x": {"type": "nominal", "axis": {"title": ""}, "field": "index", "scale": {"domain": {"selection": "selector001"}}, "sort": {"field": "rank", "order": "ascending"}}, "y": {"type": "quantitative", "field": "Importance"}}, "height": 200, "title": "Top 200 important features", "width": 800}, {"mark": "bar", "encoding": {"color": {"type": "nominal", "field": "side"}, "x": {"type": "nominal", "axis": {"labels": false, "title": "Features"}, "field": "index", "sort": {"field": "rank", "order": "ascending"}}, "y": {"type": "quantitative", "field": "Importance"}}, "height": 60, "selection": {"selector001": {"type": "interval", "encodings": ["x"]}}, "title": "Drag the plot in below to zoom", "width": 800}], "data": {"name": "data-9767a72b8a9c8dafa301a46e4069f8c4"}, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-9767a72b8a9c8dafa301a46e4069f8c4": [{"index": "artist_FIDLAR", "Importance": 2.8071765977745082, "rank": 1.0, "side": "pos"}, {"index": "artist_Beach House", "Importance": 2.5419766832650366, "rank": 2.0, "side": "pos"}, {"index": "artist_Perfume Genius", "Importance": 2.4997134758701605, "rank": 3.0, "side": "pos"}, {"index": "artist_Kanye West", "Importance": 2.472239187632566, "rank": 4.0, "side": "pos"}, {"index": "artist_Crystal Castles", "Importance": 2.439247745951238, "rank": 5.0, "side": "pos"}, {"index": "artist_Radiohead", "Importance": 2.3809553496634956, "rank": 6.0, "side": "pos"}, {"index": "artist_Leon Bridges", "Importance": 2.3785524122132955, "rank": 7.0, "side": "pos"}, {"index": "artist_Ty Segall", "Importance": 2.3264773740941997, "rank": 8.0, "side": "pos"}, {"index": "artist_The Ronettes", "Importance": 2.2235088273985264, "rank": 9.0, "side": "pos"}, {"index": "artist_ASTR", "Importance": 2.2147659936884496, "rank": 10.0, "side": "pos"}, {"index": "artist_Mac Demarco", "Importance": 2.1229865714618184, "rank": 11.0, "side": "pos"}, {"index": "artist_Purity Ring", "Importance": 2.05138518303648, "rank": 12.0, "side": "pos"}, {"index": "artist_M83", "Importance": 2.0209914616252687, "rank": 13.0, "side": "pos"}, {"index": "artist_Disclosure", "Importance": 2.0032679748201265, "rank": 14.0, "side": "pos"}, {"index": "artist_The Sonics", "Importance": 1.8983188534281668, "rank": 15.0, "side": "pos"}, {"index": "artist_ScHoolboy Q", "Importance": 1.8760898926733793, "rank": 16.0, "side": "pos"}, {"index": "artist_Autre Ne Veut", "Importance": 1.8584047961314984, "rank": 17.0, "side": "pos"}, {"index": "artist_Vampire Weekend", "Importance": 1.8410934599004936, "rank": 18.0, "side": "pos"}, {"index": "artist_Dusty Springfield", "Importance": 1.8261429562833627, "rank": 19.0, "side": "pos"}, {"index": "artist_Ariel Pink's Haunted Graffiti", "Importance": 1.8189675999094674, "rank": 20.0, "side": "pos"}, {"index": "artist_Jerry Townes", "Importance": 1.7953664428574827, "rank": 21.0, "side": "pos"}, {"index": "artist_Young Thug", "Importance": 1.7937415865686577, "rank": 22.0, "side": "pos"}, {"index": "artist_Tame Impala", "Importance": 1.7688065637361254, "rank": 23.0, "side": "pos"}, {"index": "artist_Washed Out", "Importance": 1.7276326131451307, "rank": 24.0, "side": "pos"}, {"index": "artist_Lykke Li", "Importance": 1.7168200496483095, "rank": 25.0, "side": "pos"}, {"index": "artist_Travis Scott", "Importance": 1.7137089227285367, "rank": 26.0, "side": "pos"}, {"index": "artist_AlunaGeorge", "Importance": 1.7071458533982815, "rank": 27.0, "side": "pos"}, {"index": "artist_Hot Chip", "Importance": 1.6906122379639323, "rank": 28.0, "side": "pos"}, {"index": "artist_James Brown", "Importance": 1.6855152334304055, "rank": 29.0, "side": "pos"}, {"index": "artist_Angel Olsen", "Importance": 1.6626098474235846, "rank": 30.0, "side": "pos"}, {"index": "artist_Justice", "Importance": 1.6590756708804613, "rank": 31.0, "side": "pos"}, {"index": "artist_2 Chainz", "Importance": 1.6557570775943278, "rank": 32.0, "side": "pos"}, {"index": "artist_Action Bronson", "Importance": 1.6556396509647613, "rank": 33.0, "side": "pos"}, {"index": "artist_Jefferson Airplane", "Importance": 1.6508057502730296, "rank": 34.0, "side": "pos"}, {"index": "artist_The xx", "Importance": 1.6270290292501899, "rank": 35.0, "side": "pos"}, {"index": "artist_How To Dress Well", "Importance": 1.6131435279831423, "rank": 36.0, "side": "pos"}, {"index": "artist_CHVRCHES", "Importance": 1.6004546873943208, "rank": 37.0, "side": "pos"}, {"index": "artist_Epsilons", "Importance": 1.597981294000807, "rank": 38.0, "side": "pos"}, {"index": "artist_A$AP Ferg", "Importance": 1.5953992237543064, "rank": 39.0, "side": "pos"}, {"index": "artist_The Partysquad", "Importance": 1.5895637416403654, "rank": 40.0, "side": "pos"}, {"index": "artist_Best Coast", "Importance": 1.5780581475193025, "rank": 41.0, "side": "pos"}, {"index": "artist_Elephant", "Importance": 1.5707561463952544, "rank": 42.0, "side": "pos"}, {"index": "artist_Cathedrals", "Importance": 1.5667737868416978, "rank": 43.0, "side": "pos"}, {"index": "artist_The Yardbirds", "Importance": 1.55062409911626, "rank": 44.0, "side": "pos"}, {"index": "artist_Twin Shadow", "Importance": 1.5487913955624655, "rank": 45.0, "side": "pos"}, {"index": "artist_Three 6 Mafia", "Importance": 1.5445776948259602, "rank": 46.0, "side": "pos"}, {"index": "artist_Father", "Importance": 1.5387489305277149, "rank": 47.0, "side": "pos"}, {"index": "artist_The Black On White Affair", "Importance": 1.5229800078153428, "rank": 48.0, "side": "pos"}, {"index": "artist_The Shirelles", "Importance": 1.520980893783558, "rank": 49.0, "side": "pos"}, {"index": "artist_Solange", "Importance": 1.5188842383995866, "rank": 50.0, "side": "pos"}, {"index": "artist_Stormzy", "Importance": 1.5184547444540477, "rank": 51.0, "side": "pos"}, {"index": "artist_The Chiffons", "Importance": 1.5138869233852374, "rank": 52.0, "side": "pos"}, {"index": "artist_Cults", "Importance": 1.5015859271826848, "rank": 53.0, "side": "pos"}, {"index": "artist_The Silvertones", "Importance": 1.497052696446445, "rank": 54.0, "side": "pos"}, {"index": "artist_Flume", "Importance": 1.4957238358080776, "rank": 55.0, "side": "pos"}, {"index": "artist_Juicy J", "Importance": 1.4892368721332068, "rank": 56.0, "side": "pos"}, {"index": "artist_Joe Cuba", "Importance": 1.486423203017983, "rank": 57.0, "side": "pos"}, {"index": "artist_Duke Dumont", "Importance": 1.4814834252822149, "rank": 58.0, "side": "pos"}, {"index": "artist_alt-J", "Importance": 1.4782460662574812, "rank": 59.0, "side": "pos"}, {"index": "artist_Glass Animals", "Importance": 1.475002069618762, "rank": 60.0, "side": "pos"}, {"index": "artist_Vince Staples", "Importance": 1.4650135497982357, "rank": 61.0, "side": "pos"}, {"index": "artist_Wet", "Importance": 1.4649249175770094, "rank": 62.0, "side": "pos"}, {"index": "artist_Sleigh Bells", "Importance": 1.4578484991310428, "rank": 63.0, "side": "pos"}, {"index": "artist_Bon Iver", "Importance": 1.455338611107326, "rank": 64.0, "side": "pos"}, {"index": "artist_M.I.A.", "Importance": 1.4503133454379504, "rank": 65.0, "side": "pos"}, {"index": "artist_Mikal Cronin", "Importance": 1.4486822786426008, "rank": 66.0, "side": "pos"}, {"index": "artist_Iamsu!", "Importance": 1.4223571914524147, "rank": 67.0, "side": "pos"}, {"index": "artist_SZA", "Importance": 1.4150847530091144, "rank": 68.0, "side": "pos"}, {"index": "artist_Scott McKenzie", "Importance": 1.4123889590939456, "rank": 69.0, "side": "pos"}, {"index": "artist_Ezale", "Importance": 1.4118416120141122, "rank": 70.0, "side": "pos"}, {"index": "artist_Matthew Dear", "Importance": 1.4110495733567099, "rank": 71.0, "side": "pos"}, {"index": "artist_Phantogram", "Importance": 1.4045681534292376, "rank": 72.0, "side": "pos"}, {"index": "artist_The Vogues", "Importance": 1.4014069630298385, "rank": 73.0, "side": "pos"}, {"index": "artist_GENER8ION", "Importance": 1.3981635547983662, "rank": 74.0, "side": "pos"}, {"index": "artist_Booba", "Importance": 1.3837598147947876, "rank": 75.0, "side": "pos"}, {"index": "artist_Donnie & Joe Emerson", "Importance": 1.3746061169806583, "rank": 76.0, "side": "pos"}, {"index": "artist_New Order", "Importance": 1.372851677265527, "rank": 77.0, "side": "pos"}, {"index": "artist_Kaleo", "Importance": 1.3710918826964382, "rank": 78.0, "side": "pos"}, {"index": "artist_ILoveMakonnen", "Importance": 1.3607582201133777, "rank": 79.0, "side": "pos"}, {"index": "artist_Wiley", "Importance": 1.3598917869417648, "rank": 80.0, "side": "pos"}, {"index": "artist_Grimes", "Importance": 1.3579907186579534, "rank": 81.0, "side": "pos"}, {"index": "artist_The Stooges", "Importance": 1.3579607186041847, "rank": 82.0, "side": "pos"}, {"index": "artist_Zapp", "Importance": 1.349068036521343, "rank": 83.0, "side": "pos"}, {"index": "artist_Danny Brown", "Importance": 1.3412788770970394, "rank": 84.0, "side": "pos"}, {"index": "artist_Memoryhouse", "Importance": 1.3374425962760517, "rank": 85.0, "side": "pos"}, {"index": "artist_Banks", "Importance": 1.329792114235656, "rank": 86.0, "side": "pos"}, {"index": "artist_Chief Keef", "Importance": 1.319034274702168, "rank": 87.0, "side": "pos"}, {"index": "artist_The Districts", "Importance": 1.3189269564749457, "rank": 88.0, "side": "pos"}, {"index": "artist_Status Quo", "Importance": 1.3168789315913048, "rank": 89.0, "side": "pos"}, {"index": "artist_Gerry & The Pacemakers", "Importance": 1.314361031074023, "rank": 90.0, "side": "pos"}, {"index": "artist_Thundercat", "Importance": 1.3135322279209773, "rank": 91.0, "side": "pos"}, {"index": "artist_The Seshen", "Importance": 1.3128420699791097, "rank": 92.0, "side": "pos"}, {"index": "artist_Martin Solveig", "Importance": 1.305615845256371, "rank": 93.0, "side": "pos"}, {"index": "artist_Myron & E", "Importance": 1.3037448154062257, "rank": 94.0, "side": "pos"}, {"index": "artist_No Parents", "Importance": 1.3003887415239324, "rank": 95.0, "side": "pos"}, {"index": "artist_Grizzly Bear", "Importance": 1.2906864263742093, "rank": 96.0, "side": "pos"}, {"index": "artist_Jagwar Ma", "Importance": 1.2865923310977805, "rank": 97.0, "side": "pos"}, {"index": "artist_The Kinks", "Importance": 1.283917910099653, "rank": 98.0, "side": "pos"}, {"index": "artist_Parquet Courts", "Importance": 1.2803545977968809, "rank": 99.0, "side": "pos"}, {"index": "artist_Enterprise Earth", "Importance": -1.0828255301587595, "rank": 100.0, "side": "neg"}, {"index": "artist_Ben Remember", "Importance": -1.0858321928586647, "rank": 101.0, "side": "neg"}, {"index": "artist_CNCO", "Importance": -1.1006671881398133, "rank": 102.0, "side": "neg"}, {"index": "artist_Flo Rida", "Importance": -1.1031149206624014, "rank": 103.0, "side": "neg"}, {"index": "artist_George Acosta", "Importance": -1.1143260519906195, "rank": 104.0, "side": "neg"}, {"index": "artist_Michael Bolton", "Importance": -1.115896370222924, "rank": 105.0, "side": "neg"}, {"index": "artist_Thomas Rhett", "Importance": -1.1163327317591072, "rank": 106.0, "side": "neg"}, {"index": "artist_Stalking Gia", "Importance": -1.1220737807804744, "rank": 107.0, "side": "neg"}, {"index": "artist_Monica", "Importance": -1.129890525932048, "rank": 108.0, "side": "neg"}, {"index": "artist_Los Del Rio", "Importance": -1.1347050922555881, "rank": 109.0, "side": "neg"}, {"index": "artist_Alok", "Importance": -1.1348145867510078, "rank": 110.0, "side": "neg"}, {"index": "artist_Imagination Movers", "Importance": -1.140715151065804, "rank": 111.0, "side": "neg"}, {"index": "artist_Diplo", "Importance": -1.1457055619399996, "rank": 112.0, "side": "neg"}, {"index": "artist_JoJo", "Importance": -1.1458295503293758, "rank": 113.0, "side": "neg"}, {"index": "artist_Sebastian Yatra", "Importance": -1.154221930450132, "rank": 114.0, "side": "neg"}, {"index": "artist_Kesha", "Importance": -1.1545104212110011, "rank": 115.0, "side": "neg"}, {"index": "artist_3LW", "Importance": -1.1617376446939842, "rank": 116.0, "side": "neg"}, {"index": "artist_Burak Yeter", "Importance": -1.162377064658049, "rank": 117.0, "side": "neg"}, {"index": "artist_Little Mix", "Importance": -1.1665070745343615, "rank": 118.0, "side": "neg"}, {"index": "artist_Martin Garrix", "Importance": -1.1723328753109112, "rank": 119.0, "side": "neg"}, {"index": "artist_5 Seconds of Summer", "Importance": -1.179785830035163, "rank": 120.0, "side": "neg"}, {"index": "artist_Pitbull", "Importance": -1.1847310759544025, "rank": 121.0, "side": "neg"}, {"index": "artist_Tevin Campbell", "Importance": -1.1897679628358941, "rank": 122.0, "side": "neg"}, {"index": "artist_EDX", "Importance": -1.1930605823501632, "rank": 123.0, "side": "neg"}, {"index": "artist_Bill Mobley", "Importance": -1.1955745419506323, "rank": 124.0, "side": "neg"}, {"index": "artist_Scott Hamilton", "Importance": -1.209198172973354, "rank": 125.0, "side": "neg"}, {"index": "artist_Savage Garden", "Importance": -1.2149553020867463, "rank": 126.0, "side": "neg"}, {"index": "artist_R3hab", "Importance": -1.22171559275242, "rank": 127.0, "side": "neg"}, {"index": "artist_The Kids Band", "Importance": -1.222114589702825, "rank": 128.0, "side": "neg"}, {"index": "artist_Vader Abraham", "Importance": -1.2270515846235954, "rank": 129.0, "side": "neg"}, {"index": "artist_Robert Schumann", "Importance": -1.2292642329565706, "rank": 130.0, "side": "neg"}, {"index": "artist_Kris Kross", "Importance": -1.229820415003638, "rank": 131.0, "side": "neg"}, {"index": "artist_Enrico Pieranunzi", "Importance": -1.2312777721526318, "rank": 132.0, "side": "neg"}, {"index": "artist_G-Eazy", "Importance": -1.232475412709288, "rank": 133.0, "side": "neg"}, {"index": "artist_Reik", "Importance": -1.2365872950042585, "rank": 134.0, "side": "neg"}, {"index": "artist_M\u00fda", "Importance": -1.2416520856000812, "rank": 135.0, "side": "neg"}, {"index": "artist_Chris Lake", "Importance": -1.2520750460412458, "rank": 136.0, "side": "neg"}, {"index": "artist_Mark Knight", "Importance": -1.259730476201046, "rank": 137.0, "side": "neg"}, {"index": "artist_Franz Schubert", "Importance": -1.2697577760179732, "rank": 138.0, "side": "neg"}, {"index": "artist_Zac Brown Band", "Importance": -1.2744995192514792, "rank": 139.0, "side": "neg"}, {"index": "artist_Lil Dicky", "Importance": -1.276847149024287, "rank": 140.0, "side": "neg"}, {"index": "artist_Enrique Iglesias", "Importance": -1.2796105312770585, "rank": 141.0, "side": "neg"}, {"index": "artist_Marshmello", "Importance": -1.282142446024668, "rank": 142.0, "side": "neg"}, {"index": "artist_Maroon 5", "Importance": -1.2827397399500977, "rank": 143.0, "side": "neg"}, {"index": "artist_Justin Timberlake", "Importance": -1.284235501966599, "rank": 144.0, "side": "neg"}, {"index": "artist_Wisin", "Importance": -1.2900312952011082, "rank": 145.0, "side": "neg"}, {"index": "artist_Bassjackers", "Importance": -1.3012538339247484, "rank": 146.0, "side": "neg"}, {"index": "artist_Lil Wayne", "Importance": -1.3033008092581342, "rank": 147.0, "side": "neg"}, {"index": "artist_David Guetta", "Importance": -1.3066626879094243, "rank": 148.0, "side": "neg"}, {"index": "artist_Lost Kings", "Importance": -1.3082071675675315, "rank": 149.0, "side": "neg"}, {"index": "artist_Mr. C", "Importance": -1.3191424048168554, "rank": 150.0, "side": "neg"}, {"index": "artist_Peter Andre", "Importance": -1.324583901813607, "rank": 151.0, "side": "neg"}, {"index": "artist_Ne-Yo", "Importance": -1.3272142643502531, "rank": 152.0, "side": "neg"}, {"index": "artist_Machine Gun Kelly", "Importance": -1.3452266063656464, "rank": 153.0, "side": "neg"}, {"index": "artist_India.Arie", "Importance": -1.3872560541421446, "rank": 154.0, "side": "neg"}, {"index": "artist_Vanilla Ice", "Importance": -1.390676955143884, "rank": 155.0, "side": "neg"}, {"index": "artist_\uce74\uc6b0\uce69\uc2a4 The CowChips", "Importance": -1.3915357318333659, "rank": 156.0, "side": "neg"}, {"index": "artist_2 LIVE CREW", "Importance": -1.395074578340288, "rank": 157.0, "side": "neg"}, {"index": "artist_Gwen Stefani", "Importance": -1.4127193274571601, "rank": 158.0, "side": "neg"}, {"index": "artist_Adrian Lux", "Importance": -1.4188165478717176, "rank": 159.0, "side": "neg"}, {"index": "artist_Owl City", "Importance": -1.4247795758216835, "rank": 160.0, "side": "neg"}, {"index": "artist_The Black Eyed Peas", "Importance": -1.4618012467794494, "rank": 161.0, "side": "neg"}, {"index": "artist_Robin Thicke", "Importance": -1.4702621376805485, "rank": 162.0, "side": "neg"}, {"index": "artist_Nicky Jam", "Importance": -1.4804147073937572, "rank": 163.0, "side": "neg"}, {"index": "artist_Kim Walker-Smith", "Importance": -1.4857756506474897, "rank": 164.0, "side": "neg"}, {"index": "artist_Porter Robinson", "Importance": -1.4882033647114552, "rank": 165.0, "side": "neg"}, {"index": "artist_J Balvin", "Importance": -1.5071976521596215, "rank": 166.0, "side": "neg"}, {"index": "artist_Shawn Mendes", "Importance": -1.5159046200306618, "rank": 167.0, "side": "neg"}, {"index": "artist_Nickelback", "Importance": -1.5167377598672565, "rank": 168.0, "side": "neg"}, {"index": "artist_Wahlstedt", "Importance": -1.5286533090660868, "rank": 169.0, "side": "neg"}, {"index": "artist_Wyclef Jean", "Importance": -1.5371972542509262, "rank": 170.0, "side": "neg"}, {"index": "artist_Felix Mendelssohn", "Importance": -1.548661069998366, "rank": 171.0, "side": "neg"}, {"index": "artist_Luis Fonsi", "Importance": -1.5765681299365581, "rank": 172.0, "side": "neg"}, {"index": "artist_Boyz II Men", "Importance": -1.5917833672197523, "rank": 173.0, "side": "neg"}, {"index": "artist_Britney Spears", "Importance": -1.5973907566872014, "rank": 174.0, "side": "neg"}, {"index": "artist_Diddy", "Importance": -1.6084484682835454, "rank": 175.0, "side": "neg"}, {"index": "artist_StaRR Lyfe", "Importance": -1.6153697857758877, "rank": 176.0, "side": "neg"}, {"index": "artist_Xscape", "Importance": -1.61739811347187, "rank": 177.0, "side": "neg"}, {"index": "artist_Lex Luca", "Importance": -1.624745884874973, "rank": 178.0, "side": "neg"}, {"index": "artist_Next", "Importance": -1.6286441704264165, "rank": 179.0, "side": "neg"}, {"index": "artist_MOTi", "Importance": -1.6334398461033175, "rank": 180.0, "side": "neg"}, {"index": "artist_Shakira", "Importance": -1.6964390582059499, "rank": 181.0, "side": "neg"}, {"index": "artist_Demi Lovato", "Importance": -1.7230627560842382, "rank": 182.0, "side": "neg"}, {"index": "artist_Chris Lake Feat. Laura V", "Importance": -1.7427866114976536, "rank": 183.0, "side": "neg"}, {"index": "artist_Skrillex", "Importance": -1.7826722463642066, "rank": 184.0, "side": "neg"}, {"index": "artist_Usher", "Importance": -1.7909037234196605, "rank": 185.0, "side": "neg"}, {"index": "artist_The Chainsmokers", "Importance": -1.804222206040453, "rank": 186.0, "side": "neg"}, {"index": "artist_Katy Perry", "Importance": -1.8468289971253973, "rank": 187.0, "side": "neg"}, {"index": "artist_Kina Grannis", "Importance": -1.8733655502961652, "rank": 188.0, "side": "neg"}, {"index": "artist_Toni Braxton", "Importance": -1.8842493600852994, "rank": 189.0, "side": "neg"}, {"index": "artist_Big Time Rush", "Importance": -1.8843835531423927, "rank": 190.0, "side": "neg"}, {"index": "artist_Daddy Yankee", "Importance": -1.9064681587445125, "rank": 191.0, "side": "neg"}, {"index": "artist_Michael Jackson", "Importance": -1.9191583144597957, "rank": 192.0, "side": "neg"}, {"index": "artist_Destiny's Child", "Importance": -1.9542830104143176, "rank": 193.0, "side": "neg"}, {"index": "artist_Afrojack", "Importance": -1.991334432644299, "rank": 194.0, "side": "neg"}, {"index": "artist_Backstreet Boys", "Importance": -2.023536543964859, "rank": 195.0, "side": "neg"}, {"index": "artist_*NSYNC", "Importance": -2.0582211153443803, "rank": 196.0, "side": "neg"}, {"index": "artist_Fall Out Boy", "Importance": -2.1025216364982744, "rank": 197.0, "side": "neg"}, {"index": "artist_WALK THE MOON", "Importance": -2.1506865168197202, "rank": 198.0, "side": "neg"}, {"index": "artist_J. Cole", "Importance": -2.383689996126414, "rank": 199.0, "side": "neg"}]}}, {"mode": "vega-lite"});
 </script></div></div>
 </div>
 <p>Top 200 most important features are based on artists.</p>
@@ -1481,33 +1476,33 @@ After that, feature selection and hyperparameter tuning will carried out in late
   <tbody>
     <tr>
       <th>fit_time</th>
-      <td>0.015 (+/- 0.002)</td>
-      <td>0.094 (+/- 0.011)</td>
-      <td>5.734 (+/- 0.154)</td>
-      <td>0.453 (+/- 0.021)</td>
-      <td>1.008 (+/- 0.047)</td>
-      <td>0.068 (+/- 0.002)</td>
-      <td>2.772 (+/- 0.060)</td>
+      <td>0.014 (+/- 0.003)</td>
+      <td>0.105 (+/- 0.013)</td>
+      <td>5.130 (+/- 0.050)</td>
+      <td>0.371 (+/- 0.015)</td>
+      <td>0.967 (+/- 0.020)</td>
+      <td>0.071 (+/- 0.006)</td>
+      <td>2.666 (+/- 0.139)</td>
     </tr>
     <tr>
       <th>score_time</th>
-      <td>0.014 (+/- 0.002)</td>
-      <td>0.014 (+/- 0.000)</td>
-      <td>0.021 (+/- 0.002)</td>
-      <td>0.039 (+/- 0.006)</td>
+      <td>0.012 (+/- 0.001)</td>
+      <td>0.018 (+/- 0.002)</td>
+      <td>0.015 (+/- 0.001)</td>
+      <td>0.036 (+/- 0.002)</td>
       <td>0.020 (+/- 0.001)</td>
       <td>0.014 (+/- 0.000)</td>
-      <td>0.136 (+/- 0.006)</td>
+      <td>0.134 (+/- 0.003)</td>
     </tr>
     <tr>
       <th>test_accuracy</th>
       <td>0.508 (+/- 0.001)</td>
       <td>0.734 (+/- 0.032)</td>
       <td>0.758 (+/- 0.035)</td>
-      <td>0.779 (+/- 0.035)</td>
-      <td>0.774 (+/- 0.035)</td>
+      <td>0.789 (+/- 0.029)</td>
+      <td>0.773 (+/- 0.021)</td>
       <td>0.773 (+/- 0.014)</td>
-      <td>0.794 (+/- 0.029)</td>
+      <td>0.793 (+/- 0.023)</td>
     </tr>
     <tr>
       <th>train_accuracy</th>
@@ -1517,17 +1512,17 @@ After that, feature selection and hyperparameter tuning will carried out in late
       <td>1.000 (+/- 0.000)</td>
       <td>1.000 (+/- 0.000)</td>
       <td>1.000 (+/- 0.000)</td>
-      <td>0.931 (+/- 0.002)</td>
+      <td>0.930 (+/- 0.002)</td>
     </tr>
     <tr>
       <th>test_roc_auc</th>
       <td>0.500 (+/- 0.000)</td>
       <td>0.805 (+/- 0.034)</td>
       <td>0.840 (+/- 0.030)</td>
-      <td>0.856 (+/- 0.028)</td>
-      <td>0.846 (+/- 0.028)</td>
+      <td>0.862 (+/- 0.031)</td>
+      <td>0.844 (+/- 0.031)</td>
       <td>0.850 (+/- 0.028)</td>
-      <td>0.864 (+/- 0.032)</td>
+      <td>0.863 (+/- 0.031)</td>
     </tr>
     <tr>
       <th>train_roc_auc</th>
@@ -1546,8 +1541,6 @@ After that, feature selection and hyperparameter tuning will carried out in late
 <p>All the non-linear models are overfitting as all the training scores are close to 1. Compared to most of the models, <code class="docutils literal notranslate"><span class="pre">CatBoost</span></code> is the most balanced model in performance, it has the highest accuracy and comparatively less overfitting (the gap between train and validation scores is smaller).</p>
 <p>However, the fit time for<code class="docutils literal notranslate"><span class="pre">cat_boost</span></code> is slow. It may be a concern as the algorithm is likely to refit every user by the latest song listening history whenever the user wants to update their playlist. Moreover, the score time of <code class="docutils literal notranslate"><span class="pre">cat_boost</span></code> is the slowest among all models but acceptable.</p>
 <p>Stability of scores is more or less stable, with standard deviation ranging in around 0.01.</p>
-<p><br><br></p>
-<p><br><br></p>
 </div>
 <div class="section" id="hyperparameter-optimization-very-time-consuming-tbc">
 <h3>Hyperparameter optimization (Very time consuming, TBC)<a class="headerlink" href="#hyperparameter-optimization-very-time-consuming-tbc" title="Permalink to this headline">¶</a></h3>
@@ -1596,12 +1589,11 @@ After that, feature selection and hyperparameter tuning will carried out in late
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5_Machine_Learning_68_0.png" src="_images/5_Machine_Learning_68_0.png" />
+<img alt="_images/5_Machine_Learning_60_0.png" src="_images/5_Machine_Learning_60_0.png" />
 </div>
 </div>
 <p>We examined the most important features of <code class="docutils literal notranslate"><span class="pre">CatBoostClassifier</span></code> with SHAP methods. The results suggests that the most important feature are <code class="docutils literal notranslate"><span class="pre">instrumentalness</span></code>, <code class="docutils literal notranslate"><span class="pre">loudness</span></code> and <code class="docutils literal notranslate"><span class="pre">speechiness</span></code>. It introduced a very different results comparing to the linear model, which suggested <code class="docutils literal notranslate"><span class="pre">artist</span></code> is the most important features.</p>
 <p>One interesting observation from the result here is that, the importance of <code class="docutils literal notranslate"><span class="pre">artist</span></code> suggested by two models are different too. Top 3 <code class="docutils literal notranslate"><span class="pre">artist</span></code> from linear model are <strong>FIDLAR</strong>, <strong>Beach House</strong>, <strong>Perfume Genius</strong>, while top 3 <code class="docutils literal notranslate"><span class="pre">artist</span></code> from linear model are <strong>Disclosure</strong>, <strong>Kanye West</strong> and <strong>Purity Ring</strong>. Nevertheless, all of the artists above are noticeable from EDA <strong>Artist like world cloud</strong>.</p>
-<p><br><br></p>
 </div>
 </div>
 <div class="section" id="model-averaging">
@@ -1664,36 +1656,36 @@ After that, feature selection and hyperparameter tuning will carried out in late
   <tbody>
     <tr>
       <th>fit_time</th>
-      <td>0.015 (+/- 0.002)</td>
-      <td>0.094 (+/- 0.011)</td>
-      <td>5.734 (+/- 0.154)</td>
-      <td>0.453 (+/- 0.021)</td>
-      <td>1.008 (+/- 0.047)</td>
-      <td>0.068 (+/- 0.002)</td>
-      <td>2.772 (+/- 0.060)</td>
-      <td>1.804 (+/- 0.200)</td>
+      <td>0.014 (+/- 0.003)</td>
+      <td>0.105 (+/- 0.013)</td>
+      <td>5.130 (+/- 0.050)</td>
+      <td>0.371 (+/- 0.015)</td>
+      <td>0.967 (+/- 0.020)</td>
+      <td>0.071 (+/- 0.006)</td>
+      <td>2.666 (+/- 0.139)</td>
+      <td>1.463 (+/- 0.054)</td>
     </tr>
     <tr>
       <th>score_time</th>
-      <td>0.014 (+/- 0.002)</td>
-      <td>0.014 (+/- 0.000)</td>
-      <td>0.021 (+/- 0.002)</td>
-      <td>0.039 (+/- 0.006)</td>
+      <td>0.012 (+/- 0.001)</td>
+      <td>0.018 (+/- 0.002)</td>
+      <td>0.015 (+/- 0.001)</td>
+      <td>0.036 (+/- 0.002)</td>
       <td>0.020 (+/- 0.001)</td>
       <td>0.014 (+/- 0.000)</td>
-      <td>0.136 (+/- 0.006)</td>
-      <td>0.075 (+/- 0.004)</td>
+      <td>0.134 (+/- 0.003)</td>
+      <td>0.071 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>test_accuracy</th>
       <td>0.508 (+/- 0.001)</td>
       <td>0.734 (+/- 0.032)</td>
       <td>0.758 (+/- 0.035)</td>
-      <td>0.779 (+/- 0.035)</td>
-      <td>0.774 (+/- 0.035)</td>
+      <td>0.789 (+/- 0.029)</td>
+      <td>0.773 (+/- 0.021)</td>
       <td>0.773 (+/- 0.014)</td>
-      <td>0.794 (+/- 0.029)</td>
-      <td>0.777 (+/- 0.023)</td>
+      <td>0.793 (+/- 0.023)</td>
+      <td>0.776 (+/- 0.016)</td>
     </tr>
     <tr>
       <th>train_accuracy</th>
@@ -1703,7 +1695,7 @@ After that, feature selection and hyperparameter tuning will carried out in late
       <td>1.000 (+/- 0.000)</td>
       <td>1.000 (+/- 0.000)</td>
       <td>1.000 (+/- 0.000)</td>
-      <td>0.931 (+/- 0.002)</td>
+      <td>0.930 (+/- 0.002)</td>
       <td>1.000 (+/- 0.000)</td>
     </tr>
     <tr>
@@ -1711,11 +1703,11 @@ After that, feature selection and hyperparameter tuning will carried out in late
       <td>0.500 (+/- 0.000)</td>
       <td>0.805 (+/- 0.034)</td>
       <td>0.840 (+/- 0.030)</td>
-      <td>0.856 (+/- 0.028)</td>
-      <td>0.846 (+/- 0.028)</td>
+      <td>0.862 (+/- 0.031)</td>
+      <td>0.844 (+/- 0.031)</td>
       <td>0.850 (+/- 0.028)</td>
-      <td>0.864 (+/- 0.032)</td>
-      <td>0.857 (+/- 0.026)</td>
+      <td>0.863 (+/- 0.031)</td>
+      <td>0.858 (+/- 0.028)</td>
     </tr>
     <tr>
       <th>train_roc_auc</th>
@@ -1733,7 +1725,6 @@ After that, feature selection and hyperparameter tuning will carried out in late
 </div></div></div>
 </div>
 <p>According to the result, averaging the models neither help the overfitting issue nor scoring. However, the fit score is indeed faster than <code class="docutils literal notranslate"><span class="pre">Cat_Boost</span></code>. <code class="docutils literal notranslate"><span class="pre">CatBoostClassifier</span></code> is still the best model.</p>
-<p><br><br></p>
 </div>
 <div class="section" id="results-on-the-test-set">
 <h2>Results on the test set<a class="headerlink" href="#results-on-the-test-set" title="Permalink to this headline">¶</a></h2>
@@ -1781,7 +1772,7 @@ After that, feature selection and hyperparameter tuning will carried out in late
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5_Machine_Learning_81_0.png" src="_images/5_Machine_Learning_81_0.png" />
+<img alt="_images/5_Machine_Learning_71_0.png" src="_images/5_Machine_Learning_71_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1809,7 +1800,7 @@ After that, feature selection and hyperparameter tuning will carried out in late
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5_Machine_Learning_83_0.png" src="_images/5_Machine_Learning_83_0.png" />
+<img alt="_images/5_Machine_Learning_73_0.png" src="_images/5_Machine_Learning_73_0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1841,7 +1832,7 @@ After that, feature selection and hyperparameter tuning will carried out in late
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5_Machine_Learning_86_0.png" src="_images/5_Machine_Learning_86_0.png" />
+<img alt="_images/5_Machine_Learning_76_0.png" src="_images/5_Machine_Learning_76_0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1890,36 +1881,36 @@ After that, feature selection and hyperparameter tuning will carried out in late
   <tbody>
     <tr>
       <th>fit_time</th>
-      <td>0.015 (+/- 0.002)</td>
-      <td>0.094 (+/- 0.011)</td>
-      <td>5.734 (+/- 0.154)</td>
-      <td>0.453 (+/- 0.021)</td>
-      <td>1.008 (+/- 0.047)</td>
-      <td>0.068 (+/- 0.002)</td>
-      <td>2.772 (+/- 0.060)</td>
-      <td>1.804 (+/- 0.200)</td>
+      <td>0.014 (+/- 0.003)</td>
+      <td>0.105 (+/- 0.013)</td>
+      <td>5.130 (+/- 0.050)</td>
+      <td>0.371 (+/- 0.015)</td>
+      <td>0.967 (+/- 0.020)</td>
+      <td>0.071 (+/- 0.006)</td>
+      <td>2.666 (+/- 0.139)</td>
+      <td>1.463 (+/- 0.054)</td>
     </tr>
     <tr>
       <th>score_time</th>
-      <td>0.014 (+/- 0.002)</td>
-      <td>0.014 (+/- 0.000)</td>
-      <td>0.021 (+/- 0.002)</td>
-      <td>0.039 (+/- 0.006)</td>
+      <td>0.012 (+/- 0.001)</td>
+      <td>0.018 (+/- 0.002)</td>
+      <td>0.015 (+/- 0.001)</td>
+      <td>0.036 (+/- 0.002)</td>
       <td>0.020 (+/- 0.001)</td>
       <td>0.014 (+/- 0.000)</td>
-      <td>0.136 (+/- 0.006)</td>
-      <td>0.075 (+/- 0.004)</td>
+      <td>0.134 (+/- 0.003)</td>
+      <td>0.071 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>test_accuracy</th>
       <td>0.508 (+/- 0.001)</td>
       <td>0.734 (+/- 0.032)</td>
       <td>0.758 (+/- 0.035)</td>
-      <td>0.779 (+/- 0.035)</td>
-      <td>0.774 (+/- 0.035)</td>
+      <td>0.789 (+/- 0.029)</td>
+      <td>0.773 (+/- 0.021)</td>
       <td>0.773 (+/- 0.014)</td>
-      <td>0.794 (+/- 0.029)</td>
-      <td>0.777 (+/- 0.023)</td>
+      <td>0.793 (+/- 0.023)</td>
+      <td>0.776 (+/- 0.016)</td>
     </tr>
     <tr>
       <th>train_accuracy</th>
@@ -1929,7 +1920,7 @@ After that, feature selection and hyperparameter tuning will carried out in late
       <td>1.000 (+/- 0.000)</td>
       <td>1.000 (+/- 0.000)</td>
       <td>1.000 (+/- 0.000)</td>
-      <td>0.931 (+/- 0.002)</td>
+      <td>0.930 (+/- 0.002)</td>
       <td>1.000 (+/- 0.000)</td>
     </tr>
     <tr>
@@ -1937,11 +1928,11 @@ After that, feature selection and hyperparameter tuning will carried out in late
       <td>0.500 (+/- 0.000)</td>
       <td>0.805 (+/- 0.034)</td>
       <td>0.840 (+/- 0.030)</td>
-      <td>0.856 (+/- 0.028)</td>
-      <td>0.846 (+/- 0.028)</td>
+      <td>0.862 (+/- 0.031)</td>
+      <td>0.844 (+/- 0.031)</td>
       <td>0.850 (+/- 0.028)</td>
-      <td>0.864 (+/- 0.032)</td>
-      <td>0.857 (+/- 0.026)</td>
+      <td>0.863 (+/- 0.031)</td>
+      <td>0.858 (+/- 0.028)</td>
     </tr>
     <tr>
       <th>train_roc_auc</th>
