@@ -1,3 +1,5 @@
 .DS_Store
 .Ipynb
 spotify_user_behaviour_predictor/.ipynb_checkpoints/
+spotify_user_behaviour_predictor/data/credentials.json
+spotify_user_behaviour_predictor/data/.ipynb_checkpoints/
