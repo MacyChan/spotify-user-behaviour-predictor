@@ -1,9 +1,9 @@
 # author: Macy Chan
-# date: 2021-11-19
+# date: 2022-01-10
 
-"""Downloads data from the web and unzip the data.
+"""Get Lyrics by artist and song_title in csv. Output a csv file with artist, song_title and lyrics. "../data/credentials.json" has Genius credentials.
 
-Usage: src/down_data.py
+Usage: src/getLyrics.py
 
 Options:
 
@@ -63,23 +63,24 @@ def main():
         token = login["token"]
         genius = lyricsgenius.Genius(token, retries=5)
 
-        spotify_df = pd.read_csv("../data/spotify_data_with_artist.csv")
-        spotify_df["lyrics"] = ""
+        spotify_df = pd.read_csv("../data/spotify_data.csv")
+        spotify_df_lyrics = spotify_df.loc[:, "song_title":"artist"]
+        spotify_df_lyrics["lyrics"] = ""
 
-        with alive_bar(len(spotify_df), bar="bubbles", spinner="notes2") as bar:
-            for i in range(len(spotify_df)):
+        with alive_bar(len(spotify_df_lyrics), bar="bubbles", spinner="notes2") as bar:
+            for i in range(len(spotify_df_lyrics)):
                 lyrics = getLyrics(
                     genius,
-                    spotify_df.iloc[i]["song_title"],
-                    spotify_df.iloc[i]["artist"],
+                    spotify_df_lyrics.iloc[i]["song_title"],
+                    spotify_df_lyrics.iloc[i]["artist"],
                 )
 
                 if lyrics:
                     lyrics = re.sub("\[(.*?)\]", "", lyrics)
-                    spotify_df["lyrics"][i] = lyrics
+                    spotify_df_lyrics["lyrics"][i] = lyrics
                 bar()
 
-        spotify_df.to_csv("../data/spotify_df_processed_test.csv", index=False)
+        spotify_df_lyrics.to_csv("../data/spotify_df_processed.csv", index=False)
 
     except Exception as req:
         print(req)
@@ -87,4 +88,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    # main(opt["--url"], opt["--out_folder"])
