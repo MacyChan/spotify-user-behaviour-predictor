@@ -51,7 +51,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Machine Learning analysis" href="5_Machine_Learning.html" />
+    <link rel="next" title="Feature engineering" href="5_Feature_Engine.html" />
     <link rel="prev" title="Explanatory data analysis" href="3_EDA.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -98,7 +98,7 @@
 </ul>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="2_notebooks.html">
+  <a class="reference internal" href="2_about_proj.html">
    About this project
   </a>
  </li>
@@ -113,12 +113,17 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="5_Machine_Learning.html">
+  <a class="reference internal" href="5_Feature_Engine.html">
+   Feature engineering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6_Machine_Learning.html">
    Machine Learning analysis
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="6_Conclusion.html">
+  <a class="reference internal" href="7_Conclusion.html">
    Conclusion
   </a>
  </li>
@@ -281,21 +286,34 @@
 <h2>Import libaries<a class="headerlink" href="#import-libaries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
-<span class="n">library</span><span class="p">(</span><span class="n">broom</span><span class="p">)</span>
-<span class="n">library</span><span class="p">(</span><span class="n">GGally</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">broom</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">GGally</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">zn</span><span class="o">/</span><span class="mi">40</span><span class="n">lvk7q11ddb7fryhn5vq7x80000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_94004</span><span class="o">/</span><span class="mf">3796281200.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">library</span><span class="p">(</span><span class="n">broom</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">library</span><span class="p">(</span><span class="n">GGally</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;library&#39; is not defined
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>── <span class=" -Color -Color-Bold">Attaching packages</span> ────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.1 ──
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">ggplot2</span> 3.3.5     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">purrr  </span> 0.3.4
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">tibble </span> 3.1.6     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">dplyr  </span> 1.0.7
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">tidyr  </span> 1.1.4     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">stringr</span> 1.4.0
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">readr  </span> 2.1.0     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">forcats</span> 0.5.1
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>── <span class=" -Color -Color-Bold">Conflicts</span> ───────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">filter()</span> masks <span class=" -Color -Color-Blue">stats</span>::filter()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">lag()</span>    masks <span class=" -Color -Color-Blue">stats</span>::lag()
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
+“package ‘broom’ was built under R version 4.1.2”
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Registered S3 method overwritten by &#39;GGally&#39;:
+  method from   
+  +.gg   ggplot2
 </pre></div>
 </div>
 </div>
@@ -306,24 +324,26 @@
 <p>Read in the data CSV and store it as a pandas dataframe named <code class="docutils literal notranslate"><span class="pre">spotify_df</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spotify_df</span> <span class="o">&lt;-</span> <span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/spotify_data.csv&quot;</span><span class="p">)</span>
-<span class="n">head</span><span class="p">(</span><span class="n">spotify_df</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">spotify_df</span> <span class="o">&lt;-</span> <span class="nf">read_csv</span><span class="p">(</span><span class="s">&quot;data/spotify_data.csv&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">spotify_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>New names:
 * `` -&gt; ...1
-
-<span class=" -Color -Color-Bold">Rows: </span><span class=" -Color -Color-Blue">2017</span> <span class=" -Color -Color-Bold">Columns: </span><span class=" -Color -Color-Blue">17</span>
-
-<span class=" -Color -Color-Cyan">──</span> <span class=" -Color -Color-Bold">Column specification</span> <span class=" -Color -Color-Cyan">────────────────────────────────────────────────────────</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">Rows: </span><span class=" -Color -Color-Blue">2017</span> <span class=" -Color -Color-Bold">Columns: </span><span class=" -Color -Color-Blue">17</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Cyan">──</span> <span class=" -Color -Color-Bold">Column specification</span> <span class=" -Color -Color-Cyan">───────────────────────────────────────────────────────────────────────────────────────────────────────────────────</span>
 <span class=" -Color -Color-Bold">Delimiter:</span> &quot;,&quot;
 <span class=" -Color -Color-Red">chr</span>  (2): song_title, artist
 <span class=" -Color -Color-Green">dbl</span> (15): ...1, acousticness, danceability, duration_ms, energy, instrumenta...
-
-
-<span class=" -Color -Color-Cyan">ℹ</span> Use <span class=" -Color -Color-Black -Color-Black-BGWhite">`spec()`</span> to retrieve the full column specification for this data.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Cyan">ℹ</span> Use <span class=" -Color -Color-Black -Color-Black-BGWhite">`spec()`</span> to retrieve the full column specification for this data.
 <span class=" -Color -Color-Cyan">ℹ</span> Specify the column types or set <span class=" -Color -Color-Black -Color-Black-BGWhite">`show_col_types = FALSE`</span> to quiet this message.
 </pre></div>
 </div>
@@ -354,8 +374,8 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spotify_df_num</span> <span class="o">&lt;-</span> <span class="n">spotify_df</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">15</span><span class="p">]</span>
-<span class="n">head</span><span class="p">(</span><span class="n">spotify_df_num</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">spotify_df_num</span> <span class="o">&lt;-</span> <span class="n">spotify_df</span><span class="p">[</span><span class="m">2</span><span class="o">:</span><span class="m">15</span><span class="p">]</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">spotify_df_num</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -384,10 +404,10 @@
 <p>Here, I am interested in determining factors associated with <code class="docutils literal notranslate"><span class="pre">target</span></code>. In particular, I will use a Multiple Linear Regression (MLR) Model to study the relation between <code class="docutils literal notranslate"><span class="pre">target</span></code> and all other features.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ML_reg</span> <span class="o">&lt;-</span> <span class="n">lm</span><span class="p">(</span> <span class="n">target</span> <span class="o">~</span> <span class="o">.</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">spotify_df_num</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="n">tidy</span><span class="p">(</span><span class="n">conf</span><span class="o">.</span><span class="n">int</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ML_reg</span> <span class="o">&lt;-</span> <span class="nf">lm</span><span class="p">(</span> <span class="n">target</span> <span class="o">~</span> <span class="n">.</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">spotify_df_num</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="nf">tidy</span><span class="p">(</span><span class="n">conf.int</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
 
 <span class="n">ML_reg</span><span class="o">&lt;-</span> <span class="n">ML_reg</span> <span class="o">|&gt;</span>
-    <span class="n">mutate</span><span class="p">(</span><span class="n">Significant</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">)</span>
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">Significant</span> <span class="o">=</span> <span class="n">p.value</span> <span class="o">&lt;</span> <span class="m">0.05</span><span class="p">)</span>
 
 <span class="n">ML_reg</span>
 </pre></div>
@@ -424,9 +444,9 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ML_reg</span> <span class="o">|&gt;</span>
-    <span class="nb">filter</span><span class="p">(</span><span class="n">Significant</span> <span class="o">==</span> <span class="n">TRUE</span><span class="p">)</span> <span class="o">|&gt;</span>
-    <span class="n">select</span><span class="p">(</span><span class="n">term</span><span class="p">)</span> 
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ML_reg</span> <span class="o">|&gt;</span>
+    <span class="nf">filter</span><span class="p">(</span><span class="n">Significant</span> <span class="o">==</span> <span class="kc">TRUE</span><span class="p">)</span> <span class="o">|&gt;</span>
+    <span class="nf">select</span><span class="p">(</span><span class="n">term</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
@@ -454,7 +474,7 @@
 <p>Below is the ggpair plots to visual the correlation between different features.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggpairs</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">spotify_df_num</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggpairs</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">spotify_df_num</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -498,10 +518,10 @@
             <p class="prev-next-title">Explanatory data analysis</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="5_Machine_Learning.html" title="next page">
+    <a class='right-next' id="next-link" href="5_Feature_Engine.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Machine Learning analysis</p>
+        <p class="prev-next-title">Feature engineering</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
