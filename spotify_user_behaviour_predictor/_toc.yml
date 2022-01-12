@@ -4,8 +4,9 @@
 format: jb-book
 root: 1_intro
 chapters:
-- file: 2_notebooks
+- file: 2_about_proj
 - file: 3_EDA
 - file: 4_Stat_Infer
-- file: 5_Machine_Learning
-- file: 6_Conclusion
+- file: 5_Feature_Engine
+- file: 6_Machine_Learning
+- file: 7_Conclusion
