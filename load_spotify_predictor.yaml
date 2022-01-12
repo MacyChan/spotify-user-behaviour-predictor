@@ -27,4 +27,5 @@ dependencies:
   - pip:
     - mglearn
     - psutil>=5.7.2
+    - wordcloud
     
