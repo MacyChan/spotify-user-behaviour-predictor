@@ -1,0 +1,31 @@
+name: 'spotify_user_behaviour_predictor'
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - ipykernel
+  - matplotlib>=3.2.2
+  - scikit-learn>=1.0
+  - pandas>=1.3.*
+  - requests>=2.24.0
+  - altair 
+  - vega_datasets
+  - graphviz
+  - python-graphviz
+  - jinja2
+  - pip
+  - lightgbm
+  - py-xgboost==1.3.0
+  - catboost
+  - spacy
+  - wikipedia
+  - nltk
+  - eli5
+  - shap
+  - seaborn
+  - imbalanced-learn
+  - pip:
+    - mglearn
+    - psutil>=5.7.2
+    - wordcloud
+    

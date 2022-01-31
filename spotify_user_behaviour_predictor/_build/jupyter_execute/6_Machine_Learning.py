@@ -11,7 +11,7 @@
 
 # ### Import libraries
 
-# In[1]:
+# In[3]:
 
 
 import matplotlib.pyplot as plt
@@ -53,7 +53,7 @@ import shap
 #from sklearn.model_selection import cross_val_predict
 
 
-# In[2]:
+# In[4]:
 
 
 def mean_std_cross_val_scores(model, X_train, y_train, **kwargs):
@@ -89,7 +89,7 @@ def mean_std_cross_val_scores(model, X_train, y_train, **kwargs):
 # ### Reading the data CSV
 # Read in the data CSV and store it as a pandas dataframe named `spotify_df`.
 
-# In[3]:
+# In[5]:
 
 
 spotify_df = pd.read_csv('data/spotify_df_processed.csv')#, index_col = 0 )
@@ -99,7 +99,7 @@ spotify_df.head(6)
 # ## Data splitting
 # Split the data into train and test portions. Remove `song_title`, separate data to `X_train`, `y_train`, `X_test`, `y_test`.
 
-# In[4]:
+# In[6]:
 
 
 train_df, test_df = train_test_split(spotify_df, test_size=0.2, random_state=123)
@@ -107,7 +107,7 @@ X_train, y_train = train_df.drop(columns=["target"]), train_df["target"].astype(
 X_test, y_test = test_df.drop(columns=["target"]), test_df["target"].astype('category')
 
 
-# In[5]:
+# In[7]:
 
 
 # printing the number of observations for train and test sets
@@ -121,7 +121,7 @@ print('The number of observations for test set: ', test_df['target'].shape[0])
 
 # Since it is a balanced data set and both positive and negative class are equally balanced, accuracy and precision-recall curves are selected as scoring metric.
 
-# In[6]:
+# In[8]:
 
 
 scoring_metric = ["accuracy", "roc_auc"]
@@ -138,7 +138,7 @@ scoring_metric = ["accuracy", "roc_auc"]
 # | none     | The format are as required | `genres_` |
 # | drop     | Free text column which has low correlation with target.| `song_title` |
 
-# In[7]:
+# In[9]:
 
 
 category_feats = ["key", "artist"]
@@ -164,13 +164,13 @@ preprocessor.fit(X_train, y_train)
 
 # ## Baseline model
 
-# In[8]:
+# In[10]:
 
 
 results = {}
 
 
-# In[9]:
+# In[11]:
 
 
 dummy = DummyClassifier()
@@ -179,7 +179,7 @@ results['dummy'] = mean_std_cross_val_scores(make_pipeline(preprocessor, dummy),
                                              return_train_score=True, scoring=scoring_metric)
 
 
-# In[10]:
+# In[12]:
 
 
 pd.DataFrame(results)
@@ -191,7 +191,7 @@ pd.DataFrame(results)
 # ### Model training - LogisticRegression
 # First, a linear model is used as a first real attempt. Hyperparameter tuning is also carried out for tuning to explore different values for the regularization hyperparameter. Cross-validation scores along with standard deviation and results summary is shown in below.
 
-# In[11]:
+# In[13]:
 
 
 #pipe logistic regression
@@ -200,7 +200,7 @@ pipe_logisticregression = make_pipeline(preprocessor,
                                              random_state=123))
 
 
-# In[12]:
+# In[14]:
 
 
 #save in the results logistic regression score
@@ -217,7 +217,7 @@ pd.DataFrame(results)
 
 # We will carry out hyperparameter optimization: C controls the regularization, and class_weight hyperparameter for tackling class imbalance. 
 
-# In[13]:
+# In[15]:
 
 
 #parameters for logistic regression
@@ -236,7 +236,7 @@ random_search_lg = RandomizedSearchCV(
 )
 
 
-# In[14]:
+# In[ ]:
 
 
 random_search_lg.fit(X_train, y_train)
@@ -244,7 +244,7 @@ print("Best parameter values are:", random_search_lg.best_params_)
 print("Best cv score is:", random_search_lg.best_score_)
 
 
-# In[15]:
+# In[ ]:
 
 
 results['LogisticReg_opt'] = mean_std_cross_val_scores(random_search_lg, 
