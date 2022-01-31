@@ -56,7 +56,7 @@ get_ipython().run_cell_magic('R', '', 'spotify_df_num <- spotify_df[2:15]\nhead(
 # In[6]:
 
 
-get_ipython().run_cell_magic('R', '', 'ML_reg <- lm( target ~ ., data = spotify_df_num) |> tidy(conf.int = TRUE)\n\nML_reg<- ML_reg |>\n    mutate(Significant = p.value < 0.05)\n\nML_reg')
+get_ipython().run_cell_magic('R', '', 'ML_reg <- lm( target ~ ., data = spotify_df_num) |> tidy(conf.int = TRUE)\n\nML_reg<- ML_reg |>\n    mutate(Significant = p.value < 0.05) |>\n    mutate_if(is.numeric, round, 3)\n\nML_reg')
 
 
 # - We can see that a lot of features are statiscally correlated with target. They are listed in the table below.
