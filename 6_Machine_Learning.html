@@ -41,7 +41,7 @@
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -173,7 +173,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -224,7 +224,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -342,7 +342,128 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Machine Learning analysis</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imports">
+   Imports
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-libraries">
+     Import libraries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reading-the-data-csv">
+     Reading the data CSV
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-splitting">
+   Data splitting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scoring-metric">
+   Scoring metric
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preprocessing-and-transformations">
+   Preprocessing and transformations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#baseline-model">
+   Baseline model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-models">
+   Linear models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-training-logisticregression">
+     Model training - LogisticRegression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hyperparameter-optimization">
+     hyperparameter optimization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-interpretation-on-training-set">
+     Model interpretation on Training set
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#non-linear-models">
+   Non-linear models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-training-randomforestclassifier-xgbclassifier-lgbmclassifier-catboostclassifier">
+     Model training - RandomForestClassifier, XGBClassifier, LGBMClassifier, CatBoostClassifier
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hyperparameter-optimization-very-time-consuming-tbc">
+     Hyperparameter optimization (Very time consuming, TBC)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Model interpretation on Training set
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-averaging">
+   Model Averaging
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results-on-the-test-set">
+   Results on the test set
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretation-and-feature-importances-on-test-set">
+     Interpretation and feature importances on Test set
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-of-machine-learning-results">
+   Summary of machine learning results
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="machine-learning-analysis">
@@ -737,10 +858,10 @@ The number of observations for test set:  958
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ColumnTransformer(transformers=[(&#39;drop&#39;, &#39;drop&#39;, [&#39;song_title&#39;]),
                                 (&#39;standardscaler&#39;, StandardScaler(),
-                                 [&#39;duration_ms&#39;, &#39;liveness&#39;, &#39;loudness&#39;,
-                                  &#39;valence&#39;, &#39;mode&#39;, &#39;time_signature&#39;,
-                                  &#39;danceability&#39;, &#39;tempo&#39;, &#39;instrumentalness&#39;,
-                                  &#39;acousticness&#39;, &#39;energy&#39;, &#39;speechiness&#39;]),
+                                 [&#39;time_signature&#39;, &#39;tempo&#39;, &#39;speechiness&#39;,
+                                  &#39;danceability&#39;, &#39;instrumentalness&#39;, &#39;valence&#39;,
+                                  &#39;loudness&#39;, &#39;liveness&#39;, &#39;mode&#39;, &#39;energy&#39;,
+                                  &#39;acousticness&#39;, &#39;duration_ms&#39;]),
                                 (&#39;onehotencoder&#39;,
                                  OneHotEncoder(handle_unknown=&#39;ignore&#39;,
                                                sparse=False),
@@ -800,11 +921,11 @@ The number of observations for test set:  958
   <tbody>
     <tr>
       <th>fit_time</th>
-      <td>0.043 (+/- 0.035)</td>
+      <td>0.033 (+/- 0.007)</td>
     </tr>
     <tr>
       <th>score_time</th>
-      <td>0.019 (+/- 0.002)</td>
+      <td>0.020 (+/- 0.002)</td>
     </tr>
     <tr>
       <th>test_accuracy</th>
@@ -882,13 +1003,13 @@ The number of observations for test set:  958
   <tbody>
     <tr>
       <th>fit_time</th>
-      <td>0.043 (+/- 0.035)</td>
-      <td>1.586 (+/- 0.046)</td>
+      <td>0.033 (+/- 0.007)</td>
+      <td>1.462 (+/- 0.022)</td>
     </tr>
     <tr>
       <th>score_time</th>
-      <td>0.019 (+/- 0.002)</td>
-      <td>0.059 (+/- 0.011)</td>
+      <td>0.020 (+/- 0.002)</td>
+      <td>0.043 (+/- 0.006)</td>
     </tr>
     <tr>
       <th>test_accuracy</th>
@@ -943,12 +1064,6 @@ The number of observations for test set:  958
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_search_lg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best parameter values are:&quot;</span><span class="p">,</span> <span class="n">random_search_lg</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best cv score is:&quot;</span><span class="p">,</span> <span class="n">random_search_lg</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best parameter values are: {&#39;logisticregression__class_weight&#39;: &#39;balanced&#39;, &#39;logisticregression__C&#39;: 2.6}
-Best cv score is: 0.8880174699841026
 </pre></div>
 </div>
 </div>
@@ -2033,8 +2148,8 @@ After that, feature selection and hyperparameter tuning will carried out in late
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="5_Feature_Engine.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -2051,19 +2166,17 @@ After that, feature selection and hyperparameter tuning will carried out in late
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Macy Chan<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Macy Chan<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 
