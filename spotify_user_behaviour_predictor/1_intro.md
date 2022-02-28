@@ -33,8 +33,4 @@ For further application of the trained model, we can refit the prediction model 
 
 
 ### Upcoming updates
-- Edit Conclusion
-- Revise Statistic Analysis
-- Add Dependencies/ Environment requirements
-
-# References
+- PCA feature engineering on `genres` and `word embedding sentiment analysis`.

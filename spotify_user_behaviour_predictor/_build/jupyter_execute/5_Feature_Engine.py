@@ -5,13 +5,15 @@
 # In feature engineering, we carry out feature engineering, extract new features that are relevant for the problem. For Spotify data set, three additional features are extracted from Spotify API and Genius API. Two scripts are developed for the data extraction.
 # 
 # 1. Extract artist genre using Spotify API (JAVA) [Here](https://github.com/MacyChan/spotify-user-behaviour-predictor/blob/master/spotify_user_behaviour_predictor/scr/getLyrics.py)
-# 2. Extract song lyric using self developed package (Python) [Here](https://github.com/UBC-MDS/pylyrics)
+# 2. Extract song lyric using self developed package - pylyrics2 (Python) [Here](https://pypi.org/project/pylyrics2/), demo can be found in appendix
 
 # In[1]:
 
 
 import pandas as pd
+import numpy as np
 import re
+from sentence_transformers import SentenceTransformer
 
 
 # ## Reading the data CSV
@@ -65,13 +67,13 @@ spotify_df.head(6)
 
 
 # ## Song Information
-# `lyrics` is extracted from Genius API, which included the lyrics of the corresponding song.  
-# A python script is developed for scraping the lyrics [here]()
+# `lyrics` is extracted from pylyrics2 API, which included the lyrics of the corresponding song.  
+# A python script is developed for scraping the lyrics [here](https://pypi.org/project/pylyrics2/)
 
 # In[6]:
 
 
-lyrics_df = pd.read_csv('data/lyrics_info.csv', index_col = 0 )
+lyrics_df = pd.read_csv('data/lyrics_info_clean.csv', index_col = 0 )
 lyrics_df.head(6)
 
 
@@ -84,10 +86,31 @@ spotify_df = spotify_df.merge(lyrics_df)
 spotify_df.head(6)
 
 
+# ## Lyrics analysis (NLP)
+# Using [paraphrase-distilroberta-base-v1](https://huggingface.co/sentence-transformers/paraphrase-distilroberta-base-v1) to maps sentences & paragraphs to a 768 dimensional dense vector space.
+
+# In[8]:
+
+
+spotify_df_dropna = spotify_df.query("lyrics == lyrics")
+embedder = SentenceTransformer("paraphrase-distilroberta-base-v1")
+emb_sents = embedder.encode(spotify_df_dropna["lyrics"].to_list())
+
+
+# Merge with original dataframe.
+
+# In[9]:
+
+
+emb_sent_df = pd.DataFrame(emb_sents, index=spotify_df_dropna.index).add_prefix('emb_sent_')
+spotify_df = spotify_df.join(emb_sent_df)
+spotify_df.head(6)
+
+
 # ## Export CSV
 # Export new csv with additional feature for further machine learning process.
 
-# In[8]:
+# In[10]:
 
 
 spotify_df.to_csv('data/spotify_df_processed.csv',index=False)
