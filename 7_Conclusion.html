@@ -41,7 +41,7 @@
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -51,6 +51,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Appendix" href="8_Appendix.html" />
     <link rel="prev" title="Machine Learning analysis" href="6_Machine_Learning.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -126,6 +127,11 @@
    Conclusion
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="8_Appendix.html">
+   Appendix
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -172,7 +178,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -223,7 +229,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -243,30 +249,7 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Conclusion</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary-of-the-whole-project">
-   Summary of the whole project
-  </a>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="conclusion">
@@ -280,7 +263,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/model_results.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">)</span>
-<span class="n">results</span>
+<span class="n">results</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;fit time&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;score time&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;test accuracy&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;train accuracy&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;test ROC AUC&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;train ROC AUC&#39;</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -303,6 +286,7 @@
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>dummy</th>
       <th>LogisticReg</th>
       <th>LogisticReg_opt</th>
       <th>RandomForest</th>
@@ -311,85 +295,80 @@
       <th>Cat_Boost</th>
       <th>averaging</th>
     </tr>
-    <tr>
-      <th>dummy</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0.030 (+/- 0.007)</th>
-      <td>0.369 (+/- 0.016)</td>
-      <td>14.622 (+/- 1.540)</td>
-      <td>0.964 (+/- 0.028)</td>
-      <td>2.203 (+/- 0.164)</td>
-      <td>0.153 (+/- 0.017)</td>
-      <td>3.150 (+/- 0.202)</td>
-      <td>3.238 (+/- 0.247)</td>
+      <th>fit time</th>
+      <td>0.138 (+/- 0.015)</td>
+      <td>13.436 (+/- 0.415)</td>
+      <td>729.602 (+/- 1.470)</td>
+      <td>3.025 (+/- 0.158)</td>
+      <td>6.629 (+/- 0.337)</td>
+      <td>2.496 (+/- 0.136)</td>
+      <td>43.591 (+/- 0.065)</td>
+      <td>14.263 (+/- 0.906)</td>
     </tr>
     <tr>
-      <th>0.022 (+/- 0.008)</th>
-      <td>0.027 (+/- 0.001)</td>
-      <td>0.027 (+/- 0.003)</td>
-      <td>0.075 (+/- 0.007)</td>
-      <td>0.032 (+/- 0.001)</td>
-      <td>0.023 (+/- 0.001)</td>
-      <td>0.274 (+/- 0.017)</td>
-      <td>0.100 (+/- 0.004)</td>
+      <th>score time</th>
+      <td>0.054 (+/- 0.003)</td>
+      <td>0.138 (+/- 0.048)</td>
+      <td>0.126 (+/- 0.062)</td>
+      <td>0.096 (+/- 0.003)</td>
+      <td>0.072 (+/- 0.003)</td>
+      <td>0.061 (+/- 0.003)</td>
+      <td>0.675 (+/- 0.045)</td>
+      <td>0.278 (+/- 0.010)</td>
     </tr>
     <tr>
-      <th>0.520 (+/- 0.001)</th>
-      <td>0.873 (+/- 0.009)</td>
-      <td>0.887 (+/- 0.010)</td>
-      <td>0.941 (+/- 0.010)</td>
-      <td>0.937 (+/- 0.007)</td>
-      <td>0.937 (+/- 0.006)</td>
-      <td>0.930 (+/- 0.006)</td>
-      <td>0.940 (+/- 0.005)</td>
+      <th>test accuracy</th>
+      <td>0.520 (+/- 0.001)</td>
+      <td>0.887 (+/- 0.006)</td>
+      <td>0.888 (+/- 0.008)</td>
+      <td>0.900 (+/- 0.011)</td>
+      <td>0.944 (+/- 0.007)</td>
+      <td>0.950 (+/- 0.003)</td>
+      <td>0.954 (+/- 0.005)</td>
+      <td>0.951 (+/- 0.004)</td>
     </tr>
     <tr>
-      <th>0.520 (+/- 0.000)</th>
-      <td>0.931 (+/- 0.003)</td>
-      <td>0.959 (+/- 0.004)</td>
-      <td>0.997 (+/- 0.000)</td>
-      <td>0.997 (+/- 0.000)</td>
-      <td>0.996 (+/- 0.000)</td>
-      <td>0.968 (+/- 0.002)</td>
-      <td>0.997 (+/- 0.000)</td>
-    </tr>
-    <tr>
-      <th>0.500 (+/- 0.000)</th>
-      <td>0.950 (+/- 0.006)</td>
-      <td>0.961 (+/- 0.004)</td>
-      <td>0.989 (+/- 0.002)</td>
-      <td>0.981 (+/- 0.005)</td>
-      <td>0.981 (+/- 0.004)</td>
-      <td>0.975 (+/- 0.003)</td>
-      <td>0.989 (+/- 0.002)</td>
-    </tr>
-    <tr>
-      <th>0.500 (+/- 0.000)</th>
-      <td>0.977 (+/- 0.001)</td>
-      <td>0.988 (+/- 0.002)</td>
-      <td>1.000 (+/- 0.000)</td>
-      <td>1.000 (+/- 0.000)</td>
-      <td>1.000 (+/- 0.000)</td>
+      <th>train accuracy</th>
+      <td>0.520 (+/- 0.000)</td>
+      <td>0.972 (+/- 0.002)</td>
+      <td>0.974 (+/- 0.003)</td>
       <td>0.997 (+/- 0.001)</td>
+      <td>0.997 (+/- 0.001)</td>
+      <td>0.997 (+/- 0.001)</td>
+      <td>0.995 (+/- 0.001)</td>
+      <td>0.997 (+/- 0.001)</td>
+    </tr>
+    <tr>
+      <th>test ROC AUC</th>
+      <td>0.500 (+/- 0.000)</td>
+      <td>0.955 (+/- 0.005)</td>
+      <td>0.954 (+/- 0.005)</td>
+      <td>0.960 (+/- 0.002)</td>
+      <td>0.986 (+/- 0.001)</td>
+      <td>0.991 (+/- 0.002)</td>
+      <td>0.991 (+/- 0.002)</td>
+      <td>0.986 (+/- 0.001)</td>
+    </tr>
+    <tr>
+      <th>train ROC AUC</th>
+      <td>0.500 (+/- 0.000)</td>
+      <td>0.997 (+/- 0.000)</td>
+      <td>0.998 (+/- 0.000)</td>
+      <td>1.000 (+/- 0.000)</td>
+      <td>1.000 (+/- 0.000)</td>
+      <td>1.000 (+/- 0.000)</td>
+      <td>1.000 (+/- 0.000)</td>
       <td>1.000 (+/- 0.000)</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>Amongst the models, it is clear that <code class="docutils literal notranslate"><span class="pre">CatBoostClassifier</span></code> has the best accuracy and ROC AUC score. Moreover, the difference in scores between the test set and validation set are comparatively small, suggesting that there is minimal optimisation bias. Based on our test scores, our model is able to identify about <strong>77.2%</strong> of the cases.</p>
-<p>One thing that needs to be kept in mind is that, the fit time for<code class="docutils literal notranslate"><span class="pre">cat_boost</span></code> is slow. It can be a concern as the algorithm is likely to refit every user by the latest song listening history whenever the user wants to update their playlist. Moreover, the score time of <code class="docutils literal notranslate"><span class="pre">Cat_Boost</span></code> is the slowest among all models but acceptable. The processing time (fit + score time) is critical for the application.</p>
-<p>Hence, the other options after <code class="docutils literal notranslate"><span class="pre">Cat_Boost</span></code> may be <code class="docutils literal notranslate"><span class="pre">RandomForest</span></code> / <code class="docutils literal notranslate"><span class="pre">LGBM</span></code>, which require less processing time but similar scoring result. Further model training and new training set is needed for continuous model studying.</p>
+<p>Amongst the models, <code class="docutils literal notranslate"><span class="pre">LGBMClassifier</span></code> is the best model. Even though <code class="docutils literal notranslate"><span class="pre">CatBoostClassifier</span></code> has the best accuracy and ROC AUC score, the fit time for<code class="docutils literal notranslate"><span class="pre">cat_boost</span></code> is slow. It can be a concern as the algorithm is likely to refit every user by the latest song listening history whenever the user wants to update their playlist. For <code class="docutils literal notranslate"><span class="pre">LGBMClassifier</span></code>, the test accuracy is <strong>0.950</strong>, which is 0.004 lower than <code class="docutils literal notranslate"><span class="pre">CatBoostClassifier</span></code>, but the fit time is 20 times shorter.</p>
+<p>Therefore, <code class="docutils literal notranslate"><span class="pre">LGBMClassifier</span></code> will be used for the Soptify user behavior prediction.</p>
 </div>
 </div>
 
@@ -415,8 +394,8 @@
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+        
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="6_Machine_Learning.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -425,18 +404,27 @@
             <p class="prev-next-title">Machine Learning analysis</p>
         </div>
     </a>
+    <a class='right-next' id="next-link" href="8_Appendix.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Appendix</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-            
+        
         </div>
     </div>
     <footer class="footer">
-  <p>
-    
-      By Macy Chan<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
+    <div class="container">
+      <p>
+        
+          By Macy Chan<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
 </main>
 
 

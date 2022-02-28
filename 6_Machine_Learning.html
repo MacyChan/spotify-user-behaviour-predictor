@@ -41,7 +41,7 @@
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -127,6 +127,11 @@
    Conclusion
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="8_Appendix.html">
+   Appendix
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -173,7 +178,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -224,7 +229,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -301,11 +306,6 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hyperparameter-optimization-very-time-consuming-tbc">
-     Hyperparameter optimization (Very time consuming, TBC)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
      Model interpretation on Training set
     </a>
@@ -342,128 +342,7 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Machine Learning analysis</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#imports">
-   Imports
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#import-libraries">
-     Import libraries
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reading-the-data-csv">
-     Reading the data CSV
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-splitting">
-   Data splitting
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#scoring-metric">
-   Scoring metric
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#preprocessing-and-transformations">
-   Preprocessing and transformations
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#baseline-model">
-   Baseline model
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linear-models">
-   Linear models
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-training-logisticregression">
-     Model training - LogisticRegression
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hyperparameter-optimization">
-     hyperparameter optimization
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-interpretation-on-training-set">
-     Model interpretation on Training set
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#non-linear-models">
-   Non-linear models
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-training-randomforestclassifier-xgbclassifier-lgbmclassifier-catboostclassifier">
-     Model training - RandomForestClassifier, XGBClassifier, LGBMClassifier, CatBoostClassifier
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hyperparameter-optimization-very-time-consuming-tbc">
-     Hyperparameter optimization (Very time consuming, TBC)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Model interpretation on Training set
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model-averaging">
-   Model Averaging
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#results-on-the-test-set">
-   Results on the test set
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#interpretation-and-feature-importances-on-test-set">
-     Interpretation and feature importances on Test set
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary-of-machine-learning-results">
-   Summary of machine learning results
-  </a>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="machine-learning-analysis">
@@ -481,21 +360,17 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="c1">#from sklearn import datasets</span>
 <span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span><span class="p">,</span> <span class="n">make_column_transformer</span>
 
-<span class="c1">#from sklearn.impute import SimpleImputer</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">RandomizedSearchCV</span><span class="p">,</span>
-<span class="c1">#    cross_val_score,</span>
     <span class="n">cross_validate</span><span class="p">,</span>
     <span class="n">train_test_split</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span> <span class="c1">#Pipeline, make_pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span> 
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">OneHotEncoder</span>
-<span class="c1">#from sklearn.svm import SVC, SVR</span>
-<span class="c1">#from sklearn.preprocessing import PolynomialFeatures</span>
-
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
+    
 <span class="kn">from</span> <span class="nn">sklearn.dummy</span> <span class="kn">import</span> <span class="n">DummyClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span><span class="p">,</span> <span class="n">Ridge</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
@@ -504,7 +379,6 @@
 <span class="kn">from</span> <span class="nn">catboost</span> <span class="kn">import</span> <span class="n">CatBoostClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">VotingClassifier</span>
-<span class="c1">#from sklearn.feature_selection import RFECV</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">classification_report</span><span class="p">,</span>
@@ -514,7 +388,7 @@
 <span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">shap</span>
-<span class="c1">#from sklearn.model_selection import cross_val_predict</span>
+<span class="kn">from</span> <span class="nn">pylyrics</span> <span class="kn">import</span> <span class="n">clean_text</span> <span class="k">as</span> <span class="n">ct</span>
 </pre></div>
 </div>
 </div>
@@ -594,16 +468,16 @@
       <th>mode</th>
       <th>speechiness</th>
       <th>...</th>
-      <th>genres_west coast rap</th>
-      <th>genres_west coast trap</th>
-      <th>genres_wonky</th>
-      <th>genres_worcester ma indie</th>
-      <th>genres_world</th>
-      <th>genres_world fusion</th>
-      <th>genres_world worship</th>
-      <th>genres_worship</th>
-      <th>genres_zolo</th>
-      <th>lyrics</th>
+      <th>emb_sent_758</th>
+      <th>emb_sent_759</th>
+      <th>emb_sent_760</th>
+      <th>emb_sent_761</th>
+      <th>emb_sent_762</th>
+      <th>emb_sent_763</th>
+      <th>emb_sent_764</th>
+      <th>emb_sent_765</th>
+      <th>emb_sent_766</th>
+      <th>emb_sent_767</th>
     </tr>
   </thead>
   <tbody>
@@ -620,16 +494,16 @@
       <td>1</td>
       <td>0.431</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>\nCall it how it is (Call it how it is)\nHendr...</td>
+      <td>-0.043803</td>
+      <td>-0.447969</td>
+      <td>0.751878</td>
+      <td>-0.143682</td>
+      <td>-0.581485</td>
+      <td>-0.016169</td>
+      <td>0.619145</td>
+      <td>0.287845</td>
+      <td>-0.234614</td>
+      <td>-0.471101</td>
     </tr>
     <tr>
       <th>1</th>
@@ -644,16 +518,16 @@
       <td>1</td>
       <td>0.431</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>\nThree exotic broads and I got 'em soakin' pa...</td>
+      <td>-0.242343</td>
+      <td>0.043233</td>
+      <td>0.199484</td>
+      <td>0.161576</td>
+      <td>-0.384538</td>
+      <td>0.126095</td>
+      <td>0.462813</td>
+      <td>0.112398</td>
+      <td>0.002923</td>
+      <td>-0.256447</td>
     </tr>
     <tr>
       <th>2</th>
@@ -668,16 +542,16 @@
       <td>1</td>
       <td>0.431</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>\nThey gave lil' Trotty 25 for them thangs, ni...</td>
+      <td>-0.316598</td>
+      <td>-0.339585</td>
+      <td>0.321482</td>
+      <td>0.280396</td>
+      <td>-0.003586</td>
+      <td>0.132081</td>
+      <td>-0.445193</td>
+      <td>0.301628</td>
+      <td>-0.287356</td>
+      <td>-0.504784</td>
     </tr>
     <tr>
       <th>3</th>
@@ -692,16 +566,16 @@
       <td>1</td>
       <td>0.431</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>\n\n\nReal dope dealers for real, haha\nHahaha...</td>
+      <td>0.087176</td>
+      <td>-0.227342</td>
+      <td>0.278918</td>
+      <td>0.479892</td>
+      <td>-0.431301</td>
+      <td>0.224406</td>
+      <td>1.213418</td>
+      <td>-0.474493</td>
+      <td>-0.316002</td>
+      <td>-0.365130</td>
     </tr>
     <tr>
       <th>4</th>
@@ -716,16 +590,16 @@
       <td>1</td>
       <td>0.431</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>\nYeah\nI woke up feeling like fucking up some...</td>
+      <td>0.117087</td>
+      <td>-0.418446</td>
+      <td>-0.040964</td>
+      <td>0.428880</td>
+      <td>-0.310667</td>
+      <td>-0.276378</td>
+      <td>0.260933</td>
+      <td>-0.361207</td>
+      <td>-0.267050</td>
+      <td>-0.332415</td>
     </tr>
     <tr>
       <th>5</th>
@@ -740,20 +614,20 @@
       <td>1</td>
       <td>0.431</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>\nBeast mode\n(Zaytoven)\n\n\nI fuck on that b...</td>
+      <td>-0.182009</td>
+      <td>-0.468775</td>
+      <td>0.299990</td>
+      <td>0.213028</td>
+      <td>0.011709</td>
+      <td>-0.149237</td>
+      <td>0.507415</td>
+      <td>0.057419</td>
+      <td>-0.013157</td>
+      <td>-0.161389</td>
     </tr>
   </tbody>
 </table>
-<p>6 rows × 878 columns</p>
+<p>6 rows × 1646 columns</p>
 </div></div></div>
 </div>
 </div>
@@ -785,10 +659,24 @@ The number of observations for test set:  958
 </div>
 </div>
 </div>
-<p>I split 20% of the observations in the test data and 80% in the train data set. Overall the data set has about 2,000 observations, as it is not a very large data set, I preserved more portion for training.</p>
+<p>I split 20% of the observations in the test data and 80% in the train data set. Overall the data set has about 4,000 observations, as it is not a very large data set, I preserved more portion for training.</p>
 </div>
 <div class="section" id="scoring-metric">
 <h2>Scoring metric<a class="headerlink" href="#scoring-metric" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The number of observations for positive targe: &#39;</span><span class="p">,</span> <span class="n">train_df</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The number of observations for negative targe: &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_df</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">])</span><span class="o">-</span><span class="n">train_df</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The number of observations for positive targe:  1993
+The number of observations for negative targe:  1838
+</pre></div>
+</div>
+</div>
+</div>
 <p>Since it is a balanced data set and both positive and negative class are equally balanced, accuracy and precision-recall curves are selected as scoring metric.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -810,62 +698,54 @@ The number of observations for test set:  958
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-align:right"><p>OneHotEncoder</p></td>
-<td><p>All of these features have fixed number of categories. <code class="docutils literal notranslate"><span class="pre">key</span></code> is circulated features like months. <code class="docutils literal notranslate"><span class="pre">artist</span></code>, <code class="docutils literal notranslate"><span class="pre">genres</span></code>, <code class="docutils literal notranslate"><span class="pre">artist_style</span></code> have limited categories.</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">key</span></code>, <code class="docutils literal notranslate"><span class="pre">artist</span></code>, <code class="docutils literal notranslate"><span class="pre">genres</span></code>, <code class="docutils literal notranslate"><span class="pre">artist_style</span></code></p></td>
+<td><p>All of these features have fixed number of categories. <code class="docutils literal notranslate"><span class="pre">key</span></code> is circulated features like months.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">key</span></code></p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:right"><p>StandardScaler</p></td>
 <td><p>Numeric columns needs standardization</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">acousticness</span></code>, <code class="docutils literal notranslate"><span class="pre">danceability</span></code>, <code class="docutils literal notranslate"><span class="pre">duration_ms</span></code>, <code class="docutils literal notranslate"><span class="pre">energy</span></code>, <code class="docutils literal notranslate"><span class="pre">instrumentalness</span></code>, <code class="docutils literal notranslate"><span class="pre">liveness</span></code>, <code class="docutils literal notranslate"><span class="pre">loudness</span></code>, <code class="docutils literal notranslate"><span class="pre">mode</span></code>, <code class="docutils literal notranslate"><span class="pre">speechiness</span></code>, <code class="docutils literal notranslate"><span class="pre">tempo</span></code>, <code class="docutils literal notranslate"><span class="pre">time_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">valence</span></code></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:right"><p>Glove (TBC)</p></td>
-<td><p>Catagorize lyrics word using Glove</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">lyrics</span></code></p></td>
+<tr class="row-even"><td class="text-align:right"><p>SimpleImputer, StandardScaler</p></td>
+<td><p>Analyze lyrics word using <code class="docutils literal notranslate"><span class="pre">paraphrase-distilroberta-base-v1</span></code>,  Numeric feature, processed in feature engineering</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">emb_sent_</span></code></p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:right"><p>none</p></td>
-<td><p>The format are as required</p></td>
+<td><p>The format are as required, represented as category features, processed in feature engineering</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">genres_</span></code></p></td>
 </tr>
 <tr class="row-even"><td class="text-align:right"><p>drop</p></td>
 <td><p>Free text column which has low correlation with target.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">song_title</span></code></p></td>
 </tr>
+<tr class="row-odd"><td class="text-align:right"><p>drop</p></td>
+<td><p>Replaced by artist genres <code class="docutils literal notranslate"><span class="pre">genres_</span></code>, do not want to be bounded by specific artist</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">artist</span></code></p></td>
+</tr>
 </tbody>
 </table>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">category_feats</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="s2">&quot;artist&quot;</span><span class="p">]</span>
-<span class="n">glove_feats</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;lyrics&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">category_feats</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">]</span>
 <span class="n">none_feats</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">X_train</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;genres_&#39;</span><span class="p">)]</span>
-<span class="n">drop_feats</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;song_title&#39;</span><span class="p">]</span>
+<span class="n">drop_feats</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;song_title&#39;</span><span class="p">,</span> <span class="s2">&quot;artist&quot;</span><span class="p">,</span> <span class="s1">&#39;lyrics&#39;</span><span class="p">]</span> <span class="c1"># Don&#39;t want to be bounded by artist</span>
 
 
 <span class="n">numeric_feats</span>  <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
             <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">category_feats</span><span class="p">)</span>
-            <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">glove_feats</span><span class="p">)</span>
             <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">none_feats</span><span class="p">)</span>
             <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">drop_feats</span><span class="p">)</span>
         <span class="p">)</span>
 
+<span class="n">numeric_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">SimpleImputer</span><span class="p">(</span><span class="n">missing_values</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">),</span> <span class="n">StandardScaler</span><span class="p">())</span>
+
+
 <span class="n">preprocessor</span> <span class="o">=</span> <span class="n">make_column_transformer</span><span class="p">(</span>
     <span class="p">(</span><span class="s2">&quot;drop&quot;</span><span class="p">,</span> <span class="n">drop_feats</span><span class="p">),</span>
-    <span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">numeric_feats</span><span class="p">),</span>
-    <span class="p">(</span><span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">sparse</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">category_feats</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">numeric_pipe</span><span class="p">,</span> <span class="n">numeric_feats</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">sparse</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">category_feats</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;passthrough&quot;</span><span class="p">,</span> <span class="n">none_feats</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="n">preprocessor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ColumnTransformer(transformers=[(&#39;drop&#39;, &#39;drop&#39;, [&#39;song_title&#39;]),
-                                (&#39;standardscaler&#39;, StandardScaler(),
-                                 [&#39;time_signature&#39;, &#39;tempo&#39;, &#39;speechiness&#39;,
-                                  &#39;danceability&#39;, &#39;instrumentalness&#39;, &#39;valence&#39;,
-                                  &#39;loudness&#39;, &#39;liveness&#39;, &#39;mode&#39;, &#39;energy&#39;,
-                                  &#39;acousticness&#39;, &#39;duration_ms&#39;]),
-                                (&#39;onehotencoder&#39;,
-                                 OneHotEncoder(handle_unknown=&#39;ignore&#39;,
-                                               sparse=False),
-                                 [&#39;key&#39;, &#39;artist&#39;])])
+<span class="n">preprocessor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -921,11 +801,11 @@ The number of observations for test set:  958
   <tbody>
     <tr>
       <th>fit_time</th>
-      <td>0.033 (+/- 0.007)</td>
+      <td>0.138 (+/- 0.015)</td>
     </tr>
     <tr>
       <th>score_time</th>
-      <td>0.020 (+/- 0.002)</td>
+      <td>0.054 (+/- 0.003)</td>
     </tr>
     <tr>
       <th>test_accuracy</th>
@@ -1003,33 +883,33 @@ The number of observations for test set:  958
   <tbody>
     <tr>
       <th>fit_time</th>
-      <td>0.033 (+/- 0.007)</td>
-      <td>1.462 (+/- 0.022)</td>
+      <td>0.138 (+/- 0.015)</td>
+      <td>13.436 (+/- 0.415)</td>
     </tr>
     <tr>
       <th>score_time</th>
-      <td>0.020 (+/- 0.002)</td>
-      <td>0.043 (+/- 0.006)</td>
+      <td>0.054 (+/- 0.003)</td>
+      <td>0.138 (+/- 0.048)</td>
     </tr>
     <tr>
       <th>test_accuracy</th>
       <td>0.520 (+/- 0.001)</td>
-      <td>0.873 (+/- 0.009)</td>
+      <td>0.887 (+/- 0.006)</td>
     </tr>
     <tr>
       <th>train_accuracy</th>
       <td>0.520 (+/- 0.000)</td>
-      <td>0.931 (+/- 0.003)</td>
+      <td>0.972 (+/- 0.002)</td>
     </tr>
     <tr>
       <th>test_roc_auc</th>
       <td>0.500 (+/- 0.000)</td>
-      <td>0.950 (+/- 0.006)</td>
+      <td>0.955 (+/- 0.005)</td>
     </tr>
     <tr>
       <th>train_roc_auc</th>
       <td>0.500 (+/- 0.000)</td>
-      <td>0.977 (+/- 0.001)</td>
+      <td>0.997 (+/- 0.000)</td>
     </tr>
   </tbody>
 </table>
@@ -1064,6 +944,12 @@ The number of observations for test set:  958
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_search_lg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best parameter values are:&quot;</span><span class="p">,</span> <span class="n">random_search_lg</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best cv score is:&quot;</span><span class="p">,</span> <span class="n">random_search_lg</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best parameter values are: {&#39;logisticregression__class_weight&#39;: None, &#39;logisticregression__C&#39;: 2.8}
+Best cv score is: 0.8885437481490055
 </pre></div>
 </div>
 </div>
@@ -1113,39 +999,39 @@ The number of observations for test set:  958
   <tbody>
     <tr>
       <th>fit_time</th>
-      <td>0.030 (+/- 0.007)</td>
-      <td>0.369 (+/- 0.016)</td>
-      <td>14.622 (+/- 1.540)</td>
+      <td>0.138 (+/- 0.015)</td>
+      <td>13.436 (+/- 0.415)</td>
+      <td>729.602 (+/- 1.470)</td>
     </tr>
     <tr>
       <th>score_time</th>
-      <td>0.022 (+/- 0.008)</td>
-      <td>0.027 (+/- 0.001)</td>
-      <td>0.027 (+/- 0.003)</td>
+      <td>0.054 (+/- 0.003)</td>
+      <td>0.138 (+/- 0.048)</td>
+      <td>0.126 (+/- 0.062)</td>
     </tr>
     <tr>
       <th>test_accuracy</th>
       <td>0.520 (+/- 0.001)</td>
-      <td>0.873 (+/- 0.009)</td>
-      <td>0.887 (+/- 0.010)</td>
+      <td>0.887 (+/- 0.006)</td>
+      <td>0.888 (+/- 0.008)</td>
     </tr>
     <tr>
       <th>train_accuracy</th>
       <td>0.520 (+/- 0.000)</td>
-      <td>0.931 (+/- 0.003)</td>
-      <td>0.959 (+/- 0.004)</td>
+      <td>0.972 (+/- 0.002)</td>
+      <td>0.974 (+/- 0.003)</td>
     </tr>
     <tr>
       <th>test_roc_auc</th>
       <td>0.500 (+/- 0.000)</td>
-      <td>0.950 (+/- 0.006)</td>
-      <td>0.961 (+/- 0.004)</td>
+      <td>0.955 (+/- 0.005)</td>
+      <td>0.954 (+/- 0.005)</td>
     </tr>
     <tr>
       <th>train_roc_auc</th>
       <td>0.500 (+/- 0.000)</td>
-      <td>0.977 (+/- 0.001)</td>
-      <td>0.988 (+/- 0.002)</td>
+      <td>0.997 (+/- 0.000)</td>
+      <td>0.998 (+/- 0.000)</td>
     </tr>
   </tbody>
 </table>
@@ -1167,12 +1053,12 @@ The number of observations for test set:  958
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
-           0       0.95      0.96      0.96      1838
-           1       0.96      0.96      0.96      1993
+           0       0.97      0.97      0.97      1838
+           1       0.97      0.97      0.97      1993
 
-    accuracy                           0.96      3831
-   macro avg       0.96      0.96      0.96      3831
-weighted avg       0.96      0.96      0.96      3831
+    accuracy                           0.97      3831
+   macro avg       0.97      0.97      0.97      3831
+weighted avg       0.97      0.97      0.97      3831
 </pre></div>
 </div>
 </div>
@@ -1194,10 +1080,10 @@ weighted avg       0.96      0.96      0.96      3831
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Area under the curve (AUC): 0.989
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Area under the curve (AUC): 0.997
 </pre></div>
 </div>
-<img alt="_images/6_Machine_Learning_33_1.png" src="_images/6_Machine_Learning_33_1.png" />
+<img alt="_images/6_Machine_Learning_34_1.png" src="_images/6_Machine_Learning_34_1.png" />
 </div>
 </div>
 <p>We have high score in AUC and classification report, which means our prediction model performance is good.</p>
@@ -1212,6 +1098,7 @@ weighted avg       0.96      0.96      0.96      3831
     <span class="o">*</span><span class="n">random_search_lg</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">&quot;columntransformer&quot;</span><span class="p">]</span>
     <span class="o">.</span><span class="n">named_transformers_</span><span class="p">[</span><span class="s2">&quot;onehotencoder&quot;</span><span class="p">]</span>
     <span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(),</span>
+    <span class="o">*</span><span class="n">none_feats</span>
 <span class="p">]</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
@@ -1223,7 +1110,7 @@ weighted avg       0.96      0.96      0.96      3831
     <span class="n">by</span><span class="o">=</span><span class="s2">&quot;Importance&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span>
 <span class="p">)</span>
 
-<span class="n">feat_importance_200</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">feat_importance</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">99</span><span class="p">],</span> <span class="n">feat_importance</span><span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">:]])</span>
+<span class="n">feat_importance_200</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">feat_importance</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">100</span><span class="p">],</span> <span class="n">feat_importance</span><span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">:]])</span>
 <span class="n">feat_importance_200</span><span class="p">[</span><span class="s2">&quot;rank&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">feat_importance_200</span><span class="p">[</span><span class="s2">&quot;Importance&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">feat_importance_200</span><span class="p">[</span><span class="s2">&quot;side&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
     <span class="n">feat_importance_200</span><span class="p">[</span><span class="s2">&quot;Importance&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;pos&quot;</span><span class="p">,</span> <span class="s2">&quot;neg&quot;</span>
@@ -1258,32 +1145,32 @@ weighted avg       0.96      0.96      0.96      3831
   </thead>
   <tbody>
     <tr>
-      <th>artist_FIDLAR</th>
-      <td>4.557683</td>
+      <th>genres_escape room</th>
+      <td>1.945204</td>
       <td>1.0</td>
       <td>pos</td>
     </tr>
     <tr>
-      <th>artist_Kanye West</th>
-      <td>4.034912</td>
+      <th>genres_chillwave</th>
+      <td>1.834105</td>
       <td>2.0</td>
       <td>pos</td>
     </tr>
     <tr>
-      <th>artist_Crystal Castles</th>
-      <td>4.017172</td>
+      <th>genres_moombahton</th>
+      <td>1.747695</td>
       <td>3.0</td>
       <td>pos</td>
     </tr>
     <tr>
-      <th>artist_Beach House</th>
-      <td>4.015040</td>
+      <th>genres_alternative hip hop</th>
+      <td>1.667970</td>
       <td>4.0</td>
       <td>pos</td>
     </tr>
     <tr>
-      <th>artist_Disclosure</th>
-      <td>3.799238</td>
+      <th>genres_motown</th>
+      <td>1.571681</td>
       <td>5.0</td>
       <td>pos</td>
     </tr>
@@ -1294,45 +1181,45 @@ weighted avg       0.96      0.96      0.96      3831
       <td>...</td>
     </tr>
     <tr>
-      <th>artist_*NSYNC</th>
-      <td>-3.596354</td>
-      <td>195.0</td>
-      <td>neg</td>
-    </tr>
-    <tr>
-      <th>artist_WALK THE MOON</th>
-      <td>-3.766083</td>
+      <th>genres_neo soul</th>
+      <td>-1.443566</td>
       <td>196.0</td>
       <td>neg</td>
     </tr>
     <tr>
-      <th>artist_Skrillex</th>
-      <td>-3.874031</td>
+      <th>genres_pop edm</th>
+      <td>-1.803435</td>
       <td>197.0</td>
       <td>neg</td>
     </tr>
     <tr>
-      <th>artist_Michael Jackson</th>
-      <td>-3.897069</td>
+      <th>genres_post-teen pop</th>
+      <td>-1.932468</td>
       <td>198.0</td>
       <td>neg</td>
     </tr>
     <tr>
-      <th>artist_Backstreet Boys</th>
-      <td>-3.979357</td>
+      <th>genres_korean pop</th>
+      <td>-1.965004</td>
       <td>199.0</td>
+      <td>neg</td>
+    </tr>
+    <tr>
+      <th>key_0</th>
+      <td>-2.526168</td>
+      <td>200.0</td>
       <td>neg</td>
     </tr>
   </tbody>
 </table>
-<p>199 rows × 3 columns</p>
+<p>200 rows × 3 columns</p>
 </div></div></div>
 </div>
-<p>Most of the important features are determined by <code class="docutils literal notranslate"><span class="pre">artists</span></code>. Excluding all the features from artist, the other important features are <code class="docutils literal notranslate"><span class="pre">key</span></code>, <code class="docutils literal notranslate"><span class="pre">danceability</span></code> and <code class="docutils literal notranslate"><span class="pre">duration</span></code>. However, the ranking of importance are pretty low, starting from #423.</p>
+<p>Most of the important features are determined by <code class="docutils literal notranslate"><span class="pre">genres</span></code>. Excluding all the features from artist, the other important features are <code class="docutils literal notranslate"><span class="pre">key</span></code>, <code class="docutils literal notranslate"><span class="pre">danceability</span></code> and <code class="docutils literal notranslate"><span class="pre">duration</span></code>. However, the ranking of importance are pretty low, starting from #423.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feat_importance_reset</span> <span class="o">=</span> <span class="n">feat_importance</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">feat_importance_reset</span><span class="p">[</span><span class="n">feat_importance_reset</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;^(?![artist])&#39;</span><span class="p">)]</span>
+<span class="n">feat_importance_reset</span><span class="p">[</span><span class="n">feat_importance_reset</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;^(?![genres])&#39;</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -1361,99 +1248,114 @@ weighted avg       0.96      0.96      0.96      3831
   </thead>
   <tbody>
     <tr>
-      <th>353</th>
-      <td>danceability</td>
-      <td>0.552342</td>
-    </tr>
-    <tr>
-      <th>389</th>
-      <td>key_9</td>
-      <td>0.436209</td>
-    </tr>
-    <tr>
-      <th>397</th>
+      <th>17</th>
       <td>key_4</td>
-      <td>0.411787</td>
+      <td>1.274235</td>
     </tr>
     <tr>
-      <th>422</th>
-      <td>key_2</td>
-      <td>0.258068</td>
-    </tr>
-    <tr>
-      <th>424</th>
-      <td>key_10</td>
-      <td>0.251043</td>
-    </tr>
-    <tr>
-      <th>431</th>
-      <td>key_6</td>
-      <td>0.220164</td>
-    </tr>
-    <tr>
-      <th>434</th>
-      <td>duration_ms</td>
-      <td>0.197986</td>
-    </tr>
-    <tr>
-      <th>441</th>
-      <td>liveness</td>
-      <td>0.136481</td>
-    </tr>
-    <tr>
-      <th>443</th>
-      <td>valence</td>
-      <td>0.097475</td>
-    </tr>
-    <tr>
-      <th>446</th>
-      <td>energy</td>
-      <td>0.068914</td>
-    </tr>
-    <tr>
-      <th>447</th>
-      <td>key_11</td>
-      <td>0.065221</td>
-    </tr>
-    <tr>
-      <th>448</th>
-      <td>key_5</td>
-      <td>0.038536</td>
-    </tr>
-    <tr>
-      <th>450</th>
-      <td>key_8</td>
-      <td>-0.025301</td>
-    </tr>
-    <tr>
-      <th>452</th>
-      <td>mode</td>
-      <td>-0.092021</td>
-    </tr>
-    <tr>
-      <th>454</th>
-      <td>key_7</td>
-      <td>-0.099948</td>
-    </tr>
-    <tr>
-      <th>460</th>
+      <th>36</th>
       <td>loudness</td>
-      <td>-0.206236</td>
+      <td>0.948385</td>
     </tr>
     <tr>
-      <th>463</th>
-      <td>key_1</td>
-      <td>-0.225751</td>
+      <th>41</th>
+      <td>key_9</td>
+      <td>0.912684</td>
     </tr>
     <tr>
-      <th>555</th>
-      <td>key_0</td>
-      <td>-0.554652</td>
+      <th>50</th>
+      <td>danceability</td>
+      <td>0.862934</td>
     </tr>
     <tr>
-      <th>706</th>
+      <th>62</th>
+      <td>key_10</td>
+      <td>0.789978</td>
+    </tr>
+    <tr>
+      <th>114</th>
+      <td>key_7</td>
+      <td>0.593926</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>key_5</td>
+      <td>0.579661</td>
+    </tr>
+    <tr>
+      <th>131</th>
+      <td>instrumentalness</td>
+      <td>0.537758</td>
+    </tr>
+    <tr>
+      <th>132</th>
+      <td>tempo</td>
+      <td>0.524994</td>
+    </tr>
+    <tr>
+      <th>391</th>
+      <td>valence</td>
+      <td>0.198514</td>
+    </tr>
+    <tr>
+      <th>582</th>
+      <td>key_8</td>
+      <td>0.093041</td>
+    </tr>
+    <tr>
+      <th>588</th>
+      <td>duration_ms</td>
+      <td>0.089473</td>
+    </tr>
+    <tr>
+      <th>612</th>
+      <td>key_6</td>
+      <td>0.074142</td>
+    </tr>
+    <tr>
+      <th>648</th>
+      <td>key_11</td>
+      <td>0.060494</td>
+    </tr>
+    <tr>
+      <th>668</th>
+      <td>liveness</td>
+      <td>0.047821</td>
+    </tr>
+    <tr>
+      <th>1097</th>
+      <td>mode</td>
+      <td>-0.057934</td>
+    </tr>
+    <tr>
+      <th>1185</th>
+      <td>key_2</td>
+      <td>-0.113133</td>
+    </tr>
+    <tr>
+      <th>1277</th>
+      <td>time_signature</td>
+      <td>-0.173913</td>
+    </tr>
+    <tr>
+      <th>1331</th>
+      <td>acousticness</td>
+      <td>-0.213958</td>
+    </tr>
+    <tr>
+      <th>1611</th>
       <td>key_3</td>
-      <td>-0.775756</td>
+      <td>-0.780837</td>
+    </tr>
+    <tr>
+      <th>1629</th>
+      <td>key_1</td>
+      <td>-0.957019</td>
+    </tr>
+    <tr>
+      <th>1652</th>
+      <td>key_0</td>
+      <td>-2.526168</td>
     </tr>
   </tbody>
 </table>
@@ -1504,13 +1406,13 @@ weighted avg       0.96      0.96      0.96      3831
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-41791aaa30564132bdd630f3e1d7a89b"></div>
+<div id="altair-viz-d144101979d14ba68c7945db480206a3"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-41791aaa30564132bdd630f3e1d7a89b") {
-      outputDiv = document.getElementById("altair-viz-41791aaa30564132bdd630f3e1d7a89b");
+    if (outputDiv.id !== "altair-viz-d144101979d14ba68c7945db480206a3") {
+      outputDiv = document.getElementById("altair-viz-d144101979d14ba68c7945db480206a3");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -1556,10 +1458,10 @@ weighted avg       0.96      0.96      0.96      3831
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "vconcat": [{"mark": "bar", "encoding": {"color": {"field": "side", "type": "nominal"}, "x": {"axis": {"title": ""}, "field": "index", "scale": {"domain": {"selection": "selector001"}}, "sort": {"field": "rank", "order": "ascending"}, "type": "nominal"}, "y": {"field": "Importance", "type": "quantitative"}}, "height": 200, "title": "Top 200 important features", "width": 800}, {"mark": "bar", "encoding": {"color": {"field": "side", "type": "nominal"}, "x": {"axis": {"labels": false, "title": "Features"}, "field": "index", "sort": {"field": "rank", "order": "ascending"}, "type": "nominal"}, "y": {"field": "Importance", "type": "quantitative"}}, "height": 60, "selection": {"selector001": {"type": "interval", "encodings": ["x"]}}, "title": "Drag the plot in below to zoom", "width": 800}], "data": {"name": "data-adf903ce752dd2bfdf786163fac9bda0"}, "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json", "datasets": {"data-adf903ce752dd2bfdf786163fac9bda0": [{"index": "artist_FIDLAR", "Importance": 4.557682958329887, "rank": 1.0, "side": "pos"}, {"index": "artist_Kanye West", "Importance": 4.034912398562022, "rank": 2.0, "side": "pos"}, {"index": "artist_Crystal Castles", "Importance": 4.017171661763169, "rank": 3.0, "side": "pos"}, {"index": "artist_Beach House", "Importance": 4.015040410257645, "rank": 4.0, "side": "pos"}, {"index": "artist_Disclosure", "Importance": 3.7992376083135477, "rank": 5.0, "side": "pos"}, {"index": "artist_M83", "Importance": 3.763638434007246, "rank": 6.0, "side": "pos"}, {"index": "artist_CHVRCHES", "Importance": 3.7221428405036474, "rank": 7.0, "side": "pos"}, {"index": "artist_The Sonics", "Importance": 3.236269782562456, "rank": 8.0, "side": "pos"}, {"index": "artist_Perfume Genius", "Importance": 3.0836472283036263, "rank": 9.0, "side": "pos"}, {"index": "artist_Young Thug", "Importance": 3.0574632002607403, "rank": 10.0, "side": "pos"}, {"index": "artist_Autre Ne Veut", "Importance": 3.0388835131219194, "rank": 11.0, "side": "pos"}, {"index": "artist_ScHoolboy Q", "Importance": 2.9633358089812356, "rank": 12.0, "side": "pos"}, {"index": "artist_Leon Bridges", "Importance": 2.9261095040402436, "rank": 13.0, "side": "pos"}, {"index": "artist_Hot Chip", "Importance": 2.9083831691875788, "rank": 14.0, "side": "pos"}, {"index": "artist_Tame Impala", "Importance": 2.894412011102099, "rank": 15.0, "side": "pos"}, {"index": "artist_Teams vs. Star Slinger", "Importance": 2.888217462007609, "rank": 16.0, "side": "pos"}, {"index": "artist_Radiohead", "Importance": 2.8607545390625457, "rank": 17.0, "side": "pos"}, {"index": "artist_Purity Ring", "Importance": 2.8605947555227873, "rank": 18.0, "side": "pos"}, {"index": "artist_Ty Segall", "Importance": 2.8404535899708807, "rank": 19.0, "side": "pos"}, {"index": "artist_Washed Out", "Importance": 2.8361590949700135, "rank": 20.0, "side": "pos"}, {"index": "artist_Grimes", "Importance": 2.803208861312942, "rank": 21.0, "side": "pos"}, {"index": "artist_Duke Dumont", "Importance": 2.7934062763680063, "rank": 22.0, "side": "pos"}, {"index": "artist_Gary Clark Jr.", "Importance": 2.7223757993061235, "rank": 23.0, "side": "pos"}, {"index": "artist_The Ronettes", "Importance": 2.6631707600077523, "rank": 24.0, "side": "pos"}, {"index": "artist_Stormzy", "Importance": 2.605120818269488, "rank": 25.0, "side": "pos"}, {"index": "artist_Danny Brown", "Importance": 2.5795300908535537, "rank": 26.0, "side": "pos"}, {"index": "artist_Iamsu!", "Importance": 2.5387938122117615, "rank": 27.0, "side": "pos"}, {"index": "artist_New Order", "Importance": 2.536103139793367, "rank": 28.0, "side": "pos"}, {"index": "artist_Chief Keef", "Importance": 2.4997736991251616, "rank": 29.0, "side": "pos"}, {"index": "artist_Phantogram", "Importance": 2.4329640140185504, "rank": 30.0, "side": "pos"}, {"index": "artist_The Partysquad", "Importance": 2.4170206321111185, "rank": 31.0, "side": "pos"}, {"index": "artist_Angel Olsen", "Importance": 2.4054290204499416, "rank": 32.0, "side": "pos"}, {"index": "artist_Parquet Courts", "Importance": 2.4014765780579133, "rank": 33.0, "side": "pos"}, {"index": "artist_Sleigh Bells", "Importance": 2.3761939051072942, "rank": 34.0, "side": "pos"}, {"index": "artist_Neon Indian", "Importance": 2.3691685040970527, "rank": 35.0, "side": "pos"}, {"index": "artist_James Brown", "Importance": 2.3565361407887258, "rank": 36.0, "side": "pos"}, {"index": "artist_Best Coast", "Importance": 2.322148798449988, "rank": 37.0, "side": "pos"}, {"index": "artist_TR/ST", "Importance": 2.3144593213184215, "rank": 38.0, "side": "pos"}, {"index": "artist_Action Bronson", "Importance": 2.3023911593099977, "rank": 39.0, "side": "pos"}, {"index": "artist_Lykke Li", "Importance": 2.2631054948941864, "rank": 40.0, "side": "pos"}, {"index": "artist_A$AP Ferg", "Importance": 2.2607321731657275, "rank": 41.0, "side": "pos"}, {"index": "artist_Jamie xx", "Importance": 2.2293982562586967, "rank": 42.0, "side": "pos"}, {"index": "artist_Justice", "Importance": 2.209094674314559, "rank": 43.0, "side": "pos"}, {"index": "artist_Barrington Levy", "Importance": 2.186738645660485, "rank": 44.0, "side": "pos"}, {"index": "artist_Sky Ferreira", "Importance": 2.116045761791774, "rank": 45.0, "side": "pos"}, {"index": "artist_TV On The Radio", "Importance": 2.1083039556833527, "rank": 46.0, "side": "pos"}, {"index": "artist_Fetty Wap", "Importance": 2.092869478572716, "rank": 47.0, "side": "pos"}, {"index": "artist_The Chiffons", "Importance": 2.0783900002544504, "rank": 48.0, "side": "pos"}, {"index": "artist_Arcade Fire", "Importance": 2.034872541068936, "rank": 49.0, "side": "pos"}, {"index": "artist_Zapp", "Importance": 2.010516115566095, "rank": 50.0, "side": "pos"}, {"index": "artist_Matthew Dear", "Importance": 2.003856423593521, "rank": 51.0, "side": "pos"}, {"index": "artist_2 Chainz", "Importance": 1.9769383171752783, "rank": 52.0, "side": "pos"}, {"index": "artist_Wiley", "Importance": 1.9616343611166096, "rank": 53.0, "side": "pos"}, {"index": "artist_Jefferson Airplane", "Importance": 1.9545763463378882, "rank": 54.0, "side": "pos"}, {"index": "artist_ODESZA", "Importance": 1.8897624756742601, "rank": 55.0, "side": "pos"}, {"index": "artist_Hippie Sabotage", "Importance": 1.8808653591199458, "rank": 56.0, "side": "pos"}, {"index": "artist_Booba", "Importance": 1.8583559169320965, "rank": 57.0, "side": "pos"}, {"index": "artist_How To Dress Well", "Importance": 1.8426287944338795, "rank": 58.0, "side": "pos"}, {"index": "artist_Blood Orange", "Importance": 1.830392800376495, "rank": 59.0, "side": "pos"}, {"index": "artist_Three 6 Mafia", "Importance": 1.8256057282491749, "rank": 60.0, "side": "pos"}, {"index": "artist_Travis Scott", "Importance": 1.8197959053761743, "rank": 61.0, "side": "pos"}, {"index": "artist_Juicy J", "Importance": 1.81908010294679, "rank": 62.0, "side": "pos"}, {"index": "artist_Ebo Taylor", "Importance": 1.8167112202352351, "rank": 63.0, "side": "pos"}, {"index": "artist_GENER8ION", "Importance": 1.8156780567771842, "rank": 64.0, "side": "pos"}, {"index": "artist_Ezale", "Importance": 1.8116488303929448, "rank": 65.0, "side": "pos"}, {"index": "artist_Shabazz Palaces", "Importance": 1.80179906456638, "rank": 66.0, "side": "pos"}, {"index": "artist_Solange", "Importance": 1.7759942006131528, "rank": 67.0, "side": "pos"}, {"index": "artist_Passion Pit", "Importance": 1.7757541253045888, "rank": 68.0, "side": "pos"}, {"index": "artist_Twin Shadow", "Importance": 1.7734678037656337, "rank": 69.0, "side": "pos"}, {"index": "artist_A$AP Rocky", "Importance": 1.759986522503961, "rank": 70.0, "side": "pos"}, {"index": "artist_Ben Pearce", "Importance": 1.75648944738362, "rank": 71.0, "side": "pos"}, {"index": "artist_Cults", "Importance": 1.7394256749592978, "rank": 72.0, "side": "pos"}, {"index": "artist_SBTRKT", "Importance": 1.7364613316776738, "rank": 73.0, "side": "pos"}, {"index": "artist_Marvin Gaye", "Importance": 1.703836245878112, "rank": 74.0, "side": "pos"}, {"index": "artist_A-Trak", "Importance": 1.6978217615520774, "rank": 75.0, "side": "pos"}, {"index": "artist_Gayngs", "Importance": 1.688439785891468, "rank": 76.0, "side": "pos"}, {"index": "artist_Martin Solveig", "Importance": 1.678777291539134, "rank": 77.0, "side": "pos"}, {"index": "artist_Thundercat", "Importance": 1.6775179472164068, "rank": 78.0, "side": "pos"}, {"index": "artist_M.I.A.", "Importance": 1.6559994342690316, "rank": 79.0, "side": "pos"}, {"index": "artist_Future Islands", "Importance": 1.6436340150054674, "rank": 80.0, "side": "pos"}, {"index": "artist_The Districts", "Importance": 1.6090753493825911, "rank": 81.0, "side": "pos"}, {"index": "artist_T. P. Orchestre Poly-Rythmo", "Importance": 1.597684966266536, "rank": 82.0, "side": "pos"}, {"index": "artist_Small Black", "Importance": 1.5975268081449316, "rank": 83.0, "side": "pos"}, {"index": "artist_Miguel", "Importance": 1.5938229676786668, "rank": 84.0, "side": "pos"}, {"index": "artist_Baauer", "Importance": 1.5867167047340505, "rank": 85.0, "side": "pos"}, {"index": "artist_William Onyeabor", "Importance": 1.5852947339669865, "rank": 86.0, "side": "pos"}, {"index": "artist_Vampire Weekend", "Importance": 1.573130266859144, "rank": 87.0, "side": "pos"}, {"index": "artist_Cathedrals", "Importance": 1.5591487425426045, "rank": 88.0, "side": "pos"}, {"index": "artist_Childish Gambino", "Importance": 1.54614712759249, "rank": 89.0, "side": "pos"}, {"index": "artist_Bugzy Malone", "Importance": 1.5378337446971446, "rank": 90.0, "side": "pos"}, {"index": "artist_Memoryhouse", "Importance": 1.5358016825761136, "rank": 91.0, "side": "pos"}, {"index": "artist_Killer Mike", "Importance": 1.5341418987851108, "rank": 92.0, "side": "pos"}, {"index": "artist_AlunaGeorge", "Importance": 1.5313892662250232, "rank": 93.0, "side": "pos"}, {"index": "artist_The Seshen", "Importance": 1.5210593690944962, "rank": 94.0, "side": "pos"}, {"index": "artist_Jungle", "Importance": 1.5199561258248648, "rank": 95.0, "side": "pos"}, {"index": "artist_Hayden James", "Importance": 1.5151205974819593, "rank": 96.0, "side": "pos"}, {"index": "artist_Toro y Moi", "Importance": 1.5132775104170604, "rank": 97.0, "side": "pos"}, {"index": "artist_The Stooges", "Importance": 1.5125909802867985, "rank": 98.0, "side": "pos"}, {"index": "artist_Kate Boy", "Importance": 1.509522575302354, "rank": 99.0, "side": "pos"}, {"index": "artist_Mark Knight", "Importance": -1.2351286493203595, "rank": 100.0, "side": "neg"}, {"index": "artist_India.Arie", "Importance": -1.2360713454275987, "rank": 101.0, "side": "neg"}, {"index": "artist_Dimitri Vangelis & Wyman", "Importance": -1.2423351702613872, "rank": 102.0, "side": "neg"}, {"index": "artist_Piso 21", "Importance": -1.2503339706655756, "rank": 103.0, "side": "neg"}, {"index": "artist_Jess Glynne", "Importance": -1.265250921310788, "rank": 104.0, "side": "neg"}, {"index": "artist_Vato Gonzalez", "Importance": -1.2687637314650333, "rank": 105.0, "side": "neg"}, {"index": "artist_Porter Robinson", "Importance": -1.2793710763816009, "rank": 106.0, "side": "neg"}, {"index": "artist_Bassjackers", "Importance": -1.289370754029276, "rank": 107.0, "side": "neg"}, {"index": "artist_2 LIVE CREW", "Importance": -1.2949224922743108, "rank": 108.0, "side": "neg"}, {"index": "artist_Gwen Stefani", "Importance": -1.297153213126983, "rank": 109.0, "side": "neg"}, {"index": "artist_Tevin Campbell", "Importance": -1.3000377945533768, "rank": 110.0, "side": "neg"}, {"index": "artist_Mario", "Importance": -1.3042004681117185, "rank": 111.0, "side": "neg"}, {"index": "artist_MercyMe", "Importance": -1.3090389608059114, "rank": 112.0, "side": "neg"}, {"index": "artist_Franz Schubert", "Importance": -1.3184384612750046, "rank": 113.0, "side": "neg"}, {"index": "artist_OneRepublic", "Importance": -1.3240574368570892, "rank": 114.0, "side": "neg"}, {"index": "artist_Alok", "Importance": -1.3299960015383787, "rank": 115.0, "side": "neg"}, {"index": "artist_Standing Egg", "Importance": -1.3388755538104349, "rank": 116.0, "side": "neg"}, {"index": "artist_Ariana Grande", "Importance": -1.3509889268030697, "rank": 117.0, "side": "neg"}, {"index": "artist_Lady Gaga", "Importance": -1.3771070530976828, "rank": 118.0, "side": "neg"}, {"index": "artist_Ben Remember", "Importance": -1.3824903592775244, "rank": 119.0, "side": "neg"}, {"index": "artist_San Holo", "Importance": -1.3891618816460383, "rank": 120.0, "side": "neg"}, {"index": "artist_Chris Brown", "Importance": -1.4023560621239612, "rank": 121.0, "side": "neg"}, {"index": "artist_Ed Sheeran", "Importance": -1.4074951762638823, "rank": 122.0, "side": "neg"}, {"index": "artist_Vanilla Ice", "Importance": -1.4188642780906822, "rank": 123.0, "side": "neg"}, {"index": "artist_Janet Jackson", "Importance": -1.4314474013118559, "rank": 124.0, "side": "neg"}, {"index": "artist_Monica", "Importance": -1.4567615792965065, "rank": 125.0, "side": "neg"}, {"index": "artist_Carlos Vives", "Importance": -1.463868631734744, "rank": 126.0, "side": "neg"}, {"index": "artist_Alan Walker", "Importance": -1.4723275598671908, "rank": 127.0, "side": "neg"}, {"index": "artist_Reik", "Importance": -1.4736016008831168, "rank": 128.0, "side": "neg"}, {"index": "artist_Robert Schumann", "Importance": -1.4784474461807184, "rank": 129.0, "side": "neg"}, {"index": "artist_Eminem", "Importance": -1.483546518147042, "rank": 130.0, "side": "neg"}, {"index": "artist_Sebastian Yatra", "Importance": -1.5050892730490122, "rank": 131.0, "side": "neg"}, {"index": "artist_10cm", "Importance": -1.5086992217275175, "rank": 132.0, "side": "neg"}, {"index": "artist_Chris Lake", "Importance": -1.541389856237162, "rank": 133.0, "side": "neg"}, {"index": "artist_Lost Kings", "Importance": -1.5464108651251962, "rank": 134.0, "side": "neg"}, {"index": "artist_Jon McLaughlin", "Importance": -1.5464921960637519, "rank": 135.0, "side": "neg"}, {"index": "artist_Machine Gun Kelly", "Importance": -1.5467991526023173, "rank": 136.0, "side": "neg"}, {"index": "artist_Maroon 5", "Importance": -1.5500156868468438, "rank": 137.0, "side": "neg"}, {"index": "artist_Wisin", "Importance": -1.573059331035526, "rank": 138.0, "side": "neg"}, {"index": "artist_Savage Garden", "Importance": -1.5738070452610744, "rank": 139.0, "side": "neg"}, {"index": "artist_Bruno Mars", "Importance": -1.577482691136003, "rank": 140.0, "side": "neg"}, {"index": "artist_Kygo", "Importance": -1.5818316780139285, "rank": 141.0, "side": "neg"}, {"index": "artist_Maluma", "Importance": -1.5877540480633165, "rank": 142.0, "side": "neg"}, {"index": "artist_EDX", "Importance": -1.5998928107557135, "rank": 143.0, "side": "neg"}, {"index": "artist_CNCO", "Importance": -1.6181018971146248, "rank": 144.0, "side": "neg"}, {"index": "artist_Scott Hamilton", "Importance": -1.6435228879573252, "rank": 145.0, "side": "neg"}, {"index": "artist_Ozuna", "Importance": -1.6698136701579362, "rank": 146.0, "side": "neg"}, {"index": "artist_Robin Thicke", "Importance": -1.6823598809140234, "rank": 147.0, "side": "neg"}, {"index": "artist_Harry Styles", "Importance": -1.6855025309631355, "rank": 148.0, "side": "neg"}, {"index": "artist_5 Seconds of Summer", "Importance": -1.6996802180015573, "rank": 149.0, "side": "neg"}, {"index": "artist_David Guetta", "Importance": -1.705047200285266, "rank": 150.0, "side": "neg"}, {"index": "artist_Enrique Iglesias", "Importance": -1.7184467966542851, "rank": 151.0, "side": "neg"}, {"index": "artist_Diddy", "Importance": -1.7453393579169632, "rank": 152.0, "side": "neg"}, {"index": "artist_Hanson", "Importance": -1.7693567643171297, "rank": 153.0, "side": "neg"}, {"index": "artist_J Balvin", "Importance": -1.7951616562566342, "rank": 154.0, "side": "neg"}, {"index": "artist_Marshmello", "Importance": -1.8258560686718555, "rank": 155.0, "side": "neg"}, {"index": "artist_Hailee Steinfeld", "Importance": -1.9281226407861012, "rank": 156.0, "side": "neg"}, {"index": "artist_Victorious Cast", "Importance": -2.0191005840294944, "rank": 157.0, "side": "neg"}, {"index": "artist_Bea Miller", "Importance": -2.0520643732152095, "rank": 158.0, "side": "neg"}, {"index": "artist_Kaskade", "Importance": -2.0570778629292192, "rank": 159.0, "side": "neg"}, {"index": "artist_Little Mix", "Importance": -2.0736522853232398, "rank": 160.0, "side": "neg"}, {"index": "artist_Next", "Importance": -2.0767615442402647, "rank": 161.0, "side": "neg"}, {"index": "artist_Flo Rida", "Importance": -2.093680283387475, "rank": 162.0, "side": "neg"}, {"index": "artist_MOTi", "Importance": -2.1124038963258904, "rank": 163.0, "side": "neg"}, {"index": "artist_Britney Spears", "Importance": -2.1357801438024637, "rank": 164.0, "side": "neg"}, {"index": "artist_Adrian Lux", "Importance": -2.139286249831502, "rank": 165.0, "side": "neg"}, {"index": "artist_JoJo", "Importance": -2.1467759449577666, "rank": 166.0, "side": "neg"}, {"index": "artist_Shawn Mendes", "Importance": -2.1649041221236622, "rank": 167.0, "side": "neg"}, {"index": "artist_Wyclef Jean", "Importance": -2.216136657544768, "rank": 168.0, "side": "neg"}, {"index": "artist_Daddy Yankee", "Importance": -2.2332697844007483, "rank": 169.0, "side": "neg"}, {"index": "artist_Luis Fonsi", "Importance": -2.3019344657953797, "rank": 170.0, "side": "neg"}, {"index": "artist_deadmau5", "Importance": -2.355829779319882, "rank": 171.0, "side": "neg"}, {"index": "artist_Nicky Jam", "Importance": -2.37749441407609, "rank": 172.0, "side": "neg"}, {"index": "artist_Ne-Yo", "Importance": -2.4122844994009744, "rank": 173.0, "side": "neg"}, {"index": "artist_Pitbull", "Importance": -2.433847446480362, "rank": 174.0, "side": "neg"}, {"index": "artist_Wahlstedt", "Importance": -2.4707589362782767, "rank": 175.0, "side": "neg"}, {"index": "artist_Kim Walker-Smith", "Importance": -2.5338634170911143, "rank": 176.0, "side": "neg"}, {"index": "artist_Zac Brown Band", "Importance": -2.5622462998309197, "rank": 177.0, "side": "neg"}, {"index": "artist_Martin Garrix", "Importance": -2.5674512723005716, "rank": 178.0, "side": "neg"}, {"index": "artist_Owl City", "Importance": -2.622792387833988, "rank": 179.0, "side": "neg"}, {"index": "artist_Xscape", "Importance": -2.699176451124276, "rank": 180.0, "side": "neg"}, {"index": "artist_Boyz II Men", "Importance": -2.702059743920966, "rank": 181.0, "side": "neg"}, {"index": "artist_Afrojack", "Importance": -2.761312824057406, "rank": 182.0, "side": "neg"}, {"index": "artist_Usher", "Importance": -2.7810751429476475, "rank": 183.0, "side": "neg"}, {"index": "artist_Katy Perry", "Importance": -2.783643992925893, "rank": 184.0, "side": "neg"}, {"index": "artist_Toni Braxton", "Importance": -2.799536843709133, "rank": 185.0, "side": "neg"}, {"index": "artist_Nickelback", "Importance": -2.8386887976250117, "rank": 186.0, "side": "neg"}, {"index": "artist_Shakira", "Importance": -2.9296351723665057, "rank": 187.0, "side": "neg"}, {"index": "artist_Big Time Rush", "Importance": -3.162839636844421, "rank": 188.0, "side": "neg"}, {"index": "artist_Destiny's Child", "Importance": -3.1653008112212655, "rank": 189.0, "side": "neg"}, {"index": "artist_The Chainsmokers", "Importance": -3.2913626588789393, "rank": 190.0, "side": "neg"}, {"index": "artist_Demi Lovato", "Importance": -3.3800407800491326, "rank": 191.0, "side": "neg"}, {"index": "artist_Kina Grannis", "Importance": -3.494224822360758, "rank": 192.0, "side": "neg"}, {"index": "artist_J. Cole", "Importance": -3.5315371672351783, "rank": 193.0, "side": "neg"}, {"index": "artist_Fall Out Boy", "Importance": -3.5742754301407853, "rank": 194.0, "side": "neg"}, {"index": "artist_*NSYNC", "Importance": -3.5963540480065572, "rank": 195.0, "side": "neg"}, {"index": "artist_WALK THE MOON", "Importance": -3.7660833917063274, "rank": 196.0, "side": "neg"}, {"index": "artist_Skrillex", "Importance": -3.8740313009135794, "rank": 197.0, "side": "neg"}, {"index": "artist_Michael Jackson", "Importance": -3.8970688203403356, "rank": 198.0, "side": "neg"}, {"index": "artist_Backstreet Boys", "Importance": -3.9793570186336136, "rank": 199.0, "side": "neg"}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "vconcat": [{"mark": "bar", "encoding": {"color": {"field": "side", "type": "nominal"}, "x": {"axis": {"title": ""}, "field": "index", "scale": {"domain": {"selection": "selector001"}}, "sort": {"field": "rank", "order": "ascending"}, "type": "nominal"}, "y": {"field": "Importance", "type": "quantitative"}}, "height": 200, "title": "Top 200 important features", "width": 800}, {"mark": "bar", "encoding": {"color": {"field": "side", "type": "nominal"}, "x": {"axis": {"labels": false, "title": "Features"}, "field": "index", "sort": {"field": "rank", "order": "ascending"}, "type": "nominal"}, "y": {"field": "Importance", "type": "quantitative"}}, "height": 60, "selection": {"selector001": {"type": "interval", "encodings": ["x"]}}, "title": "Drag the plot in below to zoom", "width": 800}], "data": {"name": "data-d67e030a05610c459de13364af65e74a"}, "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json", "datasets": {"data-d67e030a05610c459de13364af65e74a": [{"index": "genres_escape room", "Importance": 1.945203893920938, "rank": 1.0, "side": "pos"}, {"index": "genres_chillwave", "Importance": 1.8341051576772476, "rank": 2.0, "side": "pos"}, {"index": "genres_moombahton", "Importance": 1.7476950632602868, "rank": 3.0, "side": "pos"}, {"index": "genres_alternative hip hop", "Importance": 1.6679704771831352, "rank": 4.0, "side": "pos"}, {"index": "genres_motown", "Importance": 1.5716807479056478, "rank": 5.0, "side": "pos"}, {"index": "genres_art pop", "Importance": 1.5638350144194757, "rank": 6.0, "side": "pos"}, {"index": "genres_electronica", "Importance": 1.4880428495082993, "rank": 7.0, "side": "pos"}, {"index": "genres_house", "Importance": 1.482725349326394, "rank": 8.0, "side": "pos"}, {"index": "genres_turntablism", "Importance": 1.471457526083835, "rank": 9.0, "side": "pos"}, {"index": "genres_classical performance", "Importance": 1.402340266104816, "rank": 11.0, "side": "pos"}, {"index": "genres_orchestral performance", "Importance": 1.402340266104816, "rank": 11.0, "side": "pos"}, {"index": "genres_choral", "Importance": 1.402340266104816, "rank": 11.0, "side": "pos"}, {"index": "genres_afrofuturism", "Importance": 1.3902843860896774, "rank": 13.0, "side": "pos"}, {"index": "genres_russian romanticism", "Importance": 1.3468273244273563, "rank": 14.0, "side": "pos"}, {"index": "genres_indie rock", "Importance": 1.3235551677257655, "rank": 15.0, "side": "pos"}, {"index": "genres_late romantic era", "Importance": 1.3153418158099106, "rank": 16.0, "side": "pos"}, {"index": "genres_destroy techno", "Importance": 1.3101181663898176, "rank": 17.0, "side": "pos"}, {"index": "key_4", "Importance": 1.2742353988494313, "rank": 18.0, "side": "pos"}, {"index": "emb_sent_664", "Importance": 1.2501998504424117, "rank": 19.0, "side": "pos"}, {"index": "genres_wonky", "Importance": 1.2333002235582378, "rank": 20.0, "side": "pos"}, {"index": "genres_classic afrobeat", "Importance": 1.2228183423232017, "rank": 21.0, "side": "pos"}, {"index": "genres_indie soul", "Importance": 1.1999230681567263, "rank": 22.0, "side": "pos"}, {"index": "genres_post-disco", "Importance": 1.1993783246573133, "rank": 23.0, "side": "pos"}, {"index": "genres_neo-psychedelic", "Importance": 1.1974966900360928, "rank": 24.0, "side": "pos"}, {"index": "genres_underground hip hop", "Importance": 1.1657018349619939, "rank": 25.0, "side": "pos"}, {"index": "genres_funk", "Importance": 1.1533787326063742, "rank": 26.0, "side": "pos"}, {"index": "genres_metropopolis", "Importance": 1.1429430741827091, "rank": 27.0, "side": "pos"}, {"index": "genres_chicago rap", "Importance": 1.1190496104597112, "rank": 28.0, "side": "pos"}, {"index": "genres_bubblegum pop", "Importance": 1.1158728463020051, "rank": 29.0, "side": "pos"}, {"index": "genres_alternative dance", "Importance": 1.1018242020157123, "rank": 30.0, "side": "pos"}, {"index": "genres_new rave", "Importance": 1.0913273028392172, "rank": 31.0, "side": "pos"}, {"index": "genres_permanent wave", "Importance": 1.0743857027881336, "rank": 32.0, "side": "pos"}, {"index": "genres_alternative r&b", "Importance": 1.064926988690719, "rank": 33.0, "side": "pos"}, {"index": "emb_sent_98", "Importance": 1.0490447462149668, "rank": 34.0, "side": "pos"}, {"index": "genres_grime", "Importance": 1.030031157287854, "rank": 35.0, "side": "pos"}, {"index": "genres_houston rap", "Importance": 0.9554750130900987, "rank": 36.0, "side": "pos"}, {"index": "loudness", "Importance": 0.9483851453042519, "rank": 37.0, "side": "pos"}, {"index": "genres_indie pop", "Importance": 0.9448918410334968, "rank": 38.0, "side": "pos"}, {"index": "genres_experimental pop", "Importance": 0.9305689720987014, "rank": 39.0, "side": "pos"}, {"index": "emb_sent_753", "Importance": 0.9261737843503569, "rank": 40.0, "side": "pos"}, {"index": "genres_soundtrack", "Importance": 0.9146117239896216, "rank": 41.0, "side": "pos"}, {"index": "key_9", "Importance": 0.9126838509062727, "rank": 42.0, "side": "pos"}, {"index": "genres_downtempo", "Importance": 0.9126489714101269, "rank": 43.0, "side": "pos"}, {"index": "genres_disco", "Importance": 0.9039691172265267, "rank": 44.0, "side": "pos"}, {"index": "emb_sent_684", "Importance": 0.8728004220753577, "rank": 45.0, "side": "pos"}, {"index": "genres_garage rock", "Importance": 0.8708766218368899, "rank": 46.0, "side": "pos"}, {"index": "genres_blues rock", "Importance": 0.867102772558504, "rank": 47.0, "side": "pos"}, {"index": "genres_bmore", "Importance": 0.863556379283934, "rank": 48.0, "side": "pos"}, {"index": "genres_german soundtrack", "Importance": 0.8635252071135934, "rank": 49.5, "side": "pos"}, {"index": "genres_scorecore", "Importance": 0.8635252071135934, "rank": 49.5, "side": "pos"}, {"index": "danceability", "Importance": 0.8629342874683971, "rank": 51.0, "side": "pos"}, {"index": "genres_swedish electropop", "Importance": 0.8499739662765938, "rank": 52.0, "side": "pos"}, {"index": "emb_sent_179", "Importance": 0.8331755609996452, "rank": 53.0, "side": "pos"}, {"index": "emb_sent_228", "Importance": 0.8323234721418206, "rank": 54.0, "side": "pos"}, {"index": "genres_indie garage rock", "Importance": 0.8304259825802759, "rank": 55.0, "side": "pos"}, {"index": "genres_synthpop", "Importance": 0.8273016670680439, "rank": 56.0, "side": "pos"}, {"index": "genres_new romantic", "Importance": 0.8267604332698928, "rank": 57.0, "side": "pos"}, {"index": "genres_hyphy", "Importance": 0.8232121462237028, "rank": 58.0, "side": "pos"}, {"index": "emb_sent_315", "Importance": 0.8199576953252103, "rank": 59.0, "side": "pos"}, {"index": "genres_australian psych", "Importance": 0.8167691981392076, "rank": 60.0, "side": "pos"}, {"index": "genres_canadian contemporary r&b", "Importance": 0.8128051552176533, "rank": 61.0, "side": "pos"}, {"index": "genres_classic soul", "Importance": 0.7943567615046471, "rank": 62.0, "side": "pos"}, {"index": "key_10", "Importance": 0.7899778280875269, "rank": 63.0, "side": "pos"}, {"index": "genres_nu disco", "Importance": 0.7876289733080031, "rank": 64.0, "side": "pos"}, {"index": "emb_sent_446", "Importance": 0.7782143568125108, "rank": 65.0, "side": "pos"}, {"index": "emb_sent_713", "Importance": 0.7769444168886097, "rank": 66.0, "side": "pos"}, {"index": "genres_tech house", "Importance": 0.7572229458788126, "rank": 67.0, "side": "pos"}, {"index": "emb_sent_41", "Importance": 0.7538155511524193, "rank": 68.0, "side": "pos"}, {"index": "genres_filter house", "Importance": 0.7514954909335083, "rank": 69.0, "side": "pos"}, {"index": "genres_classic rock", "Importance": 0.7496976494909621, "rank": 70.0, "side": "pos"}, {"index": "emb_sent_583", "Importance": 0.7490332187687925, "rank": 71.0, "side": "pos"}, {"index": "emb_sent_297", "Importance": 0.7448696170217687, "rank": 72.0, "side": "pos"}, {"index": "genres_psychedelic rock", "Importance": 0.7418661088098175, "rank": 73.0, "side": "pos"}, {"index": "emb_sent_26", "Importance": 0.7387411659156108, "rank": 74.0, "side": "pos"}, {"index": "genres_cali rap", "Importance": 0.7371929209990336, "rank": 75.0, "side": "pos"}, {"index": "emb_sent_14", "Importance": 0.7331812033752211, "rank": 76.0, "side": "pos"}, {"index": "genres_indietronica", "Importance": 0.7280801275893604, "rank": 77.0, "side": "pos"}, {"index": "genres_tropical house", "Importance": 0.7167902288438204, "rank": 78.0, "side": "pos"}, {"index": "genres_funky tech house", "Importance": 0.7112217371350573, "rank": 79.0, "side": "pos"}, {"index": "emb_sent_606", "Importance": 0.7095077628366103, "rank": 80.0, "side": "pos"}, {"index": "genres_glitch hop", "Importance": 0.7075871034160397, "rank": 81.0, "side": "pos"}, {"index": "emb_sent_523", "Importance": 0.7034931156421225, "rank": 82.0, "side": "pos"}, {"index": "emb_sent_635", "Importance": 0.6900318455720699, "rank": 83.0, "side": "pos"}, {"index": "genres_classic house", "Importance": 0.6883690254000056, "rank": 84.0, "side": "pos"}, {"index": "genres_trap", "Importance": 0.6867454196334757, "rank": 85.0, "side": "pos"}, {"index": "emb_sent_596", "Importance": 0.6845795451016836, "rank": 86.0, "side": "pos"}, {"index": "emb_sent_472", "Importance": 0.6807355214808375, "rank": 87.0, "side": "pos"}, {"index": "emb_sent_23", "Importance": 0.6793116894639478, "rank": 88.0, "side": "pos"}, {"index": "emb_sent_267", "Importance": 0.662961785538117, "rank": 89.0, "side": "pos"}, {"index": "genres_modern blues rock", "Importance": 0.6605120355378857, "rank": 90.0, "side": "pos"}, {"index": "genres_french synthpop", "Importance": 0.6566234776173943, "rank": 91.0, "side": "pos"}, {"index": "genres_electrofox", "Importance": 0.6557960408071328, "rank": 92.0, "side": "pos"}, {"index": "genres_reggae", "Importance": 0.6538286538109995, "rank": 93.0, "side": "pos"}, {"index": "genres_roots reggae", "Importance": 0.653790217938808, "rank": 94.0, "side": "pos"}, {"index": "emb_sent_226", "Importance": 0.6493461916693107, "rank": 95.0, "side": "pos"}, {"index": "genres_dub", "Importance": 0.6489921477622183, "rank": 96.0, "side": "pos"}, {"index": "genres_philly indie", "Importance": 0.6410183952236878, "rank": 97.0, "side": "pos"}, {"index": "genres_vapor house", "Importance": 0.6394189625327452, "rank": 98.0, "side": "pos"}, {"index": "emb_sent_101", "Importance": 0.6369540015451561, "rank": 99.0, "side": "pos"}, {"index": "emb_sent_377", "Importance": 0.634268885470917, "rank": 100.0, "side": "pos"}, {"index": "emb_sent_636", "Importance": -0.5815821934537577, "rank": 101.0, "side": "neg"}, {"index": "emb_sent_628", "Importance": -0.5844425166601407, "rank": 102.0, "side": "neg"}, {"index": "emb_sent_381", "Importance": -0.5930558657864177, "rank": 103.0, "side": "neg"}, {"index": "emb_sent_385", "Importance": -0.5931649673863688, "rank": 104.0, "side": "neg"}, {"index": "emb_sent_213", "Importance": -0.5956689795714417, "rank": 105.0, "side": "neg"}, {"index": "genres_swedish jazz", "Importance": -0.6007150158372637, "rank": 106.0, "side": "neg"}, {"index": "genres_modern jazz trio", "Importance": -0.6071583321107077, "rank": 107.0, "side": "neg"}, {"index": "genres_dance pop", "Importance": -0.6073212500993929, "rank": 108.0, "side": "neg"}, {"index": "emb_sent_313", "Importance": -0.6110598858211839, "rank": 109.0, "side": "neg"}, {"index": "emb_sent_30", "Importance": -0.6131306095746317, "rank": 110.0, "side": "neg"}, {"index": "emb_sent_6", "Importance": -0.6177845148587525, "rank": 111.0, "side": "neg"}, {"index": "emb_sent_706", "Importance": -0.6177947780143747, "rank": 112.0, "side": "neg"}, {"index": "emb_sent_432", "Importance": -0.6198895453048863, "rank": 113.0, "side": "neg"}, {"index": "emb_sent_694", "Importance": -0.6295677164579823, "rank": 114.0, "side": "neg"}, {"index": "emb_sent_291", "Importance": -0.6351991357115787, "rank": 115.0, "side": "neg"}, {"index": "genres_conscious hip hop", "Importance": -0.6366672531975107, "rank": 116.0, "side": "neg"}, {"index": "emb_sent_687", "Importance": -0.6366753206067853, "rank": 117.0, "side": "neg"}, {"index": "genres_pop dance", "Importance": -0.6374734778125308, "rank": 118.0, "side": "neg"}, {"index": "emb_sent_347", "Importance": -0.6395034547149541, "rank": 119.0, "side": "neg"}, {"index": "emb_sent_318", "Importance": -0.6428825239521385, "rank": 120.0, "side": "neg"}, {"index": "emb_sent_587", "Importance": -0.6453430856644587, "rank": 121.0, "side": "neg"}, {"index": "genres_neo mellow", "Importance": -0.6472752381406617, "rank": 122.0, "side": "neg"}, {"index": "genres_latin pop", "Importance": -0.649855044894095, "rank": 123.0, "side": "neg"}, {"index": "emb_sent_250", "Importance": -0.650897065358169, "rank": 124.0, "side": "neg"}, {"index": "emb_sent_74", "Importance": -0.6563803479255104, "rank": 125.0, "side": "neg"}, {"index": "genres_vocal jazz", "Importance": -0.6574771478466551, "rank": 126.0, "side": "neg"}, {"index": "genres_uk pop", "Importance": -0.6579436087439975, "rank": 127.0, "side": "neg"}, {"index": "emb_sent_584", "Importance": -0.6599359995396923, "rank": 128.0, "side": "neg"}, {"index": "genres_viral pop", "Importance": -0.6619019563312849, "rank": 129.0, "side": "neg"}, {"index": "genres_trap latino", "Importance": -0.6678807623002206, "rank": 130.0, "side": "neg"}, {"index": "genres_rap kreyol", "Importance": -0.6718008949484602, "rank": 131.0, "side": "neg"}, {"index": "emb_sent_591", "Importance": -0.6812695317141827, "rank": 132.0, "side": "neg"}, {"index": "genres_electro", "Importance": -0.6836502349487981, "rank": 133.0, "side": "neg"}, {"index": "emb_sent_402", "Importance": -0.6896714997836988, "rank": 134.0, "side": "neg"}, {"index": "emb_sent_470", "Importance": -0.6953634543077072, "rank": 135.0, "side": "neg"}, {"index": "genres_reggaeton", "Importance": -0.6978239890444701, "rank": 136.0, "side": "neg"}, {"index": "emb_sent_263", "Importance": -0.7029943363880949, "rank": 137.0, "side": "neg"}, {"index": "genres_emo", "Importance": -0.7041480801816911, "rank": 138.0, "side": "neg"}, {"index": "emb_sent_544", "Importance": -0.7049928428875113, "rank": 139.0, "side": "neg"}, {"index": "emb_sent_403", "Importance": -0.7070577992307903, "rank": 140.0, "side": "neg"}, {"index": "emb_sent_595", "Importance": -0.7117258843307017, "rank": 141.0, "side": "neg"}, {"index": "genres_deep groove house", "Importance": -0.7130962248276518, "rank": 142.0, "side": "neg"}, {"index": "emb_sent_96", "Importance": -0.7162046466530975, "rank": 143.0, "side": "neg"}, {"index": "genres_modern country rock", "Importance": -0.724546962781604, "rank": 144.0, "side": "neg"}, {"index": "emb_sent_637", "Importance": -0.730683139294966, "rank": 145.0, "side": "neg"}, {"index": "genres_contemporary post-bop", "Importance": -0.7328035083137331, "rank": 146.0, "side": "neg"}, {"index": "genres_jazz saxophone", "Importance": -0.7344188877896547, "rank": 147.0, "side": "neg"}, {"index": "genres_rock", "Importance": -0.7359693463605789, "rank": 148.0, "side": "neg"}, {"index": "genres_girl group", "Importance": -0.7401804228311575, "rank": 149.0, "side": "neg"}, {"index": "genres_social media pop", "Importance": -0.7459458805117954, "rank": 150.0, "side": "neg"}, {"index": "emb_sent_251", "Importance": -0.7464117132474632, "rank": 151.0, "side": "neg"}, {"index": "genres_swedish indie pop", "Importance": -0.7560987976321184, "rank": 152.0, "side": "neg"}, {"index": "emb_sent_60", "Importance": -0.7591608818725085, "rank": 153.0, "side": "neg"}, {"index": "emb_sent_671", "Importance": -0.7592150458012844, "rank": 154.0, "side": "neg"}, {"index": "genres_technical deathcore", "Importance": -0.7649154245544866, "rank": 155.0, "side": "neg"}, {"index": "emb_sent_290", "Importance": -0.7658982482978535, "rank": 156.0, "side": "neg"}, {"index": "genres_progressive house", "Importance": -0.7734366085858444, "rank": 157.0, "side": "neg"}, {"index": "genres_children's music", "Importance": -0.7802148288022454, "rank": 158.0, "side": "neg"}, {"index": "key_3", "Importance": -0.7808370733170773, "rank": 159.0, "side": "neg"}, {"index": "genres_alternative metal", "Importance": -0.78234372476059, "rank": 160.0, "side": "neg"}, {"index": "genres_boy band", "Importance": -0.7927614516867488, "rank": 161.0, "side": "neg"}, {"index": "emb_sent_254", "Importance": -0.8138035008304748, "rank": 162.0, "side": "neg"}, {"index": "genres_uk house", "Importance": -0.8229555155057594, "rank": 163.0, "side": "neg"}, {"index": "emb_sent_136", "Importance": -0.8233339005929838, "rank": 164.0, "side": "neg"}, {"index": "emb_sent_295", "Importance": -0.8314950724011517, "rank": 165.0, "side": "neg"}, {"index": "genres_progressive electro house", "Importance": -0.84291417501536, "rank": 166.0, "side": "neg"}, {"index": "genres_country road", "Importance": -0.8467250744488182, "rank": 167.0, "side": "neg"}, {"index": "genres_edm", "Importance": -0.8608022834704538, "rank": 168.0, "side": "neg"}, {"index": "genres_progressive deathcore", "Importance": -0.8692297538278114, "rank": 169.0, "side": "neg"}, {"index": "genres_modern jazz piano", "Importance": -0.8722052899259785, "rank": 170.0, "side": "neg"}, {"index": "genres_new jack swing", "Importance": -0.8976781801612246, "rank": 171.0, "side": "neg"}, {"index": "genres_christian alternative rock", "Importance": -0.9183880790381426, "rank": 172.0, "side": "neg"}, {"index": "genres_deathcore", "Importance": -0.9209614428379117, "rank": 173.0, "side": "neg"}, {"index": "genres_folk-pop", "Importance": -0.9231071440752212, "rank": 174.0, "side": "neg"}, {"index": "emb_sent_64", "Importance": -0.9516014033302704, "rank": 175.0, "side": "neg"}, {"index": "energy", "Importance": -0.9535519992588078, "rank": 176.0, "side": "neg"}, {"index": "key_1", "Importance": -0.9570193737469347, "rank": 177.0, "side": "neg"}, {"index": "genres_tribal house", "Importance": -0.9858207482157926, "rank": 178.0, "side": "neg"}, {"index": "genres_indie folk argentino", "Importance": -0.9861994195629282, "rank": 179.0, "side": "neg"}, {"index": "genres_worship", "Importance": -0.9954912501413271, "rank": 180.0, "side": "neg"}, {"index": "genres_dirty south rap", "Importance": -0.9980331776777753, "rank": 181.0, "side": "neg"}, {"index": "genres_pop rock", "Importance": -1.0108431719595004, "rank": 182.0, "side": "neg"}, {"index": "genres_dutch house", "Importance": -1.0252427148901246, "rank": 183.0, "side": "neg"}, {"index": "genres_christian music", "Importance": -1.056301350085016, "rank": 184.0, "side": "neg"}, {"index": "genres_kindie rock", "Importance": -1.0670062993065093, "rank": 185.0, "side": "neg"}, {"index": "genres_contemporary country", "Importance": -1.1476705467680586, "rank": 186.0, "side": "neg"}, {"index": "genres_korean singer-songwriter", "Importance": -1.156304378954537, "rank": 187.0, "side": "neg"}, {"index": "genres_country", "Importance": -1.1621744683208581, "rank": 188.0, "side": "neg"}, {"index": "genres_jazz", "Importance": -1.1727117681401489, "rank": 189.0, "side": "neg"}, {"index": "genres_north carolina hip hop", "Importance": -1.2282963867002725, "rank": 190.0, "side": "neg"}, {"index": "emb_sent_181", "Importance": -1.2340715225920413, "rank": 191.0, "side": "neg"}, {"index": "genres_latin", "Importance": -1.266610716128168, "rank": 192.0, "side": "neg"}, {"index": "genres_ccm", "Importance": -1.332786939146638, "rank": 193.0, "side": "neg"}, {"index": "genres_europop", "Importance": -1.35649346069576, "rank": 194.0, "side": "neg"}, {"index": "genres_k-indie", "Importance": -1.3967667487816957, "rank": 195.0, "side": "neg"}, {"index": "genres_neo soul", "Importance": -1.4435659971652646, "rank": 196.0, "side": "neg"}, {"index": "genres_pop edm", "Importance": -1.8034345879629798, "rank": 197.0, "side": "neg"}, {"index": "genres_post-teen pop", "Importance": -1.9324676213427303, "rank": 198.0, "side": "neg"}, {"index": "genres_korean pop", "Importance": -1.9650036953561227, "rank": 199.0, "side": "neg"}, {"index": "key_0", "Importance": -2.52616821427737, "rank": 200.0, "side": "neg"}]}}, {"mode": "vega-lite"});
 </script></div></div>
 </div>
-<p>Top 200 most important features are based on artists.</p>
+<p>Top 200 most important features are based on genres.</p>
 <p><br><br></p>
 </div>
 </div>
@@ -1641,95 +1543,78 @@ After that, feature selection and hyperparameter tuning will carried out in late
   <tbody>
     <tr>
       <th>fit_time</th>
-      <td>0.030 (+/- 0.007)</td>
-      <td>0.369 (+/- 0.016)</td>
-      <td>14.622 (+/- 1.540)</td>
-      <td>0.964 (+/- 0.028)</td>
-      <td>2.203 (+/- 0.164)</td>
-      <td>0.153 (+/- 0.017)</td>
-      <td>3.150 (+/- 0.202)</td>
+      <td>0.138 (+/- 0.015)</td>
+      <td>13.436 (+/- 0.415)</td>
+      <td>729.602 (+/- 1.470)</td>
+      <td>3.025 (+/- 0.158)</td>
+      <td>6.629 (+/- 0.337)</td>
+      <td>2.496 (+/- 0.136)</td>
+      <td>43.591 (+/- 0.065)</td>
     </tr>
     <tr>
       <th>score_time</th>
-      <td>0.022 (+/- 0.008)</td>
-      <td>0.027 (+/- 0.001)</td>
-      <td>0.027 (+/- 0.003)</td>
-      <td>0.075 (+/- 0.007)</td>
-      <td>0.032 (+/- 0.001)</td>
-      <td>0.023 (+/- 0.001)</td>
-      <td>0.274 (+/- 0.017)</td>
+      <td>0.054 (+/- 0.003)</td>
+      <td>0.138 (+/- 0.048)</td>
+      <td>0.126 (+/- 0.062)</td>
+      <td>0.096 (+/- 0.003)</td>
+      <td>0.072 (+/- 0.003)</td>
+      <td>0.061 (+/- 0.003)</td>
+      <td>0.675 (+/- 0.045)</td>
     </tr>
     <tr>
       <th>test_accuracy</th>
       <td>0.520 (+/- 0.001)</td>
-      <td>0.873 (+/- 0.009)</td>
-      <td>0.887 (+/- 0.010)</td>
-      <td>0.941 (+/- 0.010)</td>
-      <td>0.937 (+/- 0.007)</td>
-      <td>0.937 (+/- 0.006)</td>
-      <td>0.930 (+/- 0.006)</td>
+      <td>0.887 (+/- 0.006)</td>
+      <td>0.888 (+/- 0.008)</td>
+      <td>0.900 (+/- 0.011)</td>
+      <td>0.944 (+/- 0.007)</td>
+      <td>0.950 (+/- 0.003)</td>
+      <td>0.954 (+/- 0.005)</td>
     </tr>
     <tr>
       <th>train_accuracy</th>
       <td>0.520 (+/- 0.000)</td>
-      <td>0.931 (+/- 0.003)</td>
-      <td>0.959 (+/- 0.004)</td>
-      <td>0.997 (+/- 0.000)</td>
-      <td>0.997 (+/- 0.000)</td>
-      <td>0.996 (+/- 0.000)</td>
-      <td>0.968 (+/- 0.002)</td>
+      <td>0.972 (+/- 0.002)</td>
+      <td>0.974 (+/- 0.003)</td>
+      <td>0.997 (+/- 0.001)</td>
+      <td>0.997 (+/- 0.001)</td>
+      <td>0.997 (+/- 0.001)</td>
+      <td>0.995 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>test_roc_auc</th>
       <td>0.500 (+/- 0.000)</td>
-      <td>0.950 (+/- 0.006)</td>
-      <td>0.961 (+/- 0.004)</td>
-      <td>0.989 (+/- 0.002)</td>
-      <td>0.981 (+/- 0.005)</td>
-      <td>0.981 (+/- 0.004)</td>
-      <td>0.975 (+/- 0.003)</td>
+      <td>0.955 (+/- 0.005)</td>
+      <td>0.954 (+/- 0.005)</td>
+      <td>0.960 (+/- 0.002)</td>
+      <td>0.986 (+/- 0.001)</td>
+      <td>0.991 (+/- 0.002)</td>
+      <td>0.991 (+/- 0.002)</td>
     </tr>
     <tr>
       <th>train_roc_auc</th>
       <td>0.500 (+/- 0.000)</td>
-      <td>0.977 (+/- 0.001)</td>
-      <td>0.988 (+/- 0.002)</td>
+      <td>0.997 (+/- 0.000)</td>
+      <td>0.998 (+/- 0.000)</td>
       <td>1.000 (+/- 0.000)</td>
       <td>1.000 (+/- 0.000)</td>
       <td>1.000 (+/- 0.000)</td>
-      <td>0.997 (+/- 0.001)</td>
+      <td>1.000 (+/- 0.000)</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>All the non-linear models are overfitting as all the training scores are close to 1. Compared to most of the models, <code class="docutils literal notranslate"><span class="pre">CatBoost</span></code> is the most balanced model in performance, it has the highest accuracy and comparatively less overfitting (the gap between train and validation scores is smaller).</p>
-<p>However, the fit time for<code class="docutils literal notranslate"><span class="pre">cat_boost</span></code> is slow. It may be a concern as the algorithm is likely to refit every user by the latest song listening history whenever the user wants to update their playlist. Moreover, the score time of <code class="docutils literal notranslate"><span class="pre">cat_boost</span></code> is the slowest among all models but acceptable.</p>
-<p>Stability of scores is more or less stable, with standard deviation ranging in around 0.01.</p>
-</div>
-<div class="section" id="hyperparameter-optimization-very-time-consuming-tbc">
-<h3>Hyperparameter optimization (Very time consuming, TBC)<a class="headerlink" href="#hyperparameter-optimization-very-time-consuming-tbc" title="Permalink to this headline">¶</a></h3>
-<p>Hyperparamaters optimization is performed for <code class="docutils literal notranslate"><span class="pre">CatBoostClassifier</span></code>:<br />
-<strong>max_depth</strong> which determines the the depth of the tree<br />
-<strong>learning_rate</strong> which controls the gradient step size (smaller size, more iterations) and can help to minimize the error associated with the Loss function</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">param_grid_cat</span> <span class="o">=</span> <span class="p">{</span>
-     <span class="s2">&quot;catboostclassifier__max_depth&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-     <span class="s2">&quot;catboostclassifier__learning_rate&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><br><br></p>
+<p>All the non-linear models are overfitting as all the training scores are close to 1. Compared to most of the models, <code class="docutils literal notranslate"><span class="pre">LGBM</span></code> and <code class="docutils literal notranslate"><span class="pre">Cat_Boost</span></code> are two of the most balanced model in performance, it has the highest accuracy and comparatively less overfitting (the gap between train and validation scores is smaller).</p>
+<p>Stability of scores is more or less stable, with standard deviation ranging in around 0.06.</p>
+<p>The fit time of <code class="docutils literal notranslate"><span class="pre">LGBM</span></code> is much shorter than <code class="docutils literal notranslate"><span class="pre">Cat_Boost</span></code>, which is important for the model application, therefore, <code class="docutils literal notranslate"><span class="pre">LGBM</span></code> is by far the most suitable model.</p>
 </div>
 <div class="section" id="id1">
 <h3>Model interpretation on Training set<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>Since <code class="docutils literal notranslate"><span class="pre">feature_importance_</span></code> is not supported on the models, <code class="docutils literal notranslate"><span class="pre">shap</span></code> is used to examine the most important features of our best non-linear models.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe_catb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe_lgbm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1747,23 +1632,25 @@ After that, feature selection and hyperparameter tuning will carried out in late
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">catboost_explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">TreeExplainer</span><span class="p">(</span><span class="n">pipe_catb</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">&quot;catboostclassifier&quot;</span><span class="p">])</span>
-<span class="n">train_catboost_shap_values</span> <span class="o">=</span> <span class="n">catboost_explainer</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">X_train_enc</span><span class="p">)</span>
-<span class="n">shap</span><span class="o">.</span><span class="n">summary_plot</span><span class="p">(</span><span class="n">train_catboost_shap_values</span><span class="p">,</span> <span class="n">X_train_enc</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lgbm_explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">TreeExplainer</span><span class="p">(</span><span class="n">pipe_lgbm</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">&quot;lgbmclassifier&quot;</span><span class="p">])</span>
+<span class="n">train_lgbm_shap_values</span> <span class="o">=</span> <span class="n">lgbm_explainer</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">X_train_enc</span><span class="p">)</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">summary_plot</span><span class="p">(</span><span class="n">train_lgbm_shap_values</span><span class="p">,</span> <span class="n">X_train_enc</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6_Machine_Learning_57_0.png" src="_images/6_Machine_Learning_57_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LightGBM binary classifier with TreeExplainer shap values output has changed to a list of ndarray
+</pre></div>
+</div>
+<img alt="_images/6_Machine_Learning_51_1.png" src="_images/6_Machine_Learning_51_1.png" />
 </div>
 </div>
-<p>We examined the most important features of <code class="docutils literal notranslate"><span class="pre">CatBoostClassifier</span></code> with SHAP methods. The results suggests that the most important feature are <code class="docutils literal notranslate"><span class="pre">instrumentalness</span></code>, <code class="docutils literal notranslate"><span class="pre">loudness</span></code> and <code class="docutils literal notranslate"><span class="pre">speechiness</span></code>. It introduced a very different results comparing to the linear model, which suggested <code class="docutils literal notranslate"><span class="pre">artist</span></code> is the most important features.</p>
-<p>One interesting observation from the result here is that, the importance of <code class="docutils literal notranslate"><span class="pre">artist</span></code> suggested by two models are different too. Top 3 <code class="docutils literal notranslate"><span class="pre">artist</span></code> from linear model are <strong>FIDLAR</strong>, <strong>Beach House</strong>, <strong>Perfume Genius</strong>, while top 3 <code class="docutils literal notranslate"><span class="pre">artist</span></code> from linear model are <strong>Disclosure</strong>, <strong>Kanye West</strong> and <strong>Purity Ring</strong>. Nevertheless, all of the artists above are noticeable from EDA <strong>Artist like world cloud</strong>.</p>
+<p>We examined the most important features of <code class="docutils literal notranslate"><span class="pre">LGBMClassifier</span></code> with SHAP methods. Apart from genre, the results suggests that the most important features are <code class="docutils literal notranslate"><span class="pre">instrumentalness</span></code>, <code class="docutils literal notranslate"><span class="pre">danceability</span></code> and <code class="docutils literal notranslate"><span class="pre">loudness</span></code>. Comparing to the linear model, which suggested all <code class="docutils literal notranslate"><span class="pre">genre_</span></code> is the most important features. non-linear model has more diversity.</p>
 </div>
 </div>
 <div class="section" id="model-averaging">
 <h2>Model Averaging<a class="headerlink" href="#model-averaging" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">CatBoostClassifier</span></code> has long processing time but the other models are overfitted. To ease the fundamental trade off, <code class="docutils literal notranslate"><span class="pre">Averaging</span></code> is attempted to see if a higher validation score and shorter fit time can be achieved.</p>
+<p>All the models are overfitted. To ease the fundamental trade off, <code class="docutils literal notranslate"><span class="pre">Averaging</span></code> is attempted to see if a higher validation score and shorter fit time can be achieved.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">avg_classifiers</span> <span class="o">=</span> <span class="p">{</span>
@@ -1821,93 +1708,93 @@ After that, feature selection and hyperparameter tuning will carried out in late
   <tbody>
     <tr>
       <th>fit_time</th>
-      <td>0.030 (+/- 0.007)</td>
-      <td>0.369 (+/- 0.016)</td>
-      <td>14.622 (+/- 1.540)</td>
-      <td>0.964 (+/- 0.028)</td>
-      <td>2.203 (+/- 0.164)</td>
-      <td>0.153 (+/- 0.017)</td>
-      <td>3.150 (+/- 0.202)</td>
-      <td>3.238 (+/- 0.247)</td>
+      <td>0.138 (+/- 0.015)</td>
+      <td>13.436 (+/- 0.415)</td>
+      <td>729.602 (+/- 1.470)</td>
+      <td>3.025 (+/- 0.158)</td>
+      <td>6.629 (+/- 0.337)</td>
+      <td>2.496 (+/- 0.136)</td>
+      <td>43.591 (+/- 0.065)</td>
+      <td>14.263 (+/- 0.906)</td>
     </tr>
     <tr>
       <th>score_time</th>
-      <td>0.022 (+/- 0.008)</td>
-      <td>0.027 (+/- 0.001)</td>
-      <td>0.027 (+/- 0.003)</td>
-      <td>0.075 (+/- 0.007)</td>
-      <td>0.032 (+/- 0.001)</td>
-      <td>0.023 (+/- 0.001)</td>
-      <td>0.274 (+/- 0.017)</td>
-      <td>0.100 (+/- 0.004)</td>
+      <td>0.054 (+/- 0.003)</td>
+      <td>0.138 (+/- 0.048)</td>
+      <td>0.126 (+/- 0.062)</td>
+      <td>0.096 (+/- 0.003)</td>
+      <td>0.072 (+/- 0.003)</td>
+      <td>0.061 (+/- 0.003)</td>
+      <td>0.675 (+/- 0.045)</td>
+      <td>0.278 (+/- 0.010)</td>
     </tr>
     <tr>
       <th>test_accuracy</th>
       <td>0.520 (+/- 0.001)</td>
-      <td>0.873 (+/- 0.009)</td>
-      <td>0.887 (+/- 0.010)</td>
-      <td>0.941 (+/- 0.010)</td>
-      <td>0.937 (+/- 0.007)</td>
-      <td>0.937 (+/- 0.006)</td>
-      <td>0.930 (+/- 0.006)</td>
-      <td>0.940 (+/- 0.005)</td>
+      <td>0.887 (+/- 0.006)</td>
+      <td>0.888 (+/- 0.008)</td>
+      <td>0.900 (+/- 0.011)</td>
+      <td>0.944 (+/- 0.007)</td>
+      <td>0.950 (+/- 0.003)</td>
+      <td>0.954 (+/- 0.005)</td>
+      <td>0.951 (+/- 0.004)</td>
     </tr>
     <tr>
       <th>train_accuracy</th>
       <td>0.520 (+/- 0.000)</td>
-      <td>0.931 (+/- 0.003)</td>
-      <td>0.959 (+/- 0.004)</td>
-      <td>0.997 (+/- 0.000)</td>
-      <td>0.997 (+/- 0.000)</td>
-      <td>0.996 (+/- 0.000)</td>
-      <td>0.968 (+/- 0.002)</td>
-      <td>0.997 (+/- 0.000)</td>
+      <td>0.972 (+/- 0.002)</td>
+      <td>0.974 (+/- 0.003)</td>
+      <td>0.997 (+/- 0.001)</td>
+      <td>0.997 (+/- 0.001)</td>
+      <td>0.997 (+/- 0.001)</td>
+      <td>0.995 (+/- 0.001)</td>
+      <td>0.997 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>test_roc_auc</th>
       <td>0.500 (+/- 0.000)</td>
-      <td>0.950 (+/- 0.006)</td>
-      <td>0.961 (+/- 0.004)</td>
-      <td>0.989 (+/- 0.002)</td>
-      <td>0.981 (+/- 0.005)</td>
-      <td>0.981 (+/- 0.004)</td>
-      <td>0.975 (+/- 0.003)</td>
-      <td>0.989 (+/- 0.002)</td>
+      <td>0.955 (+/- 0.005)</td>
+      <td>0.954 (+/- 0.005)</td>
+      <td>0.960 (+/- 0.002)</td>
+      <td>0.986 (+/- 0.001)</td>
+      <td>0.991 (+/- 0.002)</td>
+      <td>0.991 (+/- 0.002)</td>
+      <td>0.986 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>train_roc_auc</th>
       <td>0.500 (+/- 0.000)</td>
-      <td>0.977 (+/- 0.001)</td>
-      <td>0.988 (+/- 0.002)</td>
+      <td>0.997 (+/- 0.000)</td>
+      <td>0.998 (+/- 0.000)</td>
       <td>1.000 (+/- 0.000)</td>
       <td>1.000 (+/- 0.000)</td>
       <td>1.000 (+/- 0.000)</td>
-      <td>0.997 (+/- 0.001)</td>
+      <td>1.000 (+/- 0.000)</td>
       <td>1.000 (+/- 0.000)</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>According to the result, averaging the models neither help the overfitting issue nor scoring. However, the fit score is indeed faster than <code class="docutils literal notranslate"><span class="pre">Cat_Boost</span></code>. <code class="docutils literal notranslate"><span class="pre">CatBoostClassifier</span></code> is still the best model.</p>
+<p>According to the result, averaging the models neither help the overfitting issue nor scoring. However, the fit time is slower than <code class="docutils literal notranslate"><span class="pre">LGBMClassifier</span></code>. <code class="docutils literal notranslate"><span class="pre">LGBMClassifier</span></code> is still the best model.</p>
 </div>
 <div class="section" id="results-on-the-test-set">
 <h2>Results on the test set<a class="headerlink" href="#results-on-the-test-set" title="Permalink to this headline">¶</a></h2>
-<p>The best performing model <code class="docutils literal notranslate"><span class="pre">CatBoostClassifier</span></code> is used on the test data and report test scores. Summary is shown as below. Furthermore, some test predictions and corresponding explanation with SHAP force plots are drawn for further study.</p>
+<p>The best performing model <code class="docutils literal notranslate"><span class="pre">LGBMClassifier</span></code> is used on the test data and report test scores. Summary is shown as below. Furthermore, some test predictions and corresponding explanation with SHAP force plots are drawn for further study.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#predictions = pipe_catb.predict(X_test)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test Set accuracy: &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">pipe_catb</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test Set accuracy: &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">pipe_lgbm</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test Set accuracy:  0.933
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test Set accuracy:  0.954
 </pre></div>
 </div>
 </div>
 </div>
-<p>The test set’s score were slightly lower than the validation score. Therefore, the prediction is promising.</p>
+<p>The test set score was similar to the validation score. Therefore, the prediction is promising.</p>
 <div class="section" id="interpretation-and-feature-importances-on-test-set">
 <h3>Interpretation and feature importances on Test set<a class="headerlink" href="#interpretation-and-feature-importances-on-test-set" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
@@ -1923,7 +1810,7 @@ After that, feature selection and hyperparameter tuning will carried out in late
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(958, 960)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(958, 1653)
 </pre></div>
 </div>
 </div>
@@ -1931,18 +1818,21 @@ After that, feature selection and hyperparameter tuning will carried out in late
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an explainer for X_test_enc</span>
-<span class="n">test_catboost_shap_values</span> <span class="o">=</span> <span class="n">catboost_explainer</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">X_test_enc</span><span class="p">)</span>
-<span class="n">shap</span><span class="o">.</span><span class="n">summary_plot</span><span class="p">(</span><span class="n">test_catboost_shap_values</span><span class="p">,</span> <span class="n">X_test_enc</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">)</span>
+<span class="n">test_lgbm_shap_values</span> <span class="o">=</span> <span class="n">lgbm_explainer</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">X_test_enc</span><span class="p">)</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">summary_plot</span><span class="p">(</span><span class="n">test_lgbm_shap_values</span><span class="p">,</span> <span class="n">X_test_enc</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6_Machine_Learning_68_0.png" src="_images/6_Machine_Learning_68_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LightGBM binary classifier with TreeExplainer shap values output has changed to a list of ndarray
+</pre></div>
+</div>
+<img alt="_images/6_Machine_Learning_62_1.png" src="_images/6_Machine_Learning_62_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1956,30 +1846,30 @@ After that, feature selection and hyperparameter tuning will carried out in late
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Force Plot for prediction of 4th row (no_default)</span>
 <span class="n">shap</span><span class="o">.</span><span class="n">force_plot</span><span class="p">(</span>
-    <span class="n">catboost_explainer</span><span class="o">.</span><span class="n">expected_value</span><span class="p">,</span>
-    <span class="n">test_catboost_shap_values</span><span class="p">[</span><span class="mi">3</span><span class="p">,:],</span>
-    <span class="n">X_test_enc</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">,:],</span>
+    <span class="n">lgbm_explainer</span><span class="o">.</span><span class="n">expected_value</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">test_lgbm_shap_values</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">8</span><span class="p">,:],</span>
+    <span class="n">X_test_enc</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">8</span><span class="p">,:],</span>
     <span class="n">matplotlib</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6_Machine_Learning_70_0.png" src="_images/6_Machine_Learning_70_0.png" />
+<img alt="_images/6_Machine_Learning_64_0.png" src="_images/6_Machine_Learning_64_0.png" />
 </div>
 </div>
 <ul class="simple">
-<li><p>As seen from the plot, the raw score is much smaller than the base value, which predict accurately as <strong>Unlike</strong> (class of ‘0’).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">speechiness</span></code> is pushing the prediction towards a higher score, and <code class="docutils literal notranslate"><span class="pre">instrumentalness</span></code> and <code class="docutils literal notranslate"><span class="pre">duration_ms</span></code> are pushing the prediction towards a lower score.</p></li>
+<li><p>As seen from the plot, the raw score is much smaller than the base value, which predict accurately as <strong>Like</strong> (class of ‘1’).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">danceability</span></code> and <code class="docutils literal notranslate"><span class="pre">genres_dance_pop</span></code> are pushing the prediction towards a higher score, and <code class="docutils literal notranslate"><span class="pre">tempo</span></code> is pushing the prediction towards a lower score.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
 </pre></div>
 </div>
 </div>
@@ -1988,21 +1878,21 @@ After that, feature selection and hyperparameter tuning will carried out in late
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Force Plot for prediction of 2nd row (no_default)</span>
 <span class="n">shap</span><span class="o">.</span><span class="n">force_plot</span><span class="p">(</span>
-    <span class="n">catboost_explainer</span><span class="o">.</span><span class="n">expected_value</span><span class="p">,</span>
-    <span class="n">test_catboost_shap_values</span><span class="p">[</span><span class="mi">1</span><span class="p">,:],</span>
-    <span class="n">X_test_enc</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,:],</span>
+    <span class="n">lgbm_explainer</span><span class="o">.</span><span class="n">expected_value</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">test_lgbm_shap_values</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">4</span><span class="p">,:],</span>
+    <span class="n">X_test_enc</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">4</span><span class="p">,:],</span>
     <span class="n">matplotlib</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6_Machine_Learning_73_0.png" src="_images/6_Machine_Learning_73_0.png" />
+<img alt="_images/6_Machine_Learning_67_0.png" src="_images/6_Machine_Learning_67_0.png" />
 </div>
 </div>
 <ul class="simple">
 <li><p>As seen from the plot, the raw score is much smaller than the base value, which predict accurately as <strong>Unlike</strong> (class of ‘0’).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">instrumentalness</span></code> and <code class="docutils literal notranslate"><span class="pre">duration_ms</span></code> are pushing the prediction towards a higher score, and <code class="docutils literal notranslate"><span class="pre">loudness</span></code> is pushing the prediction towards a lower score.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">genres_dance_pop</span></code> is pushing the prediction towards a higher score, and <code class="docutils literal notranslate"><span class="pre">genres_modern</span> <span class="pre">rock</span></code> and <code class="docutils literal notranslate"><span class="pre">instrumentalness</span></code> are pushing the prediction towards a lower score.</p></li>
 </ul>
 </div>
 </div>
@@ -2046,68 +1936,68 @@ After that, feature selection and hyperparameter tuning will carried out in late
   <tbody>
     <tr>
       <th>fit_time</th>
-      <td>0.030 (+/- 0.007)</td>
-      <td>0.369 (+/- 0.016)</td>
-      <td>14.622 (+/- 1.540)</td>
-      <td>0.964 (+/- 0.028)</td>
-      <td>2.203 (+/- 0.164)</td>
-      <td>0.153 (+/- 0.017)</td>
-      <td>3.150 (+/- 0.202)</td>
-      <td>3.238 (+/- 0.247)</td>
+      <td>0.138 (+/- 0.015)</td>
+      <td>13.436 (+/- 0.415)</td>
+      <td>729.602 (+/- 1.470)</td>
+      <td>3.025 (+/- 0.158)</td>
+      <td>6.629 (+/- 0.337)</td>
+      <td>2.496 (+/- 0.136)</td>
+      <td>43.591 (+/- 0.065)</td>
+      <td>14.263 (+/- 0.906)</td>
     </tr>
     <tr>
       <th>score_time</th>
-      <td>0.022 (+/- 0.008)</td>
-      <td>0.027 (+/- 0.001)</td>
-      <td>0.027 (+/- 0.003)</td>
-      <td>0.075 (+/- 0.007)</td>
-      <td>0.032 (+/- 0.001)</td>
-      <td>0.023 (+/- 0.001)</td>
-      <td>0.274 (+/- 0.017)</td>
-      <td>0.100 (+/- 0.004)</td>
+      <td>0.054 (+/- 0.003)</td>
+      <td>0.138 (+/- 0.048)</td>
+      <td>0.126 (+/- 0.062)</td>
+      <td>0.096 (+/- 0.003)</td>
+      <td>0.072 (+/- 0.003)</td>
+      <td>0.061 (+/- 0.003)</td>
+      <td>0.675 (+/- 0.045)</td>
+      <td>0.278 (+/- 0.010)</td>
     </tr>
     <tr>
       <th>test_accuracy</th>
       <td>0.520 (+/- 0.001)</td>
-      <td>0.873 (+/- 0.009)</td>
-      <td>0.887 (+/- 0.010)</td>
-      <td>0.941 (+/- 0.010)</td>
-      <td>0.937 (+/- 0.007)</td>
-      <td>0.937 (+/- 0.006)</td>
-      <td>0.930 (+/- 0.006)</td>
-      <td>0.940 (+/- 0.005)</td>
+      <td>0.887 (+/- 0.006)</td>
+      <td>0.888 (+/- 0.008)</td>
+      <td>0.900 (+/- 0.011)</td>
+      <td>0.944 (+/- 0.007)</td>
+      <td>0.950 (+/- 0.003)</td>
+      <td>0.954 (+/- 0.005)</td>
+      <td>0.951 (+/- 0.004)</td>
     </tr>
     <tr>
       <th>train_accuracy</th>
       <td>0.520 (+/- 0.000)</td>
-      <td>0.931 (+/- 0.003)</td>
-      <td>0.959 (+/- 0.004)</td>
-      <td>0.997 (+/- 0.000)</td>
-      <td>0.997 (+/- 0.000)</td>
-      <td>0.996 (+/- 0.000)</td>
-      <td>0.968 (+/- 0.002)</td>
-      <td>0.997 (+/- 0.000)</td>
+      <td>0.972 (+/- 0.002)</td>
+      <td>0.974 (+/- 0.003)</td>
+      <td>0.997 (+/- 0.001)</td>
+      <td>0.997 (+/- 0.001)</td>
+      <td>0.997 (+/- 0.001)</td>
+      <td>0.995 (+/- 0.001)</td>
+      <td>0.997 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>test_roc_auc</th>
       <td>0.500 (+/- 0.000)</td>
-      <td>0.950 (+/- 0.006)</td>
-      <td>0.961 (+/- 0.004)</td>
-      <td>0.989 (+/- 0.002)</td>
-      <td>0.981 (+/- 0.005)</td>
-      <td>0.981 (+/- 0.004)</td>
-      <td>0.975 (+/- 0.003)</td>
-      <td>0.989 (+/- 0.002)</td>
+      <td>0.955 (+/- 0.005)</td>
+      <td>0.954 (+/- 0.005)</td>
+      <td>0.960 (+/- 0.002)</td>
+      <td>0.986 (+/- 0.001)</td>
+      <td>0.991 (+/- 0.002)</td>
+      <td>0.991 (+/- 0.002)</td>
+      <td>0.986 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>train_roc_auc</th>
       <td>0.500 (+/- 0.000)</td>
-      <td>0.977 (+/- 0.001)</td>
-      <td>0.988 (+/- 0.002)</td>
+      <td>0.997 (+/- 0.000)</td>
+      <td>0.998 (+/- 0.000)</td>
       <td>1.000 (+/- 0.000)</td>
       <td>1.000 (+/- 0.000)</td>
       <td>1.000 (+/- 0.000)</td>
-      <td>0.997 (+/- 0.001)</td>
+      <td>1.000 (+/- 0.000)</td>
       <td>1.000 (+/- 0.000)</td>
     </tr>
   </tbody>
@@ -2148,8 +2038,8 @@ After that, feature selection and hyperparameter tuning will carried out in late
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+        
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="5_Feature_Engine.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -2166,17 +2056,19 @@ After that, feature selection and hyperparameter tuning will carried out in late
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+        
         </div>
     </div>
     <footer class="footer">
-  <p>
-    
-      By Macy Chan<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
+    <div class="container">
+      <p>
+        
+          By Macy Chan<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
 </main>
 
 

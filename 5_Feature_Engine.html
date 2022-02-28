@@ -41,7 +41,7 @@
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -127,6 +127,11 @@
    Conclusion
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="8_Appendix.html">
+   Appendix
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -173,7 +178,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -224,7 +229,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -247,6 +252,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lyrics-analysis-nlp">
+   Lyrics analysis (NLP)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#export-csv">
    Export CSV
   </a>
@@ -259,45 +269,7 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Feature engineering</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reading-the-data-csv">
-   Reading the data CSV
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#artist-information">
-   Artist Information
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#song-information">
-   Song Information
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#export-csv">
-   Export CSV
-  </a>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="feature-engineering">
@@ -305,12 +277,14 @@
 <p>In feature engineering, we carry out feature engineering, extract new features that are relevant for the problem. For Spotify data set, three additional features are extracted from Spotify API and Genius API. Two scripts are developed for the data extraction.</p>
 <ol class="simple">
 <li><p>Extract artist genre using Spotify API (JAVA) <a class="reference external" href="https://github.com/MacyChan/spotify-user-behaviour-predictor/blob/master/spotify_user_behaviour_predictor/scr/getLyrics.py">Here</a></p></li>
-<li><p>Extract song lyric using self developed package (Python) <a class="reference external" href="https://github.com/UBC-MDS/pylyrics">Here</a></p></li>
+<li><p>Extract song lyric using self developed package - pylyrics2 (Python) <a class="reference external" href="https://pypi.org/project/pylyrics2/">Here</a>, demo can be found in appendix</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">sentence_transformers</span> <span class="kn">import</span> <span class="n">SentenceTransformer</span>
 </pre></div>
 </div>
 </div>
@@ -787,11 +761,11 @@
 </div>
 <div class="section" id="song-information">
 <h2>Song Information<a class="headerlink" href="#song-information" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">lyrics</span></code> is extracted from Genius API, which included the lyrics of the corresponding song.<br />
-A python script is developed for scraping the lyrics <span class="xref myst">here</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">lyrics</span></code> is extracted from pylyrics2 API, which included the lyrics of the corresponding song.<br />
+A python script is developed for scraping the lyrics <a class="reference external" href="https://pypi.org/project/pylyrics2/">here</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lyrics_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/lyrics_info.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lyrics_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/lyrics_info_clean.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">)</span>
 <span class="n">lyrics_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -828,32 +802,32 @@ A python script is developed for scraping the lyrics <span class="xref myst">her
     <tr>
       <th>Mask Off</th>
       <td>Future</td>
-      <td>\nCall it how it is (Call it how it is)\nHendr...</td>
+      <td>call call hendrix promise swear swear heard s...</td>
     </tr>
     <tr>
       <th>Xanny Family</th>
       <td>Future</td>
-      <td>\nThree exotic broads and I got 'em soakin' pa...</td>
+      <td>three exotic broads got em soakin panties tol...</td>
     </tr>
     <tr>
       <th>Blood On the Money</th>
       <td>Future</td>
-      <td>\nThey gave lil' Trotty 25 for them thangs, ni...</td>
+      <td>gave lil trotty thangs nigga walk give friend...</td>
     </tr>
     <tr>
       <th>Move That Dope</th>
       <td>Future</td>
-      <td>\n\n\nReal dope dealers for real, haha\nHahaha...</td>
+      <td>real dope dealers real haha hahaha young nigg...</td>
     </tr>
     <tr>
       <th>Blow a Bag</th>
       <td>Future</td>
-      <td>\nYeah\nI woke up feeling like fucking up some...</td>
+      <td>yeah woke feeling like fucking paper freeband...</td>
     </tr>
     <tr>
       <th>Lay Up</th>
       <td>Future</td>
-      <td>\nBeast mode\n(Zaytoven)\n\n\nI fuck on that b...</td>
+      <td>beast mode zaytoven fuck bitch lay fuck bitch...</td>
     </tr>
   </tbody>
 </table>
@@ -932,7 +906,7 @@ A python script is developed for scraping the lyrics <span class="xref myst">her
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>\nCall it how it is (Call it how it is)\nHendr...</td>
+      <td>call call hendrix promise swear swear heard s...</td>
     </tr>
     <tr>
       <th>1</th>
@@ -956,7 +930,7 @@ A python script is developed for scraping the lyrics <span class="xref myst">her
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>\nThree exotic broads and I got 'em soakin' pa...</td>
+      <td>three exotic broads got em soakin panties tol...</td>
     </tr>
     <tr>
       <th>2</th>
@@ -980,7 +954,7 @@ A python script is developed for scraping the lyrics <span class="xref myst">her
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>\nThey gave lil' Trotty 25 for them thangs, ni...</td>
+      <td>gave lil trotty thangs nigga walk give friend...</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1004,7 +978,7 @@ A python script is developed for scraping the lyrics <span class="xref myst">her
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>\n\n\nReal dope dealers for real, haha\nHahaha...</td>
+      <td>real dope dealers real haha hahaha young nigg...</td>
     </tr>
     <tr>
       <th>4</th>
@@ -1028,7 +1002,7 @@ A python script is developed for scraping the lyrics <span class="xref myst">her
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>\nYeah\nI woke up feeling like fucking up some...</td>
+      <td>yeah woke feeling like fucking paper freeband...</td>
     </tr>
     <tr>
       <th>5</th>
@@ -1052,11 +1026,225 @@ A python script is developed for scraping the lyrics <span class="xref myst">her
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>\nBeast mode\n(Zaytoven)\n\n\nI fuck on that b...</td>
+      <td>beast mode zaytoven fuck bitch lay fuck bitch...</td>
     </tr>
   </tbody>
 </table>
 <p>6 rows × 878 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="lyrics-analysis-nlp">
+<h2>Lyrics analysis (NLP)<a class="headerlink" href="#lyrics-analysis-nlp" title="Permalink to this headline">¶</a></h2>
+<p>Using <a class="reference external" href="https://huggingface.co/sentence-transformers/paraphrase-distilroberta-base-v1">paraphrase-distilroberta-base-v1</a> to maps sentences &amp; paragraphs to a 768 dimensional dense vector space.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spotify_df_dropna</span> <span class="o">=</span> <span class="n">spotify_df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;lyrics == lyrics&quot;</span><span class="p">)</span>
+<span class="n">embedder</span> <span class="o">=</span> <span class="n">SentenceTransformer</span><span class="p">(</span><span class="s2">&quot;paraphrase-distilroberta-base-v1&quot;</span><span class="p">)</span>
+<span class="n">emb_sents</span> <span class="o">=</span> <span class="n">embedder</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">spotify_df_dropna</span><span class="p">[</span><span class="s2">&quot;lyrics&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Merge with original dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">emb_sent_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">emb_sents</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">spotify_df_dropna</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">add_prefix</span><span class="p">(</span><span class="s1">&#39;emb_sent_&#39;</span><span class="p">)</span>
+<span class="n">spotify_df</span> <span class="o">=</span> <span class="n">spotify_df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">emb_sent_df</span><span class="p">)</span>
+<span class="n">spotify_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>acousticness</th>
+      <th>danceability</th>
+      <th>duration_ms</th>
+      <th>energy</th>
+      <th>instrumentalness</th>
+      <th>key</th>
+      <th>liveness</th>
+      <th>loudness</th>
+      <th>mode</th>
+      <th>speechiness</th>
+      <th>...</th>
+      <th>emb_sent_758</th>
+      <th>emb_sent_759</th>
+      <th>emb_sent_760</th>
+      <th>emb_sent_761</th>
+      <th>emb_sent_762</th>
+      <th>emb_sent_763</th>
+      <th>emb_sent_764</th>
+      <th>emb_sent_765</th>
+      <th>emb_sent_766</th>
+      <th>emb_sent_767</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0102</td>
+      <td>0.833</td>
+      <td>204600</td>
+      <td>0.434</td>
+      <td>0.0219</td>
+      <td>2</td>
+      <td>0.165</td>
+      <td>-8.795</td>
+      <td>1</td>
+      <td>0.431</td>
+      <td>...</td>
+      <td>-0.043803</td>
+      <td>-0.447969</td>
+      <td>0.751878</td>
+      <td>-0.143682</td>
+      <td>-0.581486</td>
+      <td>-0.016169</td>
+      <td>0.619145</td>
+      <td>0.287845</td>
+      <td>-0.234614</td>
+      <td>-0.471101</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0102</td>
+      <td>0.833</td>
+      <td>204600</td>
+      <td>0.434</td>
+      <td>0.0219</td>
+      <td>2</td>
+      <td>0.165</td>
+      <td>-8.795</td>
+      <td>1</td>
+      <td>0.431</td>
+      <td>...</td>
+      <td>-0.242343</td>
+      <td>0.043233</td>
+      <td>0.199484</td>
+      <td>0.161576</td>
+      <td>-0.384538</td>
+      <td>0.126095</td>
+      <td>0.462813</td>
+      <td>0.112398</td>
+      <td>0.002923</td>
+      <td>-0.256447</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0102</td>
+      <td>0.833</td>
+      <td>204600</td>
+      <td>0.434</td>
+      <td>0.0219</td>
+      <td>2</td>
+      <td>0.165</td>
+      <td>-8.795</td>
+      <td>1</td>
+      <td>0.431</td>
+      <td>...</td>
+      <td>-0.316598</td>
+      <td>-0.339585</td>
+      <td>0.321482</td>
+      <td>0.280396</td>
+      <td>-0.003586</td>
+      <td>0.132081</td>
+      <td>-0.445193</td>
+      <td>0.301628</td>
+      <td>-0.287356</td>
+      <td>-0.504784</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0102</td>
+      <td>0.833</td>
+      <td>204600</td>
+      <td>0.434</td>
+      <td>0.0219</td>
+      <td>2</td>
+      <td>0.165</td>
+      <td>-8.795</td>
+      <td>1</td>
+      <td>0.431</td>
+      <td>...</td>
+      <td>0.087176</td>
+      <td>-0.227342</td>
+      <td>0.278918</td>
+      <td>0.479892</td>
+      <td>-0.431301</td>
+      <td>0.224406</td>
+      <td>1.213418</td>
+      <td>-0.474493</td>
+      <td>-0.316002</td>
+      <td>-0.365130</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0102</td>
+      <td>0.833</td>
+      <td>204600</td>
+      <td>0.434</td>
+      <td>0.0219</td>
+      <td>2</td>
+      <td>0.165</td>
+      <td>-8.795</td>
+      <td>1</td>
+      <td>0.431</td>
+      <td>...</td>
+      <td>0.117087</td>
+      <td>-0.418446</td>
+      <td>-0.040964</td>
+      <td>0.428880</td>
+      <td>-0.310667</td>
+      <td>-0.276378</td>
+      <td>0.260933</td>
+      <td>-0.361207</td>
+      <td>-0.267050</td>
+      <td>-0.332415</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.0102</td>
+      <td>0.833</td>
+      <td>204600</td>
+      <td>0.434</td>
+      <td>0.0219</td>
+      <td>2</td>
+      <td>0.165</td>
+      <td>-8.795</td>
+      <td>1</td>
+      <td>0.431</td>
+      <td>...</td>
+      <td>-0.182009</td>
+      <td>-0.468775</td>
+      <td>0.299990</td>
+      <td>0.213028</td>
+      <td>0.011709</td>
+      <td>-0.149237</td>
+      <td>0.507415</td>
+      <td>0.057419</td>
+      <td>-0.013157</td>
+      <td>-0.161389</td>
+    </tr>
+  </tbody>
+</table>
+<p>6 rows × 1646 columns</p>
 </div></div></div>
 </div>
 </div>
@@ -1095,8 +1283,8 @@ A python script is developed for scraping the lyrics <span class="xref myst">her
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+        
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="4_Stat_Infer.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1113,17 +1301,19 @@ A python script is developed for scraping the lyrics <span class="xref myst">her
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+        
         </div>
     </div>
     <footer class="footer">
-  <p>
-    
-      By Macy Chan<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
+    <div class="container">
+      <p>
+        
+          By Macy Chan<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
 </main>
 
 
